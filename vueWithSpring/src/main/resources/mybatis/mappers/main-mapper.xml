@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="main">
+	<select id="selectHireList" parameterType="mainVo" resultType="mainVo">
+		SELECT *
+		FROM hire h INNER JOIN user_company_detail u ON h.id=u.id
+		WHERE h.hire_open ='Y'
+	</select>
+</mapper>
