@@ -8,12 +8,16 @@
              </div>
          </div>
          <div>
+             <h2>로그인</h2>
              <form name="loginForm" action="/login" method="post">
 
                   <div class="input">
-                    <input type="text" name="">
-                    <img src="/images/logo.png" alt="dd">
+                    <input type="text" name="" placeholder="아이디">
                   </div>
+                   <div class="input">
+                    <input type="text" name="" placeholder="비밀번호">
+                  </div>
+                  <button @click="login">로그인</button>
              </form>
          </div>
      </div>
@@ -22,7 +26,12 @@
 
 <script>
 export default {
-  name: 'login'
+  name: 'login',
+  methods: {
+    login: function () {
+      alert()
+    }
+  }
 }
 </script>
 
@@ -58,9 +67,14 @@ export default {
     font-weight: bold;
 }
 
-input{
+.input input{
     border: 0;
     border-bottom-style: solid;
     border-width: 1px;
+    height: 31px;
+}
+
+.input input:focus{
+    outline: 0;
 }
 </style>
