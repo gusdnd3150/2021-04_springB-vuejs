@@ -7,7 +7,15 @@
                 <h2>hello </h2>
              </div>
          </div>
-         <div>로그인폼</div>
+         <div>
+             <form name="loginForm" action="/login" method="post">
+
+                  <div class="input">
+                    <input type="text" name="">
+                    <img src="/images/logo.png" alt="dd">
+                  </div>
+             </form>
+         </div>
      </div>
  </div>
 </template>
@@ -48,5 +56,11 @@ export default {
     right: 200px;
     color:white;
     font-weight: bold;
+}
+
+input{
+    border: 0;
+    border-bottom-style: solid;
+    border-width: 1px;
 }
 </style>
