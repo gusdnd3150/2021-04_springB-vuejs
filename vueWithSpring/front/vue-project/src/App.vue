@@ -22,8 +22,8 @@ export default {
 button{
   margin: 5px 5px 5px 5px;
   padding: 10px 15px 10px 15px;
-  background: rgb(39,241,250);
-  background: linear-gradient(90deg, rgba(39,241,250,1) 2%, rgba(12,191,227,1) 32%, rgba(16,175,207,1) 69%);
+  background: rgb(255,255,255);
+background: linear-gradient(138deg, rgba(255,255,255,1) 6%, rgba(16,175,207,1) 65%, rgba(255,255,255,1) 100%);
   color:white;
   font-weight: bold;
   border-style: none;

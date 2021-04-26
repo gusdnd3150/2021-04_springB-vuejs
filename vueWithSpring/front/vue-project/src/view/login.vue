@@ -10,12 +10,11 @@
          <div>
              <h2>로그인</h2>
              <form name="loginForm" action="/login" method="post">
-
                   <div class="input">
-                    <input type="text" name="" placeholder="아이디">
+                    <input type="text" name="username" id="username" v-model="username" placeholder="아이디">
                   </div>
                    <div class="input">
-                    <input type="text" name="" placeholder="비밀번호">
+                    <input type="text" name="password" id="password" v-model="password" placeholder="비밀번호">
                   </div>
                   <button @click="login">로그인</button>
              </form>
@@ -25,11 +24,22 @@
 </template>
 
 <script>
+
 export default {
   name: 'login',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
-    login: function () {
-      alert()
+    login: function (event) {
+      event.preventDefault()
+      console.log(this.username + this.password)
+      if (this.username === '' || this.password === '') {
+        alert('아이디 패스워드는 필수이다.')
+      }
     }
   }
 }
@@ -76,5 +86,11 @@ export default {
 
 .input input:focus{
     outline: 0;
+}
+
+@media (max-width: 750px) {
+    .login-div{
+      flex-direction:column
+    }
 }
 </style>
