@@ -1,7 +1,7 @@
 <template>
    <div class="navigation">
        <div class="show-navi-button">
-           <router-link to="/">홈</router-link>
+           <router-link to="/">MEETYOU</router-link>
             <div class="navi-button">
                 <p>=</p>
             </div>
@@ -30,6 +30,10 @@ export default {
 a{
     color:black !important;
     text-decoration: none;
+}
+
+.show-navi-button a{
+    font-weight: bold;
 }
 
 .navigation{

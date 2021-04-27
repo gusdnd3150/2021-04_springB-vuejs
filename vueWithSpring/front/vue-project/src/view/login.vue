@@ -1,12 +1,13 @@
 <template>
+<div class="content-area">
      <div class="login-div">
          <div>
              <!-- 이미지 -->
              <div class="login-left-content">
                 <h2>hello </h2>
                 <p>지금 연애하고 계신가요?
-비트윈을 시작하세요!
-비트윈은 연인과 더 사랑스럽게 소통하고, 소중한 추억을 손쉽게 저장할 수 있는 어플입니다.
+                비트윈을 시작하세요!
+                비트윈은 연인과 더 사랑스럽게 소통하고, 소중한 추억을 손쉽게 저장할 수 있는 어플입니다.
                 </p>
              </div>
          </div>
@@ -24,6 +25,7 @@
             </div>
          </div>
      </div>
+</div>
 </template>
 
 <script>
@@ -106,6 +108,17 @@ export default {
 
 .input input:focus{
     outline: 0;
+}
+
+.content-area{
+  margin-top: 100px;
+  width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 767px){
+  .content-area{
+    width:100%;
+  }
 }
 
 @media (max-width: 750px) {

@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <router-view name="navi" />
-    <div class="content-area">
     <router-view/>
-    </div>
   </div>
 </template>
 
@@ -14,11 +12,9 @@ export default {
 </script>
 
 <style>
-
-.content-area{
-  margin-top: 100px;
-  width: 800px;
-  margin: 0 auto;
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+*{
+  font-family: 'Noto Sans KR';
 }
 
 #app {
@@ -47,11 +43,5 @@ button:hover{
   border-style: solid;
   border-width: 1px;
   border-color:blue;
-}
-
-@media (max-width: 767px){
-  .content-area{
-    width:100%;
-  }
 }
 </style>
