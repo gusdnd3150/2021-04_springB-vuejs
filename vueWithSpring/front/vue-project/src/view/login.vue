@@ -48,10 +48,10 @@ export default {
         // eslint-disable-next-line standard/object-curly-even-spacing
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({username: this.username, password: this.password})
-      }).then(res => {
-        console.log(res)
-      }).then(res => {
-        console.log(res)
+      }).then((res) => {
+        console.log(res.json())
+      }).then((res) => {
+        console.log(res.json())
       })
     }
   }
