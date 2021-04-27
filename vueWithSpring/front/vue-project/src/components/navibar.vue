@@ -1,7 +1,10 @@
 <template>
    <div class="navigation">
-       <div>
+       <div class="show-navi-button">
            <router-link to="/">홈</router-link>
+            <div class="navi-button">
+                <p>=</p>
+            </div>
        </div>
        <div>
            <ul class="navigation-link">
@@ -10,7 +13,9 @@
                <li> <router-link to="/feed">피드</router-link></li>
            </ul>
        </div>
-       <div><router-link to="/login">Login</router-link></div>
+       <div>
+           <router-link to="/login">Login</router-link>
+       </div>
    </div>
 </template>
 
@@ -31,7 +36,6 @@ a{
     width: auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-around;
     padding: 20px;
     margin-bottom: 20px;
@@ -58,9 +62,25 @@ a{
     border-color: red;
     border-bottom-style: solid;
 }
+.show-navi-button{
+    position: relative;
+}
+.navi-button {
+    position: absolute;
+    display: none;
+    top: -23px;
+    right: 2px;
+}
+.navi-button p{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 5px;
+    color: gray;
+}
+
 @media (max-width: 750px) {
   .navigation{
-      width: 86%;
       display: flex;
       flex-direction: column;
   }
@@ -70,10 +90,21 @@ a{
   }
   .navigation-link{
       flex-direction: column;
+      display: none;
   }
   .navigation-link > li{
     margin: 0px;
     padding: 10px 0px 10px 0px;
+  }
+  .navigation-link > li:hover{
+    background-color: gray;
+    color:white;
+    opacity: 0.7;
+    border-bottom-style: none;
+    border-color: none;
+  }
+  .navi-button {
+      display: inline;
   }
 
 }

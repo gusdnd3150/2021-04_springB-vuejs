@@ -9,4 +9,6 @@ import lombok.Data;
 public class MainVo {
 
 	private String id;
+	private String username;
+	private String password;
 }
