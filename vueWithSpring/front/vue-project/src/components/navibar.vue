@@ -1,7 +1,7 @@
 <template>
    <div class="navigation">
        <div class="show-navi-button">
-           <router-link to="/">MEETYOU</router-link>
+           <router-link to="/">MEETUS</router-link>
             <div class="navi-button">
                 <p>=</p>
             </div>
