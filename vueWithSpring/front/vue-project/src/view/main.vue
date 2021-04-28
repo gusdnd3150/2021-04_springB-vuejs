@@ -1,5 +1,17 @@
 <template>
 <div>
+
+  <div class="banner-area">
+      <div class="banner-left">
+          <h2>MEET US</h2>
+          <h3>커플일상 공유 사이트</h3>
+         <p>다른 커플들에게 우리의 일상을 뽐내보고 우리들만의 비밀 아지트를 공유해 보아요!</p>
+         <button>일상 업로드</button>
+      </div>
+      <div class="banner-right">
+        <img src="/images/banner2.png">
+      </div>
+  </div>
    <div class="recomend-area">
      <div class="content-area">
          <div class="best-couple-area">
@@ -35,6 +47,40 @@ export default {
 </script>
 
 <style  scoped>
+.banner-area{
+  overflow-y: hidden;
+  width:100%;
+  background-color: #447eff;
+  position: relative;
+  min-height: 370px;
+  max-height: 370px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.banner-right{
+  flex-basis: 300px;
+  text-align: left;
+}
+.banner-right img{
+  max-width: 100%;
+}
+.banner-left{
+  flex-basis: 300px;
+  text-align: left;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.banner-left > p{
+  color:white
+}
+.banner-left >h2{
+  color:white;
+  font-weight: 800;
+  font-size: 35px;
+}
+
 .best-couple-area{
   display: flex;
   flex-wrap: wrap;
@@ -76,6 +122,10 @@ transition: box-shadow 0.1s
 @media (max-width: 767px){
   .content-area{
     width:100%;
+  }
+  .banner-left{
+  flex-basis: 100%;
+  text-align: center;
   }
 }
 </style>
