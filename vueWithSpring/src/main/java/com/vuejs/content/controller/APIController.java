@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vuejs.content.service.APIService;
+import com.vuejs.content.util.EntityUtil;
 import com.vuejs.content.vo.MainVo;
 import com.vuejs.content.vo.UserVo;
 
@@ -19,6 +20,8 @@ public class APIController {
 	
 	@Autowired
 	private APIService service;
+	
+	private EntityUtil entityUtil;
 
 	@GetMapping("/api/test")
 	public ResponseEntity<MainVo> test(@RequestBody MainVo vo) {
@@ -27,17 +30,9 @@ public class APIController {
 	}
 	
 	@PostMapping("/api/login")
-	public ResponseEntity<String> login(@RequestBody UserVo user){
+	public ResponseEntity<Object> login(@RequestBody UserVo user){
 		String result = "";
-		ResponseEntity<String> response = null;
-		
-		try {
-			result = service.login(user);
-			response = new ResponseEntity<String>(result,HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			response =  new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		return response;
+		result = service.login(user);
+		return entityUtil.getResponseResult(result);
 	}
 }

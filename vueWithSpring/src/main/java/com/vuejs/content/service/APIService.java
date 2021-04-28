@@ -13,13 +13,15 @@ public class APIService {
 	private APIRepository repository;
 	
 	public String login(UserVo user) {
-		String result ="loginfail";
+		String result ="";
 		try {
 			UserVo dbUser = repository.selectUserById(user.getUsername());
 			if(dbUser != null && user.getPassword().equals(dbUser.getPassword())) {
 				result ="success";
 			}
+			result ="notFound";
 		} catch (Exception e) {
+			result = e.getMessage();
 			e.printStackTrace();
 		}
 		return result;
