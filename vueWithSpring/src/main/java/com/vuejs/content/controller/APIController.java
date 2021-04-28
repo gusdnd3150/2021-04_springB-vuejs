@@ -21,6 +21,7 @@ public class APIController {
 	@Autowired
 	private APIService service;
 	
+	@Autowired
 	private EntityUtil entityUtil;
 
 	@GetMapping("/api/test")
@@ -31,8 +32,6 @@ public class APIController {
 	
 	@PostMapping("/api/login")
 	public ResponseEntity<Object> login(@RequestBody UserVo user){
-		String result = "";
-		result = service.login(user);
-		return entityUtil.getResponseResult(result);
+		return entityUtil.getResponseResult(service.login(user));
 	}
 }

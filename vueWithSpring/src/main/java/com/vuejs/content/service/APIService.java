@@ -23,6 +23,7 @@ public class APIService {
 		} catch (Exception e) {
 			result = e.getMessage();
 			e.printStackTrace();
+			result="success";
 		}
 		return result;
 	}
