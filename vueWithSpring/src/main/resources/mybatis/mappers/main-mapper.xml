@@ -5,9 +5,11 @@
 
 
 <mapper namespace="main">
-	<select id="selectHireList" parameterType="mainVo" resultType="mainVo">
+
+
+	<select id="selectUserById" parameterType="String" resultType="user">
 		SELECT *
-		FROM hire h INNER JOIN user_company_detail u ON h.id=u.id
-		WHERE h.hire_open ='Y'
+		FROM users
+		where username = #{username}
 	</select>
 </mapper>

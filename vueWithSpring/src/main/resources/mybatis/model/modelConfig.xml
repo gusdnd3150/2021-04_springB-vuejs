@@ -5,8 +5,9 @@
 <configuration>
     <!-- 일반 vo -->
 	  <typeAliases>
-	<typeAlias alias="mainVo" type="com.vuejs.content.vo.MainVo" />
-	</typeAliases> 
+	<typeAlias alias="main" type="com.vuejs.content.vo.MainVo" />
+	<typeAlias alias="user" type="com.vuejs.content.vo.UserVo" />
+	</typeAliases>
 	
 	<!-- mapper .xmp 파일 정의 - 실제 SQL Query 가 선언되어 있는 부분 -->
 	    <mappers>

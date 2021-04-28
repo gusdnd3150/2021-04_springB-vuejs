@@ -1,5 +1,5 @@
 <template>
-<div >
+<div>
    <div class="recomend-area">
      <div class="content-area">
          <div class="best-couple-area">
@@ -14,7 +14,7 @@
           <h3>best 장소</h3>
           <hr>
        </div>
-       <placeCard></placeCard>
+       <placeCard v-bind:list="msg"></placeCard>
      </div>
 </div>
 </template>
@@ -23,7 +23,7 @@
 import placeCard from '@/components/place-card.vue'
 
 export default {
-  name: 'main',
+  name: 'mainPage',
   data () {
     return {
       msg: '메인영역'
@@ -45,7 +45,6 @@ export default {
   height: 240px;
   flex-basis: 245px;
   border-radius: 10px;
-background-color: blue;
  margin-top:20px;
 margin-bottom:20px;
 margin-left:10px;

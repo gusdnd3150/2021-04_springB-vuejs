@@ -53,7 +53,8 @@
 
 <script>
 export default {
-  name: 'card-place'
+  name: 'card-place',
+  props: ['list']
 }
 </script>
 
@@ -106,7 +107,8 @@ transition: box-shadow 0.1s
   text-align: left;
 }
 .card-middle p{
-  color:gray
+  color:gray;
+  font-size: 14px;
 }
 .card-bottom{
   text-align: left;

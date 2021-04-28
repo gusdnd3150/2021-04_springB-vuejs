@@ -45,15 +45,18 @@ export default {
         alert('아이디 패스워드는 필수이다.')
         return
       }
-      fetch('/api/test', {
+      fetch('/api/login', {
         method: 'post',
         // eslint-disable-next-line standard/object-curly-even-spacing
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({username: this.username, password: this.password})
       }).then((res) => {
+        console.log(res.status)
+        console.log(res.body)
+        console.log(res.text)
         console.log(res.json())
       }).then((res) => {
-        console.log(res.json())
+        console.log(res)
       })
     }
   }
