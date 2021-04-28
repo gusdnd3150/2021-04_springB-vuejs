@@ -32,6 +32,6 @@ public class APIController {
 	
 	@PostMapping("/api/login")
 	public ResponseEntity<Object> login(@RequestBody UserVo user){
-		return entityUtil.getResponseResult(service.login(user));
+		return entityUtil.getResponseResult(service.login(user),null);
 	}
 }

@@ -1,6 +1,5 @@
 <template>
 <div>
-
   <div class="banner-area">
       <div class="banner-left">
           <h2>MEET US</h2>
@@ -12,6 +11,9 @@
         <img src="/images/banner2.png">
       </div>
   </div>
+<div class="intro-area">
+  <intro />
+</div>
    <div class="recomend-area">
      <div class="content-area">
          <div class="best-couple-area">
@@ -33,6 +35,7 @@
 
 <script>
 import placeCard from '@/components/place-card.vue'
+import intro from '@/components/intro.vue'
 
 export default {
   name: 'mainPage',
@@ -41,7 +44,7 @@ export default {
       msg: '메인영역'
     }
   },
-  components: {placeCard}
+  components: {placeCard, intro}
 }
 
 </script>
