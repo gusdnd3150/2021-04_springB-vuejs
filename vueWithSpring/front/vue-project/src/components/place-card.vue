@@ -1,9 +1,9 @@
 <template>
      <div class="best-place-area">
-           <div class="best-place-card">
+       <div class="best-place-card">
              <div class="card-top">
               <div class="img-box">
-               <img src="images/noneImg.png">
+               <img src="@/assets/profile.png">
               </div>
                 <p>gusdnd3150</p>
              </div>
@@ -19,7 +19,7 @@
            <div class="best-place-card">
              <div class="card-top">
               <div class="img-box">
-               <img src="images/noneImg.png">
+               <img src="@/assets/profile.png">
               </div>
                 <p>gusdnd3150</p>
              </div>
@@ -35,7 +35,55 @@
            <div class="best-place-card">
              <div class="card-top">
               <div class="img-box">
-               <img src="images/noneImg.png">
+               <img src="@/assets/profile.png">
+              </div>
+                <p>gusdnd3150</p>
+             </div>
+             <div class="card-middle">
+               <p>[짝궁] 정민</p>
+               <p>[장소] 가평군</p>
+             </div>
+             <hr>
+            <div class="card-bottom">
+              <a>#가평</a><a>#물놀이</a>
+            </div>
+           </div>
+           <div class="best-place-card">
+             <div class="card-top">
+              <div class="img-box">
+               <img src="@/assets/profile.png">
+              </div>
+                <p>gusdnd3150</p>
+             </div>
+             <div class="card-middle">
+               <p>[짝궁] 정민</p>
+               <p>[장소] 가평군</p>
+             </div>
+             <hr>
+            <div class="card-bottom">
+              <a>#가평</a><a>#물놀이</a>
+            </div>
+           </div>
+           <div class="best-place-card">
+             <div class="card-top">
+              <div class="img-box">
+               <img src="@/assets/profile.png">
+              </div>
+                <p>gusdnd3150</p>
+             </div>
+             <div class="card-middle">
+               <p>[짝궁] 정민</p>
+               <p>[장소] 가평군</p>
+             </div>
+             <hr>
+            <div class="card-bottom">
+              <a>#가평</a><a>#물놀이</a>
+            </div>
+           </div>
+           <div class="best-place-card">
+             <div class="card-top">
+              <div class="img-box">
+               <img src="@/assets/profile.png">
               </div>
                 <p>gusdnd3150</p>
              </div>
@@ -60,19 +108,20 @@ export default {
 
 <style scoped>
 
-.best-place-area{
-  display: flex;
-  flex-wrap: wrap;
-  justify-items: center;
-}
 .img-box{
-  width: 60px;
+  width: 45px;
   border-radius: 50%;
 }
 
 img {
   max-width: 100%;
   height: auto !important;
+  border-radius: 50%;
+}
+.best-place-area{
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
 }
 
 .best-place-area > div{
@@ -101,7 +150,10 @@ transition: box-shadow 0.1s
   flex-wrap: nowrap;
 }
 .card-top p{
-  font-weight: bold;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 23px;
+    margin-left: 4px;
 }
 .card-middle{
   text-align: left;

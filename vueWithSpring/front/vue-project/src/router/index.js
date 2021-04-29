@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import navibar from '@/components/navibar.vue'
 import main from '@/view/main.vue'
 import login from '@/view/login.vue'
+import footer from '@/view/footer.vue'
 
 Vue.use(Router)
 
@@ -12,12 +13,12 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      components: {default: main, navi: navibar}
+      components: {default: main, navi: navibar, bottom: footer}
     },
     {
       path: '/login',
       name: 'login',
-      components: {default: login, navi: navibar}
+      components: {default: login, navi: navibar, bottom: footer}
     }
   ]
 })

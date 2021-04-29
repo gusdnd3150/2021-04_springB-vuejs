@@ -1,6 +1,7 @@
 <template>
- <div>
-  {{test}}
+ <div class="intro-area">
+  <div>dd</div>
+  <div>dd</div>
  </div>
 </template>
 
@@ -15,6 +16,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.intro-area{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: gray;
+  justify-content: center;
+}
+.intro-area > div{
+  flex-basis:440px;
+}
 
 </style>

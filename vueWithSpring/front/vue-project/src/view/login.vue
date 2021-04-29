@@ -45,7 +45,7 @@ export default {
         alert('아이디 패스워드는 필수이다.')
         return
       }
-      fetch('/api/login', {
+      fetch('http://localhost:8090/api/login', {
         method: 'post',
         // eslint-disable-next-line standard/object-curly-even-spacing
         headers: { 'Content-Type': 'application/json'},

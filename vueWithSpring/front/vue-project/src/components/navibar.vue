@@ -37,7 +37,6 @@ a{
 }
 
 .navigation{
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -73,7 +72,7 @@ a{
     position: absolute;
     display: none;
     top: -23px;
-    right: 2px;
+    right: 26px;
 }
 .navi-button p{
     border-style: solid;

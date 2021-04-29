@@ -8,12 +8,14 @@
          <button>일상 업로드</button>
       </div>
       <div class="banner-right">
-        <img src="/images/banner2.png">
+        <img src="@/assets/banner2.png">
       </div>
   </div>
-<div class="intro-area">
-  <intro />
-</div>
+
+  <div class="content-area">
+    <intro />
+  </div>
+
    <div class="recomend-area">
      <div class="content-area">
          <div class="best-couple-area">
@@ -23,10 +25,21 @@
          </div>
      </div>
    </div>
+
+    <div class="content-area">
+       <div class="content-description">
+          <h3>BEST 커플</h3>
+          <hr>
+          <router-link to="/">더보기</router-link>
+       </div>
+       <coupleCard v-bind:bestCouple="msg"></coupleCard>
+     </div>
+
      <div class="content-area">
        <div class="content-description">
-          <h3>best 장소</h3>
+          <h3>BEST 장소</h3>
           <hr>
+          <router-link to="/">더보기</router-link>
        </div>
        <placeCard v-bind:list="msg"></placeCard>
      </div>
@@ -36,6 +49,7 @@
 <script>
 import placeCard from '@/components/place-card.vue'
 import intro from '@/components/intro.vue'
+import coupleCard from '@/components/couple-card.vue'
 
 export default {
   name: 'mainPage',
@@ -44,7 +58,7 @@ export default {
       msg: '메인영역'
     }
   },
-  components: {placeCard, intro}
+  components: {placeCard, intro, coupleCard}
 }
 
 </script>
@@ -107,9 +121,18 @@ transition: box-shadow 0.1s
 .content-description{
   text-align: left;
   position: relative;
+  margin-top: 79px;
 }
 .content-description h3{
   margin-bottom: 0px;
+}
+.content-description > a{
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    text-decoration: none;
+    color: gray;
+    font-weight: 600;
 }
 .content-area {
   text-align: none;

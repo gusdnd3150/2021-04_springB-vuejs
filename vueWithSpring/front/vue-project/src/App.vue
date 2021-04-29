@@ -2,6 +2,7 @@
   <div id="app">
     <router-view name="navi" />
     <router-view/>
+    <router-view name="bottom" />
   </div>
 </template>
 
