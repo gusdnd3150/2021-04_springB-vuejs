@@ -1,102 +1,57 @@
 <template>
-     <div class="best-place-area">
-       <div class="best-place-card">
-             <div class="card-top">
-              <div class="img-box">
-               <img src="@/assets/profile.png">
-              </div>
-                <p>gusdnd3150</p>
-             </div>
-             <div class="card-middle">
-               <p>[짝궁] 정민</p>
-               <p>[장소] 가평군</p>
-             </div>
-             <hr>
-            <div class="card-bottom">
-              <a>#가평</a><a>#물놀이</a>
-            </div>
-           </div>
-           <div class="best-place-card">
-             <div class="card-top">
-              <div class="img-box">
-               <img src="@/assets/profile.png">
-              </div>
-                <p>gusdnd3150</p>
-             </div>
-             <div class="card-middle">
-               <p>[짝궁] 정민</p>
-               <p>[장소] 가평군</p>
-             </div>
-             <hr>
-            <div class="card-bottom">
-              <a>#가평</a><a>#물놀이</a>
-            </div>
-           </div>
-           <div class="best-place-card">
-             <div class="card-top">
-              <div class="img-box">
-               <img src="@/assets/profile.png">
-              </div>
-                <p>gusdnd3150</p>
-             </div>
-             <div class="card-middle">
-               <p>[짝궁] 정민</p>
-               <p>[장소] 가평군</p>
-             </div>
-             <hr>
-            <div class="card-bottom">
-              <a>#가평</a><a>#물놀이</a>
-            </div>
-           </div>
-           <div class="best-place-card">
-             <div class="card-top">
-              <div class="img-box">
-               <img src="@/assets/profile.png">
-              </div>
-                <p>gusdnd3150</p>
-             </div>
-             <div class="card-middle">
-               <p>[짝궁] 정민</p>
-               <p>[장소] 가평군</p>
-             </div>
-             <hr>
-            <div class="card-bottom">
-              <a>#가평</a><a>#물놀이</a>
-            </div>
-           </div>
-           <div class="best-place-card">
-             <div class="card-top">
-              <div class="img-box">
-               <img src="@/assets/profile.png">
-              </div>
-                <p>gusdnd3150</p>
-             </div>
-             <div class="card-middle">
-               <p>[짝궁] 정민</p>
-               <p>[장소] 가평군</p>
-             </div>
-             <hr>
-            <div class="card-bottom">
-              <a>#가평</a><a>#물놀이</a>
-            </div>
-           </div>
-           <div class="best-place-card">
-             <div class="card-top">
-              <div class="img-box">
-               <img src="@/assets/profile.png">
-              </div>
-                <p>gusdnd3150</p>
-             </div>
-             <div class="card-middle">
-               <p>[짝궁] 정민</p>
-               <p>[장소] 가평군</p>
-             </div>
-             <hr>
-            <div class="card-bottom">
-              <a>#가평</a><a>#물놀이</a>
-            </div>
-           </div>
+   <div class="best-place-area">
+
+    <div class="place-card">
+      <div class="place-img">
+        <img src="@/assets/sample3.jpg">
+      </div>
+      <div class="place-conent">
+        <h3>"봄날이 왔어요~"</h3>
+        <div class="content-date">
+          <p>2021-05-21</p>
         </div>
+        <p>이미지를 둘러싸고 있는 div에 맞게 확장시켜 div에 꽉 차게 하고 싶은 경우가 있을 수 있습니다. 이런 경우 몇 가지 방법을 사용할 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="place-card">
+      <div class="place-img">
+        <img src="@/assets/sample2.png">
+      </div>
+      <div class="place-conent">
+        <h3>"훈이와 함께 남한산성"</h3>
+        <div class="content-date">
+          <p>2021-05-21</p>
+        </div>
+        <p>이미지를 둘러싸고 있는 div에 맞게 확장시켜 div에 꽉 차게 하고 싶은 경우가 있을 수 있습니다. 이런 경우 몇 가지 방법을 사용할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-img">
+        <img src="@/assets/sample.png">
+      </div>
+      <div class="place-conent">
+        <h3>"부산야경"</h3>
+        <div class="content-date">
+          <p>2021-05-21</p>
+        </div>
+        <p>이미지를 둘러싸고 있는 div에 맞게 확장시켜 div에 꽉 차게 하고 싶은 경우가 있을 수 있습니다. 이런 경우 몇 가지 방법을 사용할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-img">
+        <img src="@/assets/sample9.jpg">
+      </div>
+      <div class="place-conent">
+        <h3>"여친의 달밤체조"</h3>
+        <div class="content-date">
+          <p>2021-05-21</p>
+        </div>
+        <p>이미지를 둘러싸고 있는 div에 맞게 확장시켜 div에 꽉 차게 하고 싶은 경우가 있을 수 있습니다. 이런 경우 몇 가지 방법을 사용할 수 있습니다.</p>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -107,77 +62,38 @@ export default {
 </script>
 
 <style scoped>
-
-.img-box{
-  width: 45px;
-  border-radius: 50%;
-}
-
-img {
-  max-width: 100%;
-  height: auto !important;
-  border-radius: 50%;
-}
 .best-place-area{
+}
+.place-card{
   display: flex;
   flex-wrap: wrap;
-  justify-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
-
-.best-place-area > div{
- flex-grow: 0;
- height: 240px;
-flex-basis: 190px;
-border-style: solid;
- border-width: 2px;
-border-color: #ecf1fd;
-background-color: blue;
- margin-top:20px;
-margin-bottom:20px;
-margin-left:10px;
-margin-right:10px;
-text-align: center;
-background-color: white;
-transition: box-shadow 0.1s
+.place-card > div{
+  flex-basis: 420px;
+  margin-right: 14px;
+  margin-top: 18px;
 }
-.best-place-card{
-    padding: 10px 4px 10px 4px;
-    text-align: left;
+img{
+  max-width: 100%;
+  border-radius: 20px;
 }
-.card-top{
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-}
-.card-top p{
-    font-weight: bold;
-    font-size: 12px;
-    margin-top: 23px;
-    margin-left: 4px;
-}
-.card-middle{
+.place-conent{
   text-align: left;
 }
-.card-middle p{
-  color:gray;
-  font-size: 14px;
+.place-conent > h3{
+  margin-bottom: 2px;
 }
-.card-bottom{
-  text-align: left;
+.content-date{
+  background-color: #ecf1fd;
+  padding: 1px 10px 1px 10px;
 }
-.card-bottom a{
-  background-color: #ffe2ed;
-  padding: 1px 5px 1px 5px;
-  border-style:solid;
-  margin-right: 8px;
-  border-width: 1px;
-  color: gray;
-  font-size: 14px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
 @media (max-width:750px){
-  .best-place-area > div{
+  .place-card{
+    flex-direction: column;
+  }
+  .place-card > div{
     flex-basis: 100%;
   }
 }

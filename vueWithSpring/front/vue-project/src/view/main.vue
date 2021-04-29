@@ -43,6 +43,7 @@
        </div>
        <placeCard v-bind:list="msg"></placeCard>
      </div>
+     <test />
 </div>
 </template>
 
@@ -50,6 +51,7 @@
 import placeCard from '@/components/place-card.vue'
 import intro from '@/components/intro.vue'
 import coupleCard from '@/components/couple-card.vue'
+import test from '@/components/test.vue'
 
 export default {
   name: 'mainPage',
@@ -58,7 +60,7 @@ export default {
       msg: '메인영역'
     }
   },
-  components: {placeCard, intro, coupleCard}
+  components: {placeCard, intro, coupleCard, test}
 }
 
 </script>

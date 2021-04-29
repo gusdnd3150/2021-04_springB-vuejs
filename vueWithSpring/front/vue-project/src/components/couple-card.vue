@@ -4,7 +4,7 @@
         <div class="img-box">
           <img src="@/assets/sample8.png">
         </div>
-        <div class="card-cover">
+        <div class="card-cover">a
         </div>
         <div class="card-content">
           <p>사귄날짜, 디데이</p>
