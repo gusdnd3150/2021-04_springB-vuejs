@@ -17,4 +17,14 @@ public class APIRepository {
 		return sqlsession.selectOne("main.selectUserById",username);
 	}
 	
+	public int joinUser(UserVo user) {
+		int result =0;
+		try {
+			result =  sqlsession.insert("main.joinUser",user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }
