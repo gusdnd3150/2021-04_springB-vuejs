@@ -22,7 +22,6 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-
 @RequiredArgsConstructor
 @Component
 public class JwtTokenProvider {
@@ -31,7 +30,7 @@ public class JwtTokenProvider {
 
 	@Autowired
 	private APIService apiService;
-	//private final UserDetailsService userDetailsService;
+	// private final UserDetailsService userDetailsService;
 
 	@PostConstruct
 	protected void init() {
@@ -39,20 +38,16 @@ public class JwtTokenProvider {
 	}
 
 	public String createToken(String userPk, List<String> roles) {
-        Claims claims = Jwts.claims().setSubject(userPk).setAudience("ROLE_USER");
-        claims.put("roles", roles);
-        
-        Date now = new Date();
-        return Jwts.builder()
-                .setClaims(claims)              
-                .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + tokenValidTime))
-                .signWith(SignatureAlgorithm.HS256, secretKey)
-                .compact();
-    }
+		Claims claims = Jwts.claims().setSubject(userPk).setAudience("ROLE_USER");
+		claims.put("roles", roles);
+
+		Date now = new Date();
+		return Jwts.builder().setClaims(claims).setIssuedAt(now).setExpiration(new Date(now.getTime() + tokenValidTime))
+				.signWith(SignatureAlgorithm.HS256, secretKey).compact();
+	}
 
 	public Authentication getAuthentication(String token) {
-		System.out.println("JwtTokenProvider token 값:"+token);
+		System.out.println("JwtTokenProvider token 값:" + token);
 		UserDetails userDetails = apiService.loadUserByUsername(this.getUserPk(token));
 		return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
 	}
