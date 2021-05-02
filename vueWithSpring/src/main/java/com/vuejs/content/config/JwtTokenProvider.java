@@ -1,6 +1,7 @@
 package com.vuejs.content.config;
 
 import io.jsonwebtoken.Claims;
+
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -10,11 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import com.vuejs.content.service.APIService;
-import com.vuejs.content.vo.UserDetailsVO;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
