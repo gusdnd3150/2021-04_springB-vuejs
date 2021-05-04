@@ -1,13 +1,10 @@
 <template>
   <div id="intro-area">
     <h2>공지사항</h2>
-    <vue-glide :perView="1" :peek="peek" :animationDuration="animationDuration" :autoplay="autoplay">
+    <vue-glide :perView="1" :peek="peek" :autoplay="autoplay">
       <vue-glide-slide v-for="i in 10" :key="i">
-            
             <div class="board-content">
-             
            </div>
-
       </vue-glide-slide>
       <template slot="control">
         <button class="left-button" data-glide-dir="<">prev</button>

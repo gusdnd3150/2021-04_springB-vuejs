@@ -40,6 +40,7 @@
        <placeCard v-bind:list="msg"></placeCard>
      </div>
      <test />
+     
 </div>
 </template>
 
