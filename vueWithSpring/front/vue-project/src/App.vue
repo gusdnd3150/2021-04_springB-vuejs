@@ -28,7 +28,7 @@ button{
   margin: 5px 5px 5px 5px;
   padding: 10px 15px 10px 15px;
   background: rgb(255,255,255);
-background: linear-gradient(138deg, rgba(255,255,255,1) 6%, rgba(16,175,207,1) 65%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(138deg, rgba(255,255,255,1) 6%, rgba(16,175,207,1) 65%, rgba(255,255,255,1) 100%);
   color:white;
   font-weight: bold;
   border-style: none;
@@ -36,12 +36,13 @@ background: linear-gradient(138deg, rgba(255,255,255,1) 6%, rgba(16,175,207,1) 6
   transition: all 0.4s;
 }
 button:hover{
+  margin: 5px 5px 5px 5px;
+  padding: 10px 15px 10px 15px;
   background: rgb(255,255,255);
   background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%, rgba(16,175,207,1) 100%);
   color:blue;
   font-weight: bold;
   border-style: solid;
-  border-width: 1px;
   border-color:blue;
 }
 </style>

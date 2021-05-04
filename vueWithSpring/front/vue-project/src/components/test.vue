@@ -131,5 +131,13 @@ transition: box-shadow 0.1s
   #slide-area{
     width: auto;
   }
+  
+  .left-button{
+    display: none;
+  }
+  .right-button{
+    display: none;
+  }
+
 }
 </style>
