@@ -64,6 +64,7 @@ export default {
 <style scoped>
 .best-place-area{
 }
+
 .place-card{
   display: flex;
   flex-wrap: wrap;
@@ -75,9 +76,18 @@ export default {
   margin-right: 14px;
   margin-top: 18px;
 }
+
+.place-img{
+  overflow: hidden;
+  border-radius: 20px;
+}
 img{
   max-width: 100%;
   border-radius: 20px;
+  transition: all 0.2s;
+}
+img:hover{
+  transform: scale(1.1);
 }
 .place-conent{
   text-align: left;

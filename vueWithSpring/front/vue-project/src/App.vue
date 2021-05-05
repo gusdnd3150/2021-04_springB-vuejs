@@ -18,6 +18,15 @@ export default {
   font-family: 'Noto Sans KR';
 }
 
+html{
+  position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body{
+  min-height: 100%;
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
