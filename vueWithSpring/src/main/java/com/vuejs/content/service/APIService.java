@@ -17,7 +17,7 @@ import com.vuejs.content.vo.UserVo;
 
 import lombok.RequiredArgsConstructor;
 
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class APIService implements UserDetailsService {
 
@@ -28,11 +28,7 @@ public class APIService implements UserDetailsService {
 	BCryptPasswordEncoder encoder;
 
 	// private final JwtTokenProvider jwtTokenProvider; 기본생성자 주입을 원하면 @뤼콰이얼 어노테이션 쓰셈
-	private JwtTokenProvider jwtTokenProvider;
-
-	public APIService(JwtTokenProvider jwtTokenProvider) {
-		this.jwtTokenProvider = jwtTokenProvider;
-	}
+	private final JwtTokenProvider jwtTokenProvider;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
