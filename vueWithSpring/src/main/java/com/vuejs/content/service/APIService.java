@@ -33,11 +33,9 @@ public class APIService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetailsVO user = new UserDetailsVO();
-		System.out.println("유저 파람정보:" + username);
-		user.setUsername("user");
-		user.setPassword("123");
 		List<String> authoList = new ArrayList<String>();
-		authoList.add("ROLE_USER");
+		UserVo dbUser = repository.selectUserById(username);
+		authoList.add(dbUser.getRole());
 		user.setAuthorities(authoList);
 		System.out.println("검사한다~");
 		return user;
@@ -55,7 +53,6 @@ public class APIService implements UserDetailsService {
 		UserVo dbUser = repository.selectUserById(user.getUsername());
 		UserVo login = new UserVo();
 		List<String> autho = new ArrayList<String>();
-		//System.out.println(dbUser.toString());
 
 		if (!encoder.matches(user.getPassword(), dbUser.getPassword())) {
 			//throw new IllegalArgumentException();
