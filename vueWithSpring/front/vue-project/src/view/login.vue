@@ -52,14 +52,13 @@ export default {
       }).then((res) => {
         if (res.status === 200) {
           return res.json()
+        } else {
+          alert('로그인 실패')
         }
       }).then((data) => {
-        console.log(data)
-        console.log('응답 값:' + data.token)
-        console.log('응답 값:' + data.username)
-        this.$router.push({name: 'main'})
         this.$store.state.userToken = data
         console.log(this.$store.state.userToken)
+        this.$router.push({name: 'main'})
       })
     }
   }

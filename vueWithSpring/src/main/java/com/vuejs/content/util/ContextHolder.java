@@ -10,6 +10,9 @@ public class ContextHolder  implements ApplicationContextAware  {
 
 	private static ApplicationContext appCtx;
 	
+	public ContextHolder() {
+    }
+	
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		appCtx = applicationContext; 
