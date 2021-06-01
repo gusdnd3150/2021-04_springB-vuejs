@@ -8,9 +8,9 @@
        </div>
        <div>
            <ul class="navigation-link">
-               <li> <router-link to="/story">story</router-link></li>
-               <li> <router-link to="/best">베스트</router-link></li>
-               <li> <router-link to="/feed">피드</router-link></li>
+               <li> <router-link to="/story">Story</router-link></li>
+               <li> <router-link to="/best">Place</router-link></li>
+               <li> <router-link to="/feed">Feed</router-link></li>
            </ul>
        </div>
        <div>

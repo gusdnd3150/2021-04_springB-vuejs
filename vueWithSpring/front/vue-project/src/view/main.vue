@@ -35,7 +35,7 @@
        <div class="content-description">
           <h3>BEST 장소</h3>
           <hr>
-          <router-link to="/">더보기</router-link>
+          <router-link to="/best">더보기</router-link>
        </div>
        <placeCard v-bind:list="msg"></placeCard>
      </div>
