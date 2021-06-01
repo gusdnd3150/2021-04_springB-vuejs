@@ -2,6 +2,8 @@ package com.vuejs.content.controller;
 
 import org.apache.logging.log4j.message.Message;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,8 @@ public class APIController {
 	}
 
 	@PostMapping("/api/login")
-	public String login(@RequestBody UserVo user) {
+	public UserVo login(@RequestBody UserVo user) {
+		System.out.println("정보:"+user.toString());
 		return service.login(user);
 	}
 

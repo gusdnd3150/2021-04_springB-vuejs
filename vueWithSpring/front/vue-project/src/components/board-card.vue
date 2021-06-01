@@ -22,10 +22,10 @@ export default {
     [Glide.name]: Glide,
     [GlideSlide.name]: GlideSlide
   },
-  data(){
-    return{
+  data () {
+    return {
       autoplay: 5000,
-      peek:{before: 50, after:50}
+      peek: {before: 50, after: 50}
     }
   }
 }
@@ -34,7 +34,7 @@ export default {
 
 .intro-area{
   position: relative;
-  
+
 }
 
 li .glide__slide{

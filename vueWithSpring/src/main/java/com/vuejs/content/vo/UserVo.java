@@ -2,6 +2,7 @@ package com.vuejs.content.vo;
 
 import org.springframework.stereotype.Component;
 
+
 import lombok.Data;
 import lombok.ToString;
 

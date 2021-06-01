@@ -6,8 +6,8 @@
 export default {
   name: 'best'
 }
-</script>
 
-<style>
+</script>
+<style scoped>
 
 </style>

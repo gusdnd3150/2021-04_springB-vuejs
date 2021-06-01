@@ -51,19 +51,29 @@ public class APIService implements UserDetailsService {
 		return repository.joinUser(insertVo);
 	}
 
-	public String login(UserVo user) {
+	public UserVo login(UserVo user) {
 		UserVo dbUser = repository.selectUserById(user.getUsername());
+		UserVo login = new UserVo();
 		List<String> autho = new ArrayList<String>();
-		System.out.println(dbUser.toString());
+		//System.out.println(dbUser.toString());
 
 		if (!encoder.matches(user.getPassword(), dbUser.getPassword())) {
-			throw new IllegalArgumentException();
+			//throw new IllegalArgumentException();
+			return null;
 		} else if (dbUser == null) {
-			throw new IllegalArgumentException();
+			//throw new IllegalArgumentException();
+			return null;
 		}
+		System.out.println("로그인 성공");
 		autho.add(dbUser.getRole());
-
-		return jwtTokenProvider.createToken(dbUser.getUsername(), autho);
+		
+		login.setRole(dbUser.getRole());
+		login.setToken(jwtTokenProvider.createToken(dbUser.getUsername(), autho));
+		login.setUsername(dbUser.getUsername());
+		
+		System.out.println(login.toString());
+		
+		return login;
 	}
 
 	public void testauth(String token) {

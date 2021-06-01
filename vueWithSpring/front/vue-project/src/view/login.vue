@@ -18,7 +18,7 @@
                     <input type="text" name="username" id="username" v-model="username" placeholder="아이디">
                   </div>
                    <div class="input">
-                    <input type="text" name="password" id="password" v-model="password" placeholder="비밀번호">
+                    <input type="password" name="password" id="password" v-model="password" placeholder="비밀번호">
                   </div>
                   <button @click="login">로그인</button>
              </form>
@@ -47,16 +47,19 @@ export default {
       }
       fetch('http://localhost:8090/api/login', {
         method: 'post',
-        // eslint-disable-next-line standard/object-curly-even-spacing
-        headers: { 'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({username: this.username, password: this.password})
       }).then((res) => {
-        console.log(res.status)
-        console.log(res.body)
-        console.log(res.text)
-        console.log(res.json())
-      }).then((res) => {
-        console.log(res)
+        if (res.status === 200) {
+          return res.json()
+        }
+      }).then((data) => {
+        console.log(data)
+        console.log('응답 값:' + data.token)
+        console.log('응답 값:' + data.username)
+        this.$router.push({name: 'main'})
+        this.$store.state.userToken = data
+        console.log(this.$store.state.userToken)
       })
     }
   }
@@ -108,7 +111,6 @@ export default {
     height: 31px;
     width: 212px;
 }
-
 .input input:focus{
     outline: 0;
 }

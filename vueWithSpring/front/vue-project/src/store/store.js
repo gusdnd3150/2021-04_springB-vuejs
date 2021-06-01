@@ -5,6 +5,7 @@ Vue.use(Vuex)
 Vue.use(VueAwesomeSwiper)
 export const store = new Vuex.Store({
   state: {
-    counter: 0
+    counter: 0,
+    userToken: {}
   }
 })

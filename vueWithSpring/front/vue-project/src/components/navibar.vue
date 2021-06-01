@@ -14,14 +14,19 @@
            </ul>
        </div>
        <div>
-           <router-link to="/login">Login</router-link>
+           <router-link v-if="checkLogin" to="/login">Login</router-link>
        </div>
    </div>
 </template>
 
 <script>
 export default {
-  name: 'navibar'
+  name: 'navibar',
+  data () {
+    return {
+      checkLogin: this.$store.state.userToken.token === null
+    }
+  }
 }
 </script>
 

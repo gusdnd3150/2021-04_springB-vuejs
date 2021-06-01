@@ -17,7 +17,7 @@
   </div> -->
 
    <div class="board-section">
-   <div class="recomend-area">     
+   <div class="recomend-area">
        <boardCard />
    </div>
    </div>
@@ -40,7 +40,7 @@
        <placeCard v-bind:list="msg"></placeCard>
      </div>
      <test />
-     
+
 </div>
 </template>
 
