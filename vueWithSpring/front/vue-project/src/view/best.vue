@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h2>커플 명소</h2>
+    <h2>명소</h2>
     <div class="content-area">
 
       <div class="search-area">
@@ -21,6 +21,21 @@
           </select>
           <p>경비</p>
         </div>
+        <div class="input-group">
+          <input type="text" name="searchContent" class="select-cust">
+          <p>내용</p>
+        </div>
+
+      </div>
+
+      <div class="place-area">
+        <div class="place-list">
+          <placeCard2 />
+          <placeCard2 />
+          <placeCard2 />
+          <placeCard2 />
+          <placeCard2 />
+        </div>
       </div>
 
     </div>
@@ -28,17 +43,29 @@
 </template>
 
 <script>
+import placeCard from '@/components/place-card.vue'
+import placeCard2 from '@/components/place-card2.vue'
+
 export default {
   name: 'best',
   data: function () {
     return {
       test: ''
     }
+  },
+  components: {
+    placeCard, placeCard2
   }
 }
 
 </script>
 <style scoped>
+
+.place-list{
+  display: flex;
+  flex-wrap: wrap;
+
+}
 
 /*인풋 박스 p 테그*/
 .input-group >p{
@@ -58,11 +85,13 @@ export default {
   padding: 8px 30px 8px 30px;
   margin-right: 10px;
 }
+
 /*인풋 영역*/
 .search-area{
   text-align: left;
   display: flex;
   flex-direction: row;
+  margin-bottom: 30px;
 }
 .content-area{
   /*border:solid gray 1px;*/

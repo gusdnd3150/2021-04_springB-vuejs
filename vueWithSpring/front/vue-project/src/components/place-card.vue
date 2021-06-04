@@ -62,8 +62,6 @@ export default {
 </script>
 
 <style scoped>
-.best-place-area{
-}
 
 .place-card{
   display: flex;
