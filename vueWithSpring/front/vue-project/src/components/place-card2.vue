@@ -2,13 +2,17 @@
 <div>
     <div class="place">
         <div class="place-img">
-          <img src="@/assets/sample9.jpg">
+          <img src="@/assets/sample9.jpg">      <!-- 이미지 {{cardData.img}}-->
         </div>
-        <div class="place-dscript">
-          <p>2020-03-03</p>
+        <div class="place-dscript">           <!-- 유저정보 {{cardData.region}} {{cardData.date}}-->
+          <p class="dscrip-region">서울</p>
+          <p class="dscrip-date">2020-03-03</p>
         </div>
-        <div class="place-content">
-          <p>내용</p>
+        <div class="place-content">              <!-- 내용 {{cardData.title}}-->
+          <p class="content-title">내용aas </p>
+        </div>
+        <div class="place-detail">   <!-- 내용 {{cardData.totalPrice}}-->
+          <p class="detail-price">총 경비 : 15,0000</p>
         </div>
     </div>
 </div>
@@ -17,10 +21,15 @@
 <script>
 export default {
   name: 'place-card2',
+  props: ['cardData'],
   data () {
     return {
       checkLogin: this.$store.state.userToken.token,
-      cardData: {}
+      region: '',
+      content: '',
+      totalexpense: '',
+      img: '',
+      date: ''
     }
   },
   methods: {
@@ -38,9 +47,48 @@ export default {
     flex-grow: 0;
     flex-basis: 200px;
     margin:0px 5px 30px 0px;
+    max-width: 250px;
+    transition: all 0.2s;
+}
+.place:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.dscrip-region{
+  position: absolute;
+  font-size: 5px;
+  color:gray;
+  top:8px;
+  left:15px;
+}
+.dscrip-date{
+  position: absolute;
+    font-size: 12px;
+    color: gray;
+    top: 7px;
+    right: 8px;
+}
+.place-detail{
+  position: relative;
+}
+.place-content{
+  position: relative;
+  overflow: hidden;
+}
+.content-title{
+  font-size: 15px;
+  margin: 0 0 0 0;
+}
+.detail-price{
+  position: absolute;
+    margin: 0 0 0 0;
+    font-size: 12px;
+    top: 21px;
+    left: 2px;
+    color: cornflowerblue;
 }
 
 .place-dscript{
+  position: relative;
   height: 30px;
   padding: 2px 3px 2px 3px;
   background-color: #ecf1fd;

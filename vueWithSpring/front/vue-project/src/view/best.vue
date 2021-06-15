@@ -3,6 +3,7 @@
     <h2>명소</h2>
     <div class="content-area">
 
+      <form id="searchForm" class="searchForm">
       <div class="search-area">
         <div class="input-group">
           <select name="searchType" class="select-cust">
@@ -28,16 +29,20 @@
         <div>
            <div class="button">
             <div class="eff"></div>
-            <p> 조회 </p>
+            <p>조회</p>
           </div>
         </div>
       </div>
+     </form>
 
       <div class="place-area">
         <div class="place-list">
           <placeCard2 />
           <placeCard2 />
           <placeCard2 />
+          <placeCard2 />
+          <placeCard2 />
+          <placeCard2 :cardData="cardData"/>
           <placeCard2 />
           <placeCard2 />
         </div>
@@ -55,7 +60,8 @@ export default {
   data: function () {
     return {
       searchRegion: '',
-      searchContent: ''
+      searchContent: '',
+      cardData: {name: 'test', title: 'd'}
     }
   },
   components: {
