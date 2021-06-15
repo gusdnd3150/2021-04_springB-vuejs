@@ -19,8 +19,13 @@ export default {
   name: 'place-card2',
   data () {
     return {
-      checkLogin: this.$store.state.userToken.token === null,
+      checkLogin: this.$store.state.userToken.token,
       cardData: {}
+    }
+  },
+  methods: {
+    check () {
+      alert(this.checkLogin)
     }
   }
 }

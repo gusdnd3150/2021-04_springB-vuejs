@@ -24,7 +24,7 @@ export default {
   name: 'navibar',
   data () {
     return {
-      checkLogin: this.$store.state.userToken.token === null
+      checkLogin: this.$store.state.userToken.token == null
     }
   }
 }

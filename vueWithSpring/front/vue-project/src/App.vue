@@ -33,25 +33,46 @@ body{
   text-align: center;
   color: #2c3e50;
 }
-button{
-  margin: 5px 5px 5px 5px;
-  padding: 10px 15px 10px 15px;
-  background: rgb(255,255,255);
-  background: linear-gradient(138deg, rgba(255,255,255,1) 6%, rgba(16,175,207,1) 65%, rgba(255,255,255,1) 100%);
-  color:white;
-  font-weight: bold;
-  border-style: none;
-  border-radius: 5px;
-  transition: all 0.4s;
+
+.button{
+ width: 80px;
+    height: 40px;
+    border: 2px solid #34495e;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+
 }
-button:hover{
-  margin: 5px 5px 5px 5px;
-  padding: 10px 15px 10px 15px;
-  background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%, rgba(16,175,207,1) 100%);
-  color:blue;
-  font-weight: bold;
-  border-style: solid;
-  border-color:blue;
+.button p{
+    font-size: 15px;
+    color: #34495e;
+    text-decoration: none;
+    line-height: 50px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    z-index: 2;
+    position: relative;
+    top: -7px;
+    margin: 0;
 }
+.eff{
+  width:140px;
+  height:50px;
+  left:-140px;
+  background:#34495e;
+  position:absolute;
+  transition:all .5s ease;
+  z-index:1;
+}
+.button:hover .eff{
+  left:0;
+}
+.button:hover p{
+  color:#fff;
+}
+
 </style>

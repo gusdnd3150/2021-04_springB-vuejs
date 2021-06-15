@@ -25,7 +25,12 @@
           <input type="text" name="searchContent" class="select-cust">
           <p>내용</p>
         </div>
-
+        <div>
+           <div class="button">
+            <div class="eff"></div>
+            <p> 조회 </p>
+          </div>
+        </div>
       </div>
 
       <div class="place-area">
@@ -43,18 +48,23 @@
 </template>
 
 <script>
-import placeCard from '@/components/place-card.vue'
 import placeCard2 from '@/components/place-card2.vue'
 
 export default {
   name: 'best',
   data: function () {
     return {
-      test: ''
+      searchRegion: '',
+      searchContent: ''
     }
   },
   components: {
-    placeCard, placeCard2
+    placeCard2
+  },
+  methods: {
+    search () {
+      console.log('dd')
+    }
   }
 }
 
