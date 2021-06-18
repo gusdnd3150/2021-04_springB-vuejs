@@ -49,11 +49,13 @@
       </div>
 
     </div>
+    <paging :nowPage="2" :total_count="30" />
   </div>
 </template>
 
 <script>
 import placeCard2 from '@/components/place-card2.vue'
+import paging from '@/components/paging.vue'
 
 export default {
   name: 'best',
@@ -65,7 +67,8 @@ export default {
     }
   },
   components: {
-    placeCard2
+    placeCard2,
+    paging
   },
   methods: {
     search () {

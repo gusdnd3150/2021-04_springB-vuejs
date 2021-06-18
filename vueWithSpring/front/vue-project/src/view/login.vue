@@ -29,7 +29,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'login',
   data () {
@@ -39,28 +38,7 @@ export default {
     }
   },
   methods: {
-    login: function (event) {
-      event.preventDefault()
-      if (this.username === '' || this.password === '') {
-        alert('아이디 패스워드는 필수이다.')
-        return
-      }
-      fetch('http://localhost:8090/api/login', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username: this.username, password: this.password})
-      }).then((res) => {
-        if (res.status === 200) {
-          return res.json()
-        } else {
-          alert('로그인 실패')
-        }
-      }).then((data) => {
-        this.$store.state.userToken = data
-        console.log(this.$store.state.userToken)
-        this.$router.push({name: 'main'})
-      })
-    }
+
   }
 }
 </script>
