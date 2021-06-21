@@ -49,13 +49,13 @@
       </div>
 
     </div>
-    <paging :nowPage="2" :total_count="30" />
+    <paging :value="2" :total="30" @propsFromPaging="propsFromPaging" />
   </div>
 </template>
 
 <script>
 import placeCard2 from '@/components/place-card2.vue'
-import paging from '@/components/paging.vue'
+import paging from '@/components/paging2.vue'
 
 export default {
   name: 'best',
@@ -63,7 +63,9 @@ export default {
     return {
       searchRegion: '',
       searchContent: '',
-      cardData: {name: 'test', title: 'd'}
+      cardData: {name: 'test', title: 'd'},
+      page_value: 0,
+      totalPage: 0
     }
   },
   components: {
@@ -73,8 +75,19 @@ export default {
   methods: {
     search () {
       console.log('dd')
+    },
+    propsFromPaging (data) {
+      console.log(data)
+      this.cardData = {}
+    }
+  },
+  watch: {
+    paging: function (newQuestion, oldQuestion) {
+      this.answer = 'Waiting for you to stop typing...'
+      this.debouncedGetAnswer()
     }
   }
+
 }
 
 </script>
