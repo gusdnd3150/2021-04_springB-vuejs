@@ -49,7 +49,7 @@
       </div>
 
     </div>
-    <paging :value="2" :total="30" @propsFromPaging="propsFromPaging" />
+    <paging :value="page_value" :total="30" @propsFromPaging="propsFromPaging" />
   </div>
 </template>
 
@@ -64,8 +64,8 @@ export default {
       searchRegion: '',
       searchContent: '',
       cardData: {name: 'test', title: 'd'},
-      page_value: 0,
-      totalPage: 0
+      page_value: 1,
+      total_count: 0
     }
   },
   components: {
@@ -77,14 +77,18 @@ export default {
       console.log('dd')
     },
     propsFromPaging (data) {
-      console.log(data)
-      this.cardData = {}
+      this.page_value = data
+      this.getBestList(data)
+    },
+    getBestList (selectPage) {
+      console.log('선택 페이지' + selectPage)
+      console.log('http 통신 로직 들어가면 될듯')
     }
   },
   watch: {
-    paging: function (newQuestion, oldQuestion) {
-      this.answer = 'Waiting for you to stop typing...'
-      this.debouncedGetAnswer()
+    select_page: function (newQuestion, oldQuestion) {
+      this.page_value = newQuestion
+      console.log('변화감지')
     }
   }
 
