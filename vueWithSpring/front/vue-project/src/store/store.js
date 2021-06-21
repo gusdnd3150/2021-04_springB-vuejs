@@ -8,6 +8,18 @@ Vue.use(VueAwesomeSwiper)
 export const store = new Vuex.Store({
   state: {
     counter: 0,
-    userToken: {}
+    userToken: {},
+    login: false
+  },
+  getters: {
+    checkLogin: function (state) {
+      if (this.userToken === 'undefined') {
+        state.login = false
+      } else {
+        state.login = true
+      }
+      return state.login
+    }
   }
+
 })
