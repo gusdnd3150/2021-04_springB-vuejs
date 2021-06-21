@@ -7,6 +7,7 @@ import footer from '@/view/footer.vue'
 import best from '@/view/best.vue'
 import feed from '@/view/feed.vue'
 import story from '@/view/story.vue'
+import bestForm from '@/view/bestForm.vue'
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
       path: '/best',
       name: 'best',
       components: {default: best, navi: navibar, bottom: footer}
+    },
+    {
+      path: '/bestForm',
+      name: 'bestForm',
+      components: {default: bestForm, navi: navibar, bottom: footer}
     }
   ]
 })

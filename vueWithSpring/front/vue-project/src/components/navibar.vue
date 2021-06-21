@@ -14,7 +14,7 @@
            </ul>
        </div>
        <div>
-           <router-link v-if="checkLogin" to="/login">Login</router-link>
+           <router-link v-if="!checkUser" to="/login">Login</router-link>
        </div>
    </div>
 </template>
@@ -24,7 +24,11 @@ export default {
   name: 'navibar',
   data () {
     return {
-      checkLogin: this.$store.state.userToken.token === 'undefined'
+    }
+  },
+  computed: {
+    checkUser () {
+      return this.$store.getters.checkLogin
     }
   }
 }

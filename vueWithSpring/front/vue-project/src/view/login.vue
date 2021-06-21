@@ -57,8 +57,8 @@ export default {
       }).then((data) => {
         alert('로그인 성공')
         this.$store.state.userToken = data
-        console.log(this.$store.state.userToken)
         this.$router.push({name: 'main'})
+        console.log(this.$store.state.userToken)
       })
     }
   }

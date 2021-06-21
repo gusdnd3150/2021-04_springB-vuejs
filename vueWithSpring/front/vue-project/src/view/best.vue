@@ -2,6 +2,7 @@
   <div class="content">
     <h2>명소</h2>
     <div class="content-area">
+      <router-link class="write-form" to="/bestForm">작성하기</router-link>
 
       <form id="searchForm" class="searchForm">
       <div class="search-area">
@@ -15,9 +16,9 @@
         <div class="input-group">
           <select name="priceTotal" class="select-cust">
             <option selected>5~10만원</option>
-            <option>10~20만원</option>
-            <option>20~30만원</option>
-            <option>30~40만원</option>
+            <option value="10to20">10~20만원</option>
+            <option value="20to30">20~30만원</option>
+            <option value="30to40">30~40만원</option>
             <option>--</option>
           </select>
           <p>경비</p>
@@ -97,44 +98,20 @@ export default {
 </script>
 <style scoped>
 
-.place-list{
-  display: flex;
-  flex-wrap: wrap;
-
-}
+.place-list{  display: flex;  flex-wrap: wrap;}
 
 /*인풋 박스 p 테그*/
-.input-group >p{
-   position: absolute;
-    top: -2px;
-    left: 5px;
-    font-size: 3px;
-    color: gray;
-}
+.input-group >p{   position: absolute;    top: -2px;    left: 5px;    font-size: 3px;    color: gray;}
 /*인풋 박스*/
-.input-group{
-  position: relative;
-}
+.input-group{  position: relative;}
 
 /*셀렉트 박스 */
-.select-cust{
-  padding: 8px 30px 8px 30px;
-  margin-right: 10px;
-}
+.select-cust{  padding: 8px 30px 8px 30px;  margin-right: 10px;}
 
 /*인풋 영역*/
-.search-area{
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 30px;
-}
-.content-area{
-  /*border:solid gray 1px;*/
-  padding-top: 20px;
-  padding-bottom:20px;
-  max-width: 900px;
-  text-align: center;
-  margin:0 auto;
-}
+.search-area{  text-align: left;  display: flex;  flex-direction: row;  margin-bottom: 30px;}
+.content-area{  padding-top: 20px;  padding-bottom:20px;  max-width: 900px;  text-align: center;  margin:0 auto;  position: relative;}
+
+.write-form{  position: absolute;  top: 2px;  right: 139px; color:gray; font-size: 15px; }
+.write-form:hover{cursor: pointer;}
 </style>

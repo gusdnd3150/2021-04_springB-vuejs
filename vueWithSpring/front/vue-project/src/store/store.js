@@ -13,7 +13,7 @@ export const store = new Vuex.Store({
   },
   getters: {
     checkLogin: function (state) {
-      if (this.userToken === 'undefined') {
+      if (state.userToken === 'undefined') {
         state.login = false
       } else {
         state.login = true
