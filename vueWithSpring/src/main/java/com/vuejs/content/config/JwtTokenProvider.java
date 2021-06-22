@@ -13,7 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import com.vuejs.content.service.APIService;
+import com.vuejs.content.main.service.APIService;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;

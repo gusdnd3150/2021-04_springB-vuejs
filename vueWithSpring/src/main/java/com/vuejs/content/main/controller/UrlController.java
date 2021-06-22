@@ -1,4 +1,4 @@
-package com.vuejs.content.controller;
+package com.vuejs.content.main.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

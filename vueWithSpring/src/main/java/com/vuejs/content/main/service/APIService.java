@@ -1,4 +1,4 @@
-package com.vuejs.content.service;
+package com.vuejs.content.main.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vuejs.content.config.JwtTokenProvider;
-import com.vuejs.content.dao.APIRepository;
+import com.vuejs.content.main.dao.APIRepository;
 import com.vuejs.content.vo.UserDetailsVO;
 import com.vuejs.content.vo.UserVo;
 

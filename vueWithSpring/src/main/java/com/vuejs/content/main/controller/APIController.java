@@ -1,4 +1,4 @@
-package com.vuejs.content.controller;
+package com.vuejs.content.main.controller;
 
 import org.apache.logging.log4j.message.Message;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vuejs.content.service.APIService;
+import com.vuejs.content.main.service.APIService;
 import com.vuejs.content.util.EntityUtil;
 import com.vuejs.content.vo.MainVo;
 import com.vuejs.content.vo.UserVo;

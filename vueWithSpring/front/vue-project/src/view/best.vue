@@ -104,6 +104,7 @@ export default {
 .input-group >p{   position: absolute;    top: -2px;    left: 5px;    font-size: 3px;    color: gray;}
 /*인풋 박스*/
 .input-group{  position: relative;}
+.input-group input:focus{ outline: red;}
 
 /*셀렉트 박스 */
 .select-cust{  padding: 8px 30px 8px 30px;  margin-right: 10px;}

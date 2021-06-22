@@ -11,6 +11,6 @@
 	
 	<!-- mapper .xmp 파일 정의 - 실제 SQL Query 가 선언되어 있는 부분 -->
 	    <mappers>
-		<mapper resource="mybatis/mappers/main-mapper.xml"/>
+		<mapper resource="mybatis/mappers/*/**.xml"/>
 		</mappers>        
 </configuration> 

@@ -1,4 +1,4 @@
-package com.vuejs.content.dao;
+package com.vuejs.content.main.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
