@@ -9,12 +9,12 @@
 
 	<select id="selectUserById" parameterType="String" resultType="user">
 		SELECT *
-		FROM users2
-		where username = #{username}
+		FROM TB_USER
+		where USER_ID = #{username}
 	</select>
 	
 	<insert id="joinUser" parameterType="user">
-		insert into users2 (username,password,role)
-		values(#{username},#{password},'USER')
+		insert into TB_USER (USER_ID,USER_PWD,USER_AUTH)
+		values(#{user_id},#{user_pwd},'USER')
 	</insert>
 </mapper>

@@ -29,7 +29,8 @@ export default {
   name: 'bestForm',
   data: function () {
     return {
-      plObejct: {plCost: '', plTitle: '', plContent: '', plRegion: '', userNum: this.$store.state.userToken}
+      plObejct: {plCost: '', plTitle: '', plContent: '', plRegion: ''},
+      token: this.$store.state.userToken.token
     }
   },
   methods: {
@@ -38,11 +39,11 @@ export default {
 
       fetch('http://localhost:8050/api/insertBestPlace', {
         method: 'post',
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'X-AUTH-TOKEN': this.token },
         body: JSON.stringify(this.plObejct)
       }).then((res) => {
         if (res.status === 200) {
-          return res.json()
+          return res.text()
         } else {
           alert('등록 실패')
         }

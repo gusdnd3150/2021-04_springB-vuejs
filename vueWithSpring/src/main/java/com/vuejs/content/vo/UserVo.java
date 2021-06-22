@@ -11,9 +11,9 @@ import lombok.ToString;
 @Component
 public class UserVo {
 	
-	private String username;
-	private String password;
-	private String role;
+	private String user_id;
+	private String user_pwd;
+	private String user_auth;
 	private String token;
 	
 }

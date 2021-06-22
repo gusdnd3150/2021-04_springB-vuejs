@@ -27,30 +27,25 @@ public class APIController {
 	@Autowired
 	private EntityUtil entityUtil;
 
-	@CrossOrigin(origins= "http://localhost:8071")
+	@CrossOrigin(origins= "http://localhost:8070")
 	@PostMapping("/api/join")
 	public int join(@RequestBody UserVo user) {
 		return service.joinUser(user);
 	}
 
-	@CrossOrigin(origins= "http://localhost:8071")
+	@CrossOrigin(origins= "http://localhost:8070")
 	@PostMapping("/api/login")
 	public UserVo login(@RequestBody UserVo user) {
-		System.out.println("정보:"+user.toString());
-		user.setToken("test");
-		user.setUsername("웅");
-		user.setRole("USER");
-		//service.login(user)
-		return user;
+		return service.login(user);
 	}
 
-	@CrossOrigin(origins= "http://localhost:8071")
+	@CrossOrigin(origins= "http://localhost:8070")
 	@PostMapping("/admin")
 	public void adminTest(@RequestBody UserVo user) {
 		System.out.println("admin 토큰 검사 통과");
 	}
 
-	@CrossOrigin(origins= "http://localhost:8071")
+	@CrossOrigin(origins= "http://localhost:8070")
 	@PostMapping("/user/resouce")
 	public String userTest(@RequestBody UserVo user) {
 		System.out.println("user 토큰 검사 통과");
@@ -64,7 +59,7 @@ public class APIController {
 		return "ok";
 	}
 
-	@CrossOrigin(origins= "http://localhost:8071")
+	@CrossOrigin(origins= "http://localhost:8070")
 	@GetMapping("/user/test")
 	public String usertest(@RequestBody UserVo user) {
 		service.testauth(user.getToken());

@@ -14,7 +14,7 @@
            </ul>
        </div>
        <div>
-           <router-link v-if="!checkUser" to="/login">Login</router-link>
+           <router-link to="/login">Login</router-link>
        </div>
    </div>
 </template>

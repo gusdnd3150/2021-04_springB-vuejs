@@ -24,7 +24,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
 
 		String token = jwtTokenProvider.resolveToken((HttpServletRequest) request);
 		// header에서 값을 추출하는 것"X-AUTH-TOKEN"
-
+		System.out.println("토큰"+token);
 		System.out.println("토큰 유효성 검사:" + jwtTokenProvider.validateToken(token));
 		if (token != null && jwtTokenProvider.validateToken(token)) {
 			Authentication authentication = jwtTokenProvider.getAuthentication(token);

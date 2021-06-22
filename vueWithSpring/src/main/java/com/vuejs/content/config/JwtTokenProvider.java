@@ -36,6 +36,7 @@ public class JwtTokenProvider {
 		secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
 	}
 
+	// [토큰발급]
 	public String createToken(String userPk, List<String> roles) {
 		Claims claims = Jwts.claims().setSubject(userPk).setAudience("ROLE_USER");
 		claims.put("roles", roles);
@@ -45,21 +46,25 @@ public class JwtTokenProvider {
 				.signWith(SignatureAlgorithm.HS256, secretKey).compact();
 	}
 
+	// [토큰 체크]
 	public Authentication getAuthentication(String token) {
 		System.out.println("JwtTokenProvider token 값:" + token);
 		UserDetails userDetails = apiService.loadUserByUsername(this.getUserPk(token));
 		return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
 	}
 
+	// [토큰에서 사용자 pk값 추출]
 	public String getUserPk(String token) {
 		System.out.println(Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject());
 		return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
 	}
 
+	// [request header 에서 토큰값 추출]
 	public String resolveToken(HttpServletRequest request) {
 		return request.getHeader("X-AUTH-TOKEN");
 	}
 
+	// [토큰이 유효한지 체크하는 메서드]
 	public boolean validateToken(String jwtToken) {
 		try {
 			Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);

@@ -15,10 +15,10 @@
             <div class="login-content">
              <form name="loginForm" action="/login" method="post">
                   <div class="input">
-                    <input type="text" name="username" id="username" v-model="username" placeholder="아이디">
+                    <input type="text" name="user_id" id="user_id" v-model="user_id" placeholder="아이디">
                   </div>
                    <div class="input">
-                    <input type="password" name="password" id="password" v-model="password" placeholder="비밀번호">
+                    <input type="password" name="user_pwd" id="user_pwd" v-model="user_pwd" placeholder="비밀번호">
                   </div>
                   <button @click="login">로그인</button>
              </form>
@@ -33,29 +33,29 @@ export default {
   name: 'login',
   data () {
     return {
-      username: '',
-      password: ''
+      user_id: '',
+      user_pwd: ''
     }
   },
   methods: {
-    login: function (event, username, password) {
+    login: function (event) {
       event.preventDefault()
-      if (this.username === '' || this.password === '') {
+      if (this.user_id === '' || this.user_pwd === '') {
         alert('아이디 패스워드는 필수이다.')
         return
       }
-      fetch('http://localhost:8070/api/login', {
+      fetch('http://localhost:8050/api/login', {
         method: 'post',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-        body: JSON.stringify({username: this.username, password: this.password})
+        body: JSON.stringify({user_id: this.user_id, user_pwd: this.user_pwd})
       }).then((res) => {
         if (res.status === 200) {
           return res.json()
         } else {
-          alert('로그인 실패')
+          return res.json()
         }
       }).then((data) => {
-        alert('로그인 성공')
+        alert(data)
         this.$store.state.userToken = data
         this.$router.push({name: 'main'})
         console.log(this.$store.state.userToken)

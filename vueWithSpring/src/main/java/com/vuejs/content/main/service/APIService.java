@@ -27,48 +27,56 @@ public class APIService implements UserDetailsService {
 	@Autowired
 	BCryptPasswordEncoder encoder;
 
-	// private final JwtTokenProvider jwtTokenProvider; 기본생성자 주입을 원하면 @뤼콰이얼 어노테이션 쓰셈
 	private final JwtTokenProvider jwtTokenProvider;
 
+	//회원가입
+	public int joinUser(UserVo user) {
+		UserVo insertVo = new UserVo();
+		insertVo.setUser_id(user.getUser_id());
+		insertVo.setUser_pwd(encoder.encode(user.getUser_pwd()));
+		insertVo.setUser_auth("ROLE_USER");
+		return repository.joinUser(insertVo);
+	}
+	
+	
+	// 시큐리티 로그인   [request 의 header 의 값으 추출할 때에 사용된다.]
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetailsVO user = new UserDetailsVO();
 		List<String> authoList = new ArrayList<String>();
 		UserVo dbUser = repository.selectUserById(username);
-		authoList.add(dbUser.getRole());
+		authoList.add(dbUser.getUser_auth());
 		user.setAuthorities(authoList);
+		user.setUsername(dbUser.getUser_id());
 		System.out.println("검사한다~");
 		return user;
 	}
 
-	public int joinUser(UserVo user) {
-		UserVo insertVo = new UserVo();
-		insertVo.setUsername(user.getUsername());
-		insertVo.setPassword(encoder.encode(user.getPassword()));
-		insertVo.setRole("ROLE_USER");
-		return repository.joinUser(insertVo);
-	}
 
+	//로그인  [토큰 발급용]
 	public UserVo login(UserVo user) {
-		UserVo dbUser = repository.selectUserById(user.getUsername());
+		System.out.print("로그인파람:"+user.toString());
+		
+		UserVo dbUser = repository.selectUserById(user.getUser_id());
 		UserVo login = new UserVo();
 		List<String> autho = new ArrayList<String>();
 
-		if (!encoder.matches(user.getPassword(), dbUser.getPassword())) {
-			//throw new IllegalArgumentException();
-			return null;
-		} else if (dbUser == null) {
-			//throw new IllegalArgumentException();
-			return null;
+		try {
+			//if (!encoder.matches(user.getUser_pwd(), dbUser.getUser_pwd()) || dbUser == null) {
+			if (!user.getUser_pwd().equals(dbUser.getUser_pwd()) || dbUser == null) {
+				System.out.println("로그인 실패");
+				return login;
+			}else {
+				System.out.println("로그인 성공");
+				autho.add(dbUser.getUser_auth());
+				login.setUser_auth(dbUser.getUser_auth());          //권한 set
+				login.setToken(jwtTokenProvider.createToken(dbUser.getUser_id(), autho)); // 토큰 set
+				login.setUser_id(dbUser.getUser_id());           // 아이디 set
+				System.out.println(login.toString());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		System.out.println("로그인 성공");
-		autho.add(dbUser.getRole());
-		
-		login.setRole(dbUser.getRole());
-		login.setToken(jwtTokenProvider.createToken(dbUser.getUsername(), autho));
-		login.setUsername(dbUser.getUsername());
-		
-		System.out.println(login.toString());
 		
 		return login;
 	}
