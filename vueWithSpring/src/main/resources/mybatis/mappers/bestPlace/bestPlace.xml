@@ -6,5 +6,61 @@
 
 <mapper namespace="bestPlace">
 
+	<select id="selectBestPlace" parameterType="map" resultType="map">
+		SELECT *
+		FROM TB_BEST_PLACE
+	</select>
+	
+	<insert id="mergeBestPlace" parameterType="map">
+		INSERT INTO TB_BEST_PLACE
+		 ( 
+		 	<if test="userNum != null and userNum != ''">
+			 USER_NUM,
+	  		 </if>
+			 <if test="plNum != null and plNum != ''">
+			 PL_NUM,
+	  		 </if>
+	  		 <if test="plTitle != null and plTitle != ''">
+			 PL_TITLE,
+	  		 </if>
+	  		 <if test="plContent != null and plContent != ''">
+			 PL_CONTENT,
+	  		 </if>
+	  		 <if test="plCost != null and plCost != ''">
+			  PL_COST,
+	  		 </if>
+	  		 <if test="plRegion != null and plRegion != ''">
+			 PL_REGION,
+	  		 </if>
+			 PL_REG_DATE
+		     )
+		VALUES(
+			<if test="userNum != null and userNum != ''">
+			  #{userNum},
+	  		 </if>
+			<if test="plNum != null and plNum != ''">
+			 #{plNum},
+	  		 </if>
+	  		 <if test="plTitle != null and plTitle != ''">
+			 #{plTitle},
+	  		 </if>
+	  		 <if test="plContent != null and plContent != ''">
+			 #{plContent},
+	  		 </if>
+	  		 <if test="plCost != null and plCost != ''">
+			  #{plCost},
+	  		 </if>
+	  		 <if test="plRegion != null and plRegion != ''">
+			 #{plRegion},
+	  		 </if>
+			 NOW()
+		    )
+		ON DUPLICATE KEY
+		UPDATE   PL_TITLE = #{plTitle},
+		 		 PL_CONTENT = #{plContent},
+		 		 PL_COST = #{plCost},
+		 		 PL_REGION = #{plRegion},
+		 		 PL_REG_DATE = NOW()
+	</insert>
 
 </mapper>

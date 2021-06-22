@@ -19,9 +19,9 @@ public class BestPlaceController {
 	
 	@CrossOrigin(origins= "http://localhost:8070")
 	@PostMapping("/api/insertBestPlace")
-	public String insertBestPlace(@RequestBody Map<String,Object> plObejct) {
+	public int insertBestPlace(@RequestBody Map<String,Object> plObejct) {
 		System.out.println("pl data:"+plObejct.toString());
-		return "test";
+		return service.mergeBestPlace(plObejct);
 	}
 
 }

@@ -29,7 +29,7 @@ export default {
   name: 'bestForm',
   data: function () {
     return {
-      plObejct: {plCost: '', plTitle: '', plContent: '', plRegion: ''}
+      plObejct: {plCost: '', plTitle: '', plContent: '', plRegion: '', userNum: this.$store.state.userToken}
     }
   },
   methods: {
@@ -47,7 +47,11 @@ export default {
           alert('등록 실패')
         }
       }).then((data) => {
-        console.log(data)
+        if (data > 0) {
+          alert('등록완료')
+        } else {
+          alert('실패')
+        }
       })
     }
   }
