@@ -14,7 +14,8 @@
            </ul>
        </div>
        <div>
-           <router-link to="/login">Login</router-link>
+           <router-link v-if="checkUser" to="/login">Login</router-link>
+           <p v-if="!checkUser" @click="logOut">LogOut</p>
        </div>
    </div>
 </template>
@@ -29,6 +30,11 @@ export default {
   computed: {
     checkUser () {
       return this.$store.getters.checkLogin
+    }
+  },
+  methods: {
+    logOut () {
+      this.$store.state.logOut = true
     }
   }
 }

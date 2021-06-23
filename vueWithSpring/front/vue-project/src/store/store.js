@@ -9,16 +9,16 @@ export const store = new Vuex.Store({
   state: {
     counter: 0,
     userToken: {},
-    login: false
+    logOut: true
   },
   getters: {
     checkLogin: function (state) {
-      if (state.userToken === 'undefined') {
-        state.login = false
+      if (state.userToken.token === 'undefined' || state.userToken.token != null) {
+        state.logOut = false
       } else {
-        state.login = true
+        state.logOut = true
       }
-      return state.login
+      return state.logOut
     }
   }
 
