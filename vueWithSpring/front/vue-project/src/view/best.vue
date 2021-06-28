@@ -50,13 +50,13 @@
       </div>
 
     </div>
-    <paging :value="page_value" :total="30" @propsFromPaging="propsFromPaging" />
+    <paging :selectPage="page_value" :total="200" @propsFromPaging="propsFromPaging" />
   </div>
 </template>
 
 <script>
 import placeCard2 from '@/components/place-card2.vue'
-import paging from '@/components/paging2.vue'
+import paging from '@/components/paging3.vue'
 
 export default {
   name: 'best',
@@ -83,13 +83,8 @@ export default {
     },
     getBestList (selectPage) {
       console.log('선택 페이지' + selectPage)
+      this.page_value = selectPage
       console.log('http 통신 로직 들어가면 될듯')
-    }
-  },
-  watch: {
-    select_page: function (newQuestion, oldQuestion) {
-      this.page_value = newQuestion
-      console.log('변화감지')
     }
   }
 
