@@ -2,20 +2,16 @@
  <div>  토탈페이지:{{totalPages }} 시작페이지: {{startPage}}  끝페이지 {{endPage}}
 
 <ul class="pagination">
-    <li class="page-item prev-page">
-      <a class="page-link" @click="prevPage">
-        <span v-if="withText">Prev</span>
-      </a>
+    <li class="page-item prev-page"  v-if="startPage != 1">
+      <a class="page-link" @click="prevPage"><span>Prev</span></a>
     </li>
 
     <li class="page-item" v-for="item in range(startPage, endPage)" :key="item" :class="{ active: selectPage === item }">
       <a class="page-link" @click="changePage(item)">{{ item }}</a>
     </li>
 
-    <li class="page-item page-pre next-page" >
-      <a class="page-link"  @click="nextPage">
-        <span v-if="withText">Next</span>
-      </a>
+    <li class="page-item page-pre next-page"   v-if="endPage != lastPage">
+      <a class="page-link"  @click="nextPage"><span>Next</span></a>
     </li>
   </ul>
 
@@ -32,11 +28,11 @@ export default {
       type: Number,
       default: 0
     },
-    onePerPage: {
+    cntPage: {
       type: Number,
-      default: 10
+      default: 6
     },
-    perPage: {
+    cntPerPage: {
       type: Number,
       default: 10
     },
@@ -51,17 +47,24 @@ export default {
   },
   computed: {
     totalPages () {
-      return Math.ceil((this.total - 1) / this.perPage)
+      return Math.ceil((this.total - 1) / this.cntPage)
     },
     startPage () {
-      return Math.floor(((this.selectPage - 1) / this.perPage) * this.perPage + 1)
+      let start = Math.floor(this.endPage - this.cntPage + 1)
+      if (start < 1) {
+        start = 1
+      }
+      return start
     },
     endPage () {
-      let end = Math.floor(this.startPage * this.totalPages)
-      if (end < this.totalPages) {
-        end = this.totalPages
+      let end = Math.ceil(this.selectPage / this.cntPage) * this.cntPage
+      if (this.lastPage < end) {
+        end = this.lastPage
       }
       return end
+    },
+    lastPage () {
+      return Math.ceil(this.total / this.cntPerPage)
     }
   },
   data () {
@@ -81,14 +84,10 @@ export default {
       this.$emit('propsFromPaging', item)
     },
     nextPage () {
-      if (this.value < this.totalPages) {
-        this.$emit('propsFromPaging', this.selectPage + 1)
-      }
+      this.$emit('propsFromPaging', this.endPage + 1)
     },
     prevPage () {
-      if (this.value > 1) {
-        this.$emit('propsFromPaging', this.selectPage - 1)
-      }
+      this.$emit('propsFromPaging', this.startPage - 1)
     }
   }
 }
