@@ -7,31 +7,33 @@
       <form id="searchForm" class="searchForm">
       <div class="search-area">
         <div class="input-group">
-          <select name="searchType" class="select-cust">
-            <option selected>경기도</option>
-            <option>서울</option>
-          </select>
-          <p>지역</p>
+            <select name="searchRegion" v-model="searchRegion" class="select-cust">
+              <option value="GYEONGI">경기도</option>
+              <option value="SEOUL" >서울</option>
+              <option value="GIMPO" >김포</option>
+              <option value="BUSAN" >부산</option>
+              <option value="" selected>------</option>
+            </select>
+            <p>지역</p>
         </div>
         <div class="input-group">
-          <select name="priceTotal" class="select-cust">
-            <option selected>5~10만원</option>
-            <option value="10to20">10~20만원</option>
-            <option value="20to30">20~30만원</option>
-            <option value="30to40">30~40만원</option>
-            <option>--</option>
-          </select>
-          <p>경비</p>
+            <select name="searchCost" v-model="searchCost" class="select-cust">
+              <option value="0">5~10만원</option>
+              <option value="100000">10~20만원</option>
+              <option value="200000">20~30만원</option>
+              <option value="300000">30~40만원</option>
+              <option value="" selected>-----</option>
+            </select>
+            <p>경비</p>
         </div>
         <div class="input-group">
-          <input type="text" name="searchContent" class="select-cust">
-          <p>내용</p>
+            <input type="text" v-model="searchContent" name="searchContent" class="select-cust">
+            <p>내용</p>
         </div>
         <div>
-           <div class="button">
-            <div class="eff"></div>
-            <p>조회</p>
-          </div>
+            <div class="button" >
+              <input type="button" @click="getListData" value="조회" />
+            </div>
         </div>
       </div>
      </form>
@@ -71,6 +73,7 @@ export default {
     return {
       searchRegion: '',
       searchContent: '',
+      searchCost: '',
       cardData: [],
       selectPage: 1,
       total_count: 0,
@@ -90,11 +93,18 @@ export default {
       fetch('http://localhost:8050/api/selectBestPlace.json', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({selectPage: this.selectPage, cntPerPage: 9})
+        body: JSON.stringify(
+          { selectPage: this.selectPage,
+            cntPerPage: 9,
+            searchRegion: this.searchRegion,
+            searchContent: this.searchContent,
+            searchCost: this.searchCost
+          })
       }).then((res) => {
-        return res.json()
+        if (res.status === 200) {
+          return res.json()
+        }
       }).then((data) => {
-        console.log(data)
         this.total_count = data.total
         this.cardData = data.result
         this.cntPerPage = data.cntPerPage

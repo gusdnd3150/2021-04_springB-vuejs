@@ -7,6 +7,23 @@
 <mapper namespace="bestPlace">
 
 	
+	<sql id="whereInfo">
+		WHERE 1=1
+		<if test="searchRegion != null and searchRegion != ''">
+		  AND A.PL_REGION LIKE CONCAT('%',#{searchRegion},'%')
+		</if>
+		
+		<if test="searchCost != null and searchCost != '' ">
+		  AND A.PL_COST BETWEEN #{searchCost} AND #{searchCost + 100000}
+		</if>
+		
+		<if test="searchContent != null and searchContent != ''">
+		  AND A.PL_TITLE LIKE CONCAT('%',#{searchContent},'%')
+		</if>
+	</sql>
+	
+	
+	
 	<insert id="mergeBestPlace" parameterType="map">
 		INSERT INTO TB_BEST_PLACE
 		 ( 
@@ -61,24 +78,27 @@
 	
 	<select id="selectBestPlace" parameterType="map" resultType="map">
 	
-		SELECT A.*
+		SELECT R.*
 		FROM (SELECT 
-					PL_NUM,
-					USER_ID,
-					PL_TITLE,
-					PL_CONTENT,
-					PL_REG_DATE,
-					PL_COST,
-					PL_REGION
-				FROM TB_BEST_PLACE
-				ORDER BY PL_REG_DATE DESC) A 
-				
+					A.PL_NUM,
+					A.USER_ID,
+					A.PL_TITLE,
+					A.PL_CONTENT,
+					A.PL_REG_DATE,
+					A.PL_COST,
+					A.PL_REGION
+				FROM TB_BEST_PLACE A				
+				 <include refid="whereInfo" />
+				ORDER BY A.PL_REG_DATE DESC
+				 
+				) R 
 		LIMIT #{cntPerPage} OFFSET #{startNum}
 	</select>
 	
 	<select id="selectBestPlaceCount" parameterType="map" resultType="int">
 				SELECT COUNT(*)
-				FROM TB_BEST_PLACE
+				FROM TB_BEST_PLACE A
+				<include refid="whereInfo" />
 	</select>
 
 </mapper>
