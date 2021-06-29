@@ -6,10 +6,6 @@
 
 <mapper namespace="bestPlace">
 
-	<select id="selectBestPlace" parameterType="map" resultType="map">
-		SELECT *
-		FROM TB_BEST_PLACE
-	</select>
 	
 	<insert id="mergeBestPlace" parameterType="map">
 		INSERT INTO TB_BEST_PLACE
@@ -62,5 +58,27 @@
 		 		 PL_REGION = #{plRegion},
 		 		 PL_REG_DATE = NOW()
 	</insert>
+	
+	<select id="selectBestPlace" parameterType="map" resultType="map">
+	
+		SELECT A.*
+		FROM (SELECT 
+					PL_NUM,
+					USER_ID,
+					PL_TITLE,
+					PL_CONTENT,
+					PL_REG_DATE,
+					PL_COST,
+					PL_REGION
+				FROM TB_BEST_PLACE
+				ORDER BY PL_REG_DATE DESC) A 
+				
+		LIMIT #{cntPerPage} OFFSET #{startNum}
+	</select>
+	
+	<select id="selectBestPlaceCount" parameterType="map" resultType="int">
+				SELECT COUNT(*)
+				FROM TB_BEST_PLACE
+	</select>
 
 </mapper>

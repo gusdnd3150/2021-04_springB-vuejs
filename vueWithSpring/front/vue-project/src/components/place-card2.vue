@@ -5,14 +5,14 @@
           <img src="@/assets/sample9.jpg">      <!-- 이미지 {{cardData.img}}-->
         </div>
         <div class="place-dscript">           <!-- 유저정보 {{cardData.region}} {{cardData.date}}-->
-          <p class="dscrip-region">서울</p>
-          <p class="dscrip-date">2020-03-03</p>
+          <p class="dscrip-region">{{region}}</p>
+          <p class="dscrip-date">{{regDate}}</p>
         </div>
         <div class="place-content">              <!-- 내용 {{cardData.title}}-->
-          <p class="content-title">내용aas </p>
+          <p class="content-title">{{title}}</p>
         </div>
         <div class="place-detail">   <!-- 내용 {{cardData.totalPrice}}-->
-          <p class="detail-price">총 경비 : 15,0000</p>
+          <p class="detail-price">총 경비 : {{cost}}</p>
         </div>
     </div>
 </div>
@@ -21,15 +21,39 @@
 <script>
 export default {
   name: 'place-card2',
-  props: ['cardData'],
+  props: {
+    content: {
+      type: String,
+      required: false
+    },
+    title: {
+      type: String,
+      required: false
+    },
+    cost: {
+      type: Number,
+      required: false
+    },
+    regDate: {
+      type: String,
+      required: false
+    },
+    userId: {
+      type: String,
+      required: false
+    },
+    region: {
+      type: String,
+      required: false
+    },
+    num: {
+      type: Number,
+      required: false
+    }
+  },
   data () {
     return {
-      checkLogin: this.$store.state.userToken.token,
-      region: '',
-      content: '',
-      totalexpense: '',
-      img: '',
-      date: ''
+      checkLogin: this.$store.state.userToken.token
     }
   },
   methods: {

@@ -37,20 +37,27 @@
      </form>
 
       <div class="place-area">
-        <div class="place-list">
-          <placeCard2 />
-          <placeCard2 />
-          <placeCard2 />
-          <placeCard2 />
-          <placeCard2 />
-          <placeCard2 :cardData="cardData"/>
-          <placeCard2 />
-          <placeCard2 />
+        <div class="place-list" >
+
+          <placeCard2 v-for="i in cardData"
+          :key="i.PL_NUM"
+          :title="i.PL_TITLE"
+          :content="i.PL_CONTENT"
+          :cost="i.PL_COST"
+          :num="i.PL_NUM"
+          :regDate="i.PL_REG_DATE"
+          :region="i.PL_REGION"
+          :userId="i.USER_ID" />
+
         </div>
+        <paging
+        :selectPage="selectPage"
+        :total="total_count"
+        :cntPerPage="cntPerPage"
+        @propsFromPaging="propsFromPaging" />
       </div>
 
     </div>
-    <paging :selectPage="page_value" :total="200" @propsFromPaging="propsFromPaging" />
   </div>
 </template>
 
@@ -64,9 +71,10 @@ export default {
     return {
       searchRegion: '',
       searchContent: '',
-      cardData: {name: 'test', title: 'd'},
-      page_value: 1,
-      total_count: 0
+      cardData: [],
+      selectPage: 1,
+      total_count: 0,
+      cntPerPage: 0
     }
   },
   components: {
@@ -74,18 +82,27 @@ export default {
     paging
   },
   methods: {
-    search () {
-      console.log('dd')
-    },
     propsFromPaging (data) {
-      this.page_value = data
-      this.getBestList(data)
+      this.selectPage = data
+      this.getListData()
     },
-    getBestList (selectPage) {
-      console.log('선택 페이지' + selectPage)
-      this.page_value = selectPage
-      console.log('http 통신 로직 들어가면 될듯')
+    getListData () {
+      fetch('http://localhost:8050/api/selectBestPlace.json', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({selectPage: this.selectPage, cntPerPage: 9})
+      }).then((res) => {
+        return res.json()
+      }).then((data) => {
+        console.log(data)
+        this.total_count = data.total
+        this.cardData = data.result
+        this.cntPerPage = data.cntPerPage
+      })
     }
+  },
+  created: function () {
+    this.getListData()
   }
 
 }

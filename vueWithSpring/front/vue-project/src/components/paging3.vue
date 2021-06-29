@@ -1,17 +1,17 @@
 <template>
- <div>  토탈페이지:{{totalPages }} 시작페이지: {{startPage}}  끝페이지 {{endPage}}
-
-<ul class="pagination">
-    <li class="page-item prev-page"  v-if="startPage != 1">
-      <a class="page-link" @click="prevPage"><span>Prev</span></a>
+ <div>
+ <!-- 토탈페이지:{{totalPages }} 시작페이지: {{startPage }} 끝:{{endPage}} 앤드:{{lastPage}} 토탈: {{total}}  -->
+  <ul class="pagination">
+    <li class="page-item prev-page"  @click="prevPage" v-if="startPage != 1">
+      <a class="page-link" ><span class="page-text">이전</span></a>
     </li>
 
-    <li class="page-item" v-for="item in range(startPage, endPage)" :key="item" :class="{ active: selectPage === item }">
-      <a class="page-link" @click="changePage(item)">{{ item }}</a>
+    <li class="page-item" @click="changePage(item)" v-for="item in range(startPage, endPage)" :key="item" :class="{ active: selectPage === item }">
+      <a class="page-link" >{{ item }}</a>
     </li>
 
-    <li class="page-item page-pre next-page"   v-if="endPage != lastPage">
-      <a class="page-link"  @click="nextPage"><span>Next</span></a>
+    <li class="page-item page-pre next-page"  @click="nextPage"  v-if="endPage != lastPage">
+      <a class="page-link" ><span class="page-text">다음</span></a>
     </li>
   </ul>
 
@@ -58,6 +58,7 @@ export default {
     },
     endPage () {
       let end = Math.ceil(this.selectPage / this.cntPage) * this.cntPage
+      console.log(end)
       if (this.lastPage < end) {
         end = this.lastPage
       }
@@ -93,9 +94,9 @@ export default {
 }
 </script>
 <style scoped>
-ul{ list-style: none; display: flex; flex-wrap: wrap; justify-content:center;}
-ul li{ font-size: 10px; margin:0 2px 0 2px }
-ul li:hover{cursor: pointer; opacity: 0.8;}
-.active{opacity: 0.9; color:red}
-
+.pagination{ list-style: none; display: flex; flex-wrap: wrap; justify-content:center;}
+.pagination li{ font-size: 15px; margin:0 4px 0 2px ; padding: 5px 10px 5px 10px; transition: all 0.4s; }
+.pagination li:hover{cursor: pointer; opacity: 0.8; border-bottom: solid; border-width: 1px; border-radius: 5px;}
+.active{opacity: 0.9; color:white; background-color: navy; border-radius: 5px;}
+.next-page, .prev-page{font-size: 7px !important; font-weight: bold;padding-top:8px !important; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;}
 </style>
