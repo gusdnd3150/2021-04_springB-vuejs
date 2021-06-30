@@ -28,6 +28,10 @@ body{  min-height: 100%;}
 .button p{    font-size: 15px;    color: #34495e;    text-decoration: none;    line-height: 50px;    -webkit-transition: all .5s ease;
 transition: all .5s ease;    z-index: 2;    position: relative;    top: -7px;    margin: 0;}
 
+/*버튼 커스텀*/
+.cust_button{ padding: 7px 20px 8px 20px;    background-color: #007bff;    border: none;    border-radius: 4px;    color: white;    font-weight: bold;    font-size: 15px; transition: all 0.2s;}
+.cust_button:hover{cursor: pointer; opacity: 0.8;}
+
 .eff{  width:140px;  height:50px;  left:-140px;  background:#34495e;  position:absolute;  transition:all .5s ease;  z-index:1;}
 .button:hover .eff{  left:0;}
 .button:hover p{  color:#fff;}

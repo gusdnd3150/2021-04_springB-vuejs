@@ -99,8 +99,9 @@ export default {
   overflow: hidden;
 }
 .content-title{
-  font-size: 15px;
+  font-size: 11px;
   margin: 0 0 0 0;
+  font-weight: bold;
 }
 .detail-price{
   position: absolute;

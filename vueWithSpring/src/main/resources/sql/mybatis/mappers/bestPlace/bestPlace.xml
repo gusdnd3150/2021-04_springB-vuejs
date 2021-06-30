@@ -84,9 +84,16 @@
 					A.USER_ID,
 					A.PL_TITLE,
 					A.PL_CONTENT,
-					A.PL_REG_DATE,
 					A.PL_COST,
-					A.PL_REGION
+					DATE_FORMAT(A.PL_REG_DATE,'%Y년 %m월') AS PL_REG_DATE,
+					CASE 
+					WHEN A.PL_REGION = 'SEOUL' THEN '서울'
+					WHEN A.PL_REGION = 'GYEONGI' THEN '경기'
+					WHEN A.PL_REGION = 'BUSAN' THEN '부산'
+					WHEN A.PL_REGION = 'JEJU' THEN '제주'
+					WHEN A.PL_REGION = 'GIMPO' THEN '김포'
+					ELSE '기타'
+					END AS PL_REGION
 				FROM TB_BEST_PLACE A				
 				 <include refid="whereInfo" />
 				ORDER BY A.PL_REG_DATE DESC

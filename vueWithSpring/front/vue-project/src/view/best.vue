@@ -31,9 +31,7 @@
             <p>내용</p>
         </div>
         <div>
-            <div class="button" >
-              <input type="button" @click="getListData" value="조회" />
-            </div>
+              <input type="button" @click="searchData" value="조회" class="cust_button" />
         </div>
       </div>
      </form>
@@ -89,6 +87,10 @@ export default {
       this.selectPage = data
       this.getListData()
     },
+    searchData () {
+      this.selectPage = 1
+      this.getListData()
+    },
     getListData () {
       fetch('http://localhost:8050/api/selectBestPlace.json', {
         method: 'post',
@@ -128,6 +130,9 @@ export default {
 .input-group{  position: relative;}
 .input-group input:focus{ outline: red;}
 
+/*버튼 커스텀*/
+.cust_button{ padding: 7px 20px 8px 20px;    background-color: #007bff;    border: none;    border-radius: 4px;    color: white;    font-weight: bold;    font-size: 15px; transition: all 0.2s;}
+.cust_button:hover{cursor: pointer; opacity: 0.8;}
 /*셀렉트 박스 */
 .select-cust{  padding: 8px 30px 8px 30px;  margin-right: 10px;}
 

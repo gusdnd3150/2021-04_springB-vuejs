@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+    scrollUp () {
+      window.scrollTo(0, 0)
+    },
     range (min, max) {
       let arr = []
       for (let i = min; i <= max; i++) {
@@ -83,12 +86,15 @@ export default {
     },
     changePage (item) {
       this.$emit('propsFromPaging', item)
+      this.scrollUp()
     },
     nextPage () {
       this.$emit('propsFromPaging', this.endPage + 1)
+      this.scrollUp()
     },
     prevPage () {
       this.$emit('propsFromPaging', this.startPage - 1)
+      this.scrollUp()
     }
   }
 }
