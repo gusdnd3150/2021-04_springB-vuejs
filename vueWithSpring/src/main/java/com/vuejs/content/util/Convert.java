@@ -51,7 +51,7 @@ public class Convert {
 			newParam.put("cntPerPage", 7);
 		}*/
 		
-		System.out.println("convert 파람: "+ newParam.toString());
+		System.out.println("[convert 파람]: "+ newParam.toString());
 		
 		return newParam;
 	} 

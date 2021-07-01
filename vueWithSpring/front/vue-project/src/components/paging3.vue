@@ -86,15 +86,15 @@ export default {
     },
     changePage (item) {
       this.$emit('propsFromPaging', item)
-      this.scrollUp()
+      /* this.scrollUp() */
     },
     nextPage () {
       this.$emit('propsFromPaging', this.endPage + 1)
-      this.scrollUp()
+      /* this.scrollUp() */
     },
     prevPage () {
       this.$emit('propsFromPaging', this.startPage - 1)
-      this.scrollUp()
+      /* this.scrollUp() */
     }
   }
 }
