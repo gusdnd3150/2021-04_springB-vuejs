@@ -14,6 +14,13 @@ const fetchApi = {
         headers: defaultSetting.header,
         timeout: 2000
       })
+  },
+  insertBest (url, paramObj) {
+    return axios.post(defaultSetting.url + url,
+      { params: paramObj,
+        headers: defaultSetting.header,
+        timeout: 2000
+      })
   }
   /*
   getFetchData (geturl, paramObj) {
@@ -38,8 +45,8 @@ const fetchApi = {
 }
 
 export const bestAPIServcie = {
-  insert () {
-
+  insert (url, paramObj) {
+    return fetchApi.insertBest(url, paramObj)
   },
   update () {
 

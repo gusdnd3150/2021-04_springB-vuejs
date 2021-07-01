@@ -3,8 +3,8 @@ import { bestAPIServcie } from '@/functionUtills/api-service.js'
 const bestStore = {
   namespaced: true,
   state: {
-    test: 'DFFDF',
     bestData: {},
+    insertResult: '',
     selectPage: 1,
     total: 0
   },
@@ -13,28 +13,28 @@ const bestStore = {
       console.log('개터')
       return state.bestData
     },
-    GET_TEST: function (state) {
-      return state.test
-    },
     GET_SELECT_PAGE: function (state) {
       return state.selectPage
     },
     GET_TOTAL: function (state) {
       return state.total
+    },
+    GET_IN_RESULT: function (state) {
+      return state.insertResult
     }
   },
   mutations: {
     MU_BEST_DATA: function (state, payload) {
       state.bestData = payload
     },
-    MU_TEST: function (state, payload) {
-      state.test = payload
-    },
     MU_SELECT_PAGE: function (state, payload) {
       state.selectPage = payload
     },
     MU_TOTAL: function (state, payload) {
       state.total = payload
+    },
+    MU_IN_RESULT: function (state, payload) {
+      state.insertResult = payload
     }
   },
   actions: {
@@ -47,8 +47,11 @@ const bestStore = {
           commit('MU_TOTAL', res.data.total)
         })
     },
-    AC_TEST: function ({ commit }, payload) {
-      commit('MU_TEST', payload)
+    AC_INSERT_BEST: function ({ commit }, payload) {
+      bestAPIServcie.insert(payload.url, payload)
+        .then(res => {
+          commit('MU_IN_RESULT', res.data)
+        })
     }
   }
 }

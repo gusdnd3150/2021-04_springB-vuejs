@@ -25,7 +25,7 @@
                 <input type="text" name="plCost" v-model="plObejct.plCost">
             </div>
             <div class="input-group file">
-                <p class="cust_button" @click="uploadFile">사진</p>
+                <p class="cust_button" @click="clickFile">사진</p>
                 <input type="file" name="image" id="file" ref="trigger" multiple="multiple">
             </div>
             <input type="button" @click="formCheck" value="save" class="cust_button">
@@ -36,34 +36,26 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
+const bestStore = 'bestStore'
+
 export default {
   name: 'bestForm',
   data: function () {
     return {
-      plObejct: {plCost: '', plTitle: '', plContent: '', plRegion: ''},
-      token: this.$store.state.userToken.token
+      plObejct: {plCost: '', plTitle: '', plContent: '', plRegion: '', url: 'api/insertBestPlace'}
     }
   },
+  computed: {
+    ...mapGetters(bestStore, {result: 'GET_IN_RESULT'})
+  },
   methods: {
-    insertBestPlace: function (event) {
-      fetch('http://localhost:8050/api/insertBestPlace', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'X-AUTH-TOKEN': this.token },
-        body: JSON.stringify(this.plObejct)
-      }).then((res) => {
-        if (res.status === 200) {
-          return res.text()
-        } else {
-          alert('등록 실패')
-        }
-      }).then((data) => {
-        if (data > 0) {
-          alert('등록완료')
-          this.formClear()
-        } else {
-          alert('실패')
-        }
-      })
+    ...mapActions(bestStore, {insertBest: 'AC_INSERT_BEST'}),
+
+    insertBestPlace: function () {
+      console.log('insert 로직')
+      this.insertBest()
     },
     formCheck: function (event) {
       event.preventDefault()
@@ -83,7 +75,7 @@ export default {
         this.plObejct[obj] = ''
       }
     },
-    uploadFile: function () {
+    clickFile: function () {
       this.$refs.trigger.click()
     }
   }
