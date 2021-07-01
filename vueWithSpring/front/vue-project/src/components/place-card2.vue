@@ -53,7 +53,7 @@ export default {
   },
   data () {
     return {
-      checkLogin: this.$store.state.userToken.token
+      checkLogin: false
     }
   },
   methods: {

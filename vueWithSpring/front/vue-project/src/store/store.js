@@ -2,24 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+import bestStore from './bestStore.js'
+
 Vue.use(Vuex)
 Vue.use(VueAwesomeSwiper)
 
 export const store = new Vuex.Store({
-  state: {
-    counter: 0,
-    userToken: {},
-    logOut: true
-  },
-  getters: {
-    checkLogin: function (state) {
-      if (state.userToken.token === 'undefined' || state.userToken.token != null) {
-        state.logOut = false
-      } else {
-        state.logOut = true
-      }
-      return state.logOut
-    }
+  modules: {
+    bestStore: bestStore
   }
-
 })

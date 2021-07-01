@@ -16,11 +16,24 @@ public class Convert {
 	static public Map<String,Object> convertMapParam( Map<String,Object> paramMap){
 		Map<String,Object> newParam = new HashMap<String, Object>();
 		
-		Set<String> keySet = paramMap.keySet();
+		Map<String,Object> params = (Map<String, Object>) paramMap.get("params");
+		
+		Set<String> keySet = params.keySet();
 		Iterator<String> it = keySet.iterator();
 		
+
+		while(it.hasNext()) {
+			String MapKey = it.next();
+			System.out.println("key:"+ MapKey);
+			
+			String val =   params.get(MapKey).toString();
+			if(val == null || val.length() == 0 || val.equals("")) {
+				val = null;
+			}
+			newParam.put(MapKey, val);
+		}
 		
-		
+		/*
 		while(it.hasNext()) {
 			String MapKey = it.next();
 			System.out.println("key:"+ MapKey);
@@ -30,7 +43,7 @@ public class Convert {
 				val = null;
 			}
 			newParam.put(MapKey, val);
-		}
+		}*/
 		
 		
 		/*

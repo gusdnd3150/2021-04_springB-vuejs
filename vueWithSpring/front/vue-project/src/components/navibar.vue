@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     checkUser () {
-      return this.$store.getters.checkLogin
+      return false
     }
   },
   methods: {

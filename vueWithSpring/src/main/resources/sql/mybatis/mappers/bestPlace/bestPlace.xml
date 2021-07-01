@@ -9,16 +9,16 @@
 	
 	<sql id="whereInfo">
 		WHERE 1=1
-		<if test="searchRegion != null and searchRegion != ''">
-		  AND A.PL_REGION LIKE CONCAT('%',#{searchRegion},'%')
+		<if test="region != null and region != ''">
+		  AND A.PL_REGION LIKE CONCAT('%',#{region},'%')
 		</if>
 		
-		<if test="searchCost != null and searchCost != '' ">
-		  AND A.PL_COST BETWEEN #{searchCost} AND #{searchCost + 100000}
+		<if test="cost != null and cost != '' ">
+		  AND A.PL_COST BETWEEN #{searchCost} AND #{cost + 100000}
 		</if>
 		
-		<if test="searchContent != null and searchContent != ''">
-		  AND A.PL_TITLE LIKE CONCAT('%',#{searchContent},'%')
+		<if test="content != null and content != ''">
+		  AND A.PL_TITLE LIKE CONCAT('%',#{content},'%')
 		</if>
 	</sql>
 	

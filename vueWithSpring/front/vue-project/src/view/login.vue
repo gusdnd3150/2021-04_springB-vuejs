@@ -56,7 +56,7 @@ export default {
         }
       }).then((data) => {
         alert(data)
-        this.$store.state.userToken = data
+        /* this.$store.state.userToken = data */
         this.$router.push({name: 'main'})
         console.log(this.$store.state.userToken)
       })

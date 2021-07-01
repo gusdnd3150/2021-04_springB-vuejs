@@ -34,18 +34,23 @@ public class PagingUtill {
 	
 	public void invok() {
 		total =  session.selectOne(sqlQuery+"Count", param);
-		cntPerPage = Integer.parseInt((String) (param.containsKey("cntPerPage") == false ? "7" : param.get("cntPerPage")));
-        selectPage = Integer.parseInt((String) (param.containsKey("selectPage") == false ? "1" : param.get("selectPage")));
+		 
+		//cntPerPage = Integer.parseInt((String) (param.containsKey("cntPerPage") == false ? "7" : param.get("cntPerPage")));
+        //selectPage = Integer.parseInt((String) (param.containsKey("selectPage") == false ? "1" : param.get("selectPage")));
+        selectPage = param.containsKey("selectPage") == false ? 1 : Integer.parseInt(param.get("selectPage").toString());
+        cntPerPage = param.containsKey("cntPerPage") == false ? 9 : Integer.parseInt(param.get("cntPerPage").toString());
         
         param.put("startNum", (selectPage - 1 ) * cntPerPage);
         param.put("cntPerPage", cntPerPage);
         param.put("selectPage", selectPage);
         param.put("total", total);
         
+        System.out.println("페이징파람"+param.toString());
+        
         result = session.selectList(sqlQuery,param);
         
         param.put("result", result);
-        //System.out.println(param.toString());
+       
 	}
 	
 	public Map<String,Object> getData(){

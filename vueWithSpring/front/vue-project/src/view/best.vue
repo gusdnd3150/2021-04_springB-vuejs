@@ -7,7 +7,7 @@
       <form id="searchForm" class="searchForm">
       <div class="search-area">
         <div class="input-group">
-            <select name="searchRegion" v-model="searchRegion" class="select-cust">
+            <select name="searchRegion" v-model="paramObj.region" value="" class="select-cust">
               <option value="GYEONGI">경기도</option>
               <option value="SEOUL" >서울</option>
               <option value="GIMPO" >김포</option>
@@ -17,7 +17,7 @@
             <p>지역</p>
         </div>
         <div class="input-group">
-            <select name="searchCost" v-model="searchCost" class="select-cust">
+            <select name="searchCost" v-model="paramObj.cost" class="select-cust">
               <option value="0">5~10만원</option>
               <option value="100000">10~20만원</option>
               <option value="200000">20~30만원</option>
@@ -27,7 +27,7 @@
             <p>경비</p>
         </div>
         <div class="input-group">
-            <input type="text" v-model="searchContent" name="searchContent" class="select-cust">
+            <input type="text" v-model="paramObj.content" name="searchContent" class="select-cust">
             <p>내용</p>
         </div>
         <div>
@@ -39,7 +39,7 @@
       <div class="place-area">
         <div class="place-list" >
 
-          <placeCard2 v-for="i in cardData"
+          <placeCard2 v-for="i in this.bestList"
           :key="i.PL_NUM"
           :title="i.PL_TITLE"
           :content="i.PL_CONTENT"
@@ -51,9 +51,8 @@
 
         </div>
         <paging
-        :selectPage="selectPage"
-        :total="total_count"
-        :cntPerPage="cntPerPage"
+        :selectPage="this.selectPage"
+        :total="this.total"
         @propsFromPaging="propsFromPaging" />
       </div>
 
@@ -64,53 +63,47 @@
 <script>
 import placeCard2 from '@/components/place-card2.vue'
 import paging from '@/components/paging3.vue'
+import { mapGetters, mapActions } from 'vuex'
+
+const bestStore = 'bestStore'
 
 export default {
   name: 'best',
   data: function () {
     return {
-      searchRegion: '',
-      searchContent: '',
-      searchCost: '',
-      cardData: [],
-      selectPage: 1,
-      total_count: 0,
-      cntPerPage: 0
+      paramObj: {
+        region: '',
+        content: '',
+        cost: '',
+        selectPage: this.selectPage,
+        url: 'api/selectBestPlace.json'
+      },
+      cardData: []
     }
   },
   components: {
     placeCard2,
     paging
   },
+  /* store 변수 선언 */
+  computed: {
+    ...mapGetters(bestStore, {bestList: 'GET_BEST_DATA', total: 'GET_TOTAL', selectPage: 'GET_SELECT_PAGE'})
+  },
+  /* store action 선언 */
   methods: {
+    ...mapActions(bestStore, {fnBestData: 'AC_BEST_DATA'}),
+
     propsFromPaging (data) {
-      this.selectPage = data
+      /* console.log('페이지 클릭' + data) */
+      this.paramObj.selectPage = data
       this.getListData()
     },
     searchData () {
-      this.selectPage = 1
+      this.paramObj.selectPage = 1
       this.getListData()
     },
     getListData () {
-      fetch('http://localhost:8050/api/selectBestPlace.json', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(
-          { selectPage: this.selectPage,
-            cntPerPage: 9,
-            searchRegion: this.searchRegion,
-            searchContent: this.searchContent,
-            searchCost: this.searchCost
-          })
-      }).then((res) => {
-        if (res.status === 200) {
-          return res.json()
-        }
-      }).then((data) => {
-        this.total_count = data.total
-        this.cardData = data.result
-        this.cntPerPage = data.cntPerPage
-      })
+      this.fnBestData(this.paramObj)
     }
   },
   created: function () {
