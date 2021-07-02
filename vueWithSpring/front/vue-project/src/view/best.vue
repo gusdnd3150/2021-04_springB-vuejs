@@ -2,7 +2,7 @@
   <div class="content">
     <h2>명소</h2>
     <div class="content-area">
-      <router-link class="write-form" to="/bestForm">작성하기</router-link>
+      <router-link v-if="this.loginState" class="write-form" to="/bestForm">작성하기</router-link>
 
       <form id="searchForm" class="searchForm">
       <div class="search-area">
@@ -66,6 +66,7 @@ import paging from '@/components/paging3.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 const bestStore = 'bestStore'
+const userStore = 'userStore'
 
 export default {
   name: 'best',
@@ -78,11 +79,10 @@ export default {
     placeCard2,
     paging
   },
-  /* store 변수 선언 */
   computed: {
-    ...mapGetters(bestStore, {bestList: 'GET_BEST_DATA', total: 'GET_TOTAL', selectPage: 'GET_SELECT_PAGE'})
+    ...mapGetters(bestStore, {bestList: 'GET_BEST_DATA', total: 'GET_TOTAL', selectPage: 'GET_SELECT_PAGE'}),
+    ...mapGetters(userStore, {loginState: 'GET_LOGIN_STATE'})
   },
-  /* store action 선언 */
   methods: {
     ...mapActions(bestStore, {fnBestData: 'AC_BEST_DATA'}),
 

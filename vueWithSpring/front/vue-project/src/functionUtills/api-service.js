@@ -22,26 +22,7 @@ const fetchApi = {
         timeout: 2000
       })
   }
-  /*
-  getFetchData (geturl, paramObj) {
-    fetch(defaultSetting.url + geturl,
-      {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify(paramObj)
 
-      }).then((res) => {
-      if (res.status === 200) {
-        return res.json()
-      } else {
-        return 'fail'
-      }
-    }).then((data) => {
-      console.log('db 데이터')
-      console.log(data)
-      return data
-    })
-  } */
 }
 
 export const bestAPIServcie = {
@@ -59,5 +40,5 @@ export const bestAPIServcie = {
   }
 }
 
-export const loginAPIServcie = {
+export const userAPIServcie = {
 }

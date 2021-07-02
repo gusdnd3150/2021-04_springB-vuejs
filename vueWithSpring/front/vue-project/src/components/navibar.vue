@@ -14,13 +14,16 @@
            </ul>
        </div>
        <div>
-           <router-link v-if="checkUser" to="/login">Login</router-link>
-           <p v-if="!checkUser" @click="logOut">LogOut</p>
+           <router-link v-if="!this.loginCheck" to="/login">Login</router-link>
+           <p v-if="this.loginCheck" @click="logOut">LogOut</p>
        </div>
    </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
+const userStroe = 'userStore'
 export default {
   name: 'navibar',
   data () {
@@ -28,9 +31,7 @@ export default {
     }
   },
   computed: {
-    checkUser () {
-      return false
-    }
+    ...mapGetters(userStroe, {loginCheck: 'GET_LOGIN_STATE'})
   },
   methods: {
     logOut () {

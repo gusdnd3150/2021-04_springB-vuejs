@@ -15,12 +15,12 @@
             <div class="login-content">
              <form name="loginForm" action="/login" method="post">
                   <div class="input">
-                    <input type="text" name="user_id" id="user_id" v-model="user_id" placeholder="아이디">
+                    <input type="text" name="user_id" id="user_id" v-model="loginObj.user_id" placeholder="아이디">
                   </div>
                    <div class="input">
-                    <input type="password" name="user_pwd" id="user_pwd" v-model="user_pwd" placeholder="비밀번호">
+                    <input type="password" name="user_pwd" id="user_pwd" v-model="loginObj.user_pwd" placeholder="비밀번호">
                   </div>
-                  <button @click="login">로그인</button>
+                  <button @click="userLogin">로그인</button>
              </form>
             </div>
          </div>
@@ -29,37 +29,34 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
+const userStore = 'userStore'
+
 export default {
   name: 'login',
   data () {
     return {
-      user_id: '',
-      user_pwd: ''
+      loginObj: {
+        user_id: '',
+        user_pwd: '',
+        url: 'api/login'
+      }
     }
   },
+  computed: {
+
+  },
   methods: {
-    login: function (event) {
+    ...mapActions(userStore, {login: 'AC_USER_LOGIN'}),
+
+    userLogin: function (event) {
       event.preventDefault()
-      if (this.user_id === '' || this.user_pwd === '') {
-        alert('아이디 패스워드는 필수이다.')
+      if (this.loginObj.user_id === '' || this.loginObj.user_pwd === '') {
+        alert('아이디 패스워드는 필수입니다.')
         return
       }
-      fetch('http://localhost:8050/api/login', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-        body: JSON.stringify({user_id: this.user_id, user_pwd: this.user_pwd})
-      }).then((res) => {
-        if (res.status === 200) {
-          return res.json()
-        } else {
-          return res.json()
-        }
-      }).then((data) => {
-        alert(data)
-        /* this.$store.state.userToken = data */
-        this.$router.push({name: 'main'})
-        console.log(this.$store.state.userToken)
-      })
+      this.login(this.loginObj)
     }
   }
 }
