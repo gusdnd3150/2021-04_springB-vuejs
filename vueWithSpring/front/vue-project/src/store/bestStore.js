@@ -48,7 +48,7 @@ const bestStore = {
         })
     },
     AC_INSERT_BEST: function ({ commit }, payload) {
-      bestAPIServcie.insert(payload.url, payload)
+      bestAPIServcie.insert(payload.get('url'), payload)
         .then(res => {
           commit('MU_IN_RESULT', res.data)
         })

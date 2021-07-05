@@ -21,9 +21,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 const userStroe = 'userStore'
+
 export default {
   name: 'navibar',
   data () {
@@ -34,8 +35,9 @@ export default {
     ...mapGetters(userStroe, {loginCheck: 'GET_LOGIN_STATE'})
   },
   methods: {
+    ...mapActions(userStroe, {setLogin: 'AC_LOGOUT'}),
     logOut () {
-      this.$store.state.logOut = true
+      this.setLogin()
     }
   }
 }

@@ -1,7 +1,9 @@
 package com.vuejs.content.main.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -54,37 +56,37 @@ public class APIService implements UserDetailsService {
 
 
 	//로그인  [토큰 발급용]
-	public UserVo login(UserVo user) {
-		System.out.print("로그인파람:"+user.toString());
+	public Map<String,Object> login(Map<String,Object> user) {
+		Map<String,Object> loginUser =  new HashMap<String, Object>();
 		
-		UserVo dbUser = repository.selectUserById(user.getUser_id());
+		String userId = user.get("user_id").toString();
+		String userPwd = user.get("user_pwd").toString();
+		
+		UserVo dbUser = repository.selectUserById(userId);
 		UserVo login = new UserVo();
 		List<String> autho = new ArrayList<String>();
 
 		try {
 			//if (!encoder.matches(user.getUser_pwd(), dbUser.getUser_pwd()) || dbUser == null) {
-			if (!user.getUser_pwd().equals(dbUser.getUser_pwd()) || dbUser == null) {
+			if (!userPwd.equals(dbUser.getUser_pwd()) || dbUser == null) {
 				System.out.println("로그인 실패");
-				return login;
+				return loginUser;
 			}else {
 				System.out.println("로그인 성공");
+				
 				autho.add(dbUser.getUser_auth());
-				login.setUser_auth(dbUser.getUser_auth());          //권한 set
-				login.setToken(jwtTokenProvider.createToken(dbUser.getUser_id(), autho)); // 토큰 set
-				login.setUser_id(dbUser.getUser_id());           // 아이디 set
-				System.out.println(login.toString());
+				//권한
+				loginUser.put("user_auth", dbUser.getUser_auth());
+				//토큰
+				loginUser.put("user_token", jwtTokenProvider.createToken(dbUser.getUser_id(), autho));
+				//아이디
+				loginUser.put("user_id", dbUser.getUser_id());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		return login;
+		return loginUser;
 	}
 
-	public void testauth(String token) {
-		System.out.println("권한 체크" + jwtTokenProvider.validateToken(token)); // true
-		System.out.println("유저이름 뽑기" + jwtTokenProvider.getUserPk(token)); // gusdnd
-		System.out.println("인증 뽑기" + jwtTokenProvider.getAuthentication(token)); // 인증정보 유처객체,
-	}
 
 }

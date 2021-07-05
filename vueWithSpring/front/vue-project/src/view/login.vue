@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 const userStore = 'userStore'
 
@@ -41,11 +41,12 @@ export default {
         user_id: '',
         user_pwd: '',
         url: 'api/login'
-      }
+      },
+      checklogin: this.checkLogin
     }
   },
   computed: {
-
+    ...mapGetters(userStore, {checkLogin: 'GET_LOGIN_STATE'})
   },
   methods: {
     ...mapActions(userStore, {login: 'AC_USER_LOGIN'}),

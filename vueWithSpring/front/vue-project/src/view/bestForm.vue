@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content-area">
-      <form id="form1" name="form1" enctype="multipart/form-data">
+      <form id="form1" name="form1" method="post" enctype="multipart/form-data">
         <div class="form-box">
             <div class="input-group">
                 <span>제목</span>
@@ -39,23 +39,34 @@
 import { mapActions, mapGetters } from 'vuex'
 
 const bestStore = 'bestStore'
+const userStore = 'userStore'
 
 export default {
   name: 'bestForm',
   data: function () {
     return {
-      plObejct: {plCost: '', plTitle: '', plContent: '', plRegion: '', url: 'api/insertBestPlace'}
+      plObejct: {plCost: '', files: [], plTitle: '', plContent: '', plRegion: '', url: 'api/insertBestPlace'}
     }
   },
   computed: {
-    ...mapGetters(bestStore, {result: 'GET_IN_RESULT'})
+    ...mapGetters(bestStore, {result: 'GET_IN_RESULT'}),
+    ...mapGetters(userStore, {userInfo: 'GET_USER_INFO'})
   },
   methods: {
     ...mapActions(bestStore, {insertBest: 'AC_INSERT_BEST'}),
 
     insertBestPlace: function () {
-      console.log('insert 로직')
-      this.insertBest()
+      let formParam = document.getElementById('form1')
+      const param = new FormData(formParam)
+
+      param.append('url', 'api/insertBestPlace.json')
+      param.append('user_id', this.userInfo.user_id)
+
+      for (let key of param.entries()) {
+        console.log(key)
+      }
+
+      this.insertBest(param)
     },
     formCheck: function (event) {
       event.preventDefault()
@@ -85,9 +96,6 @@ export default {
 <style scoped>
 
 #file{ display: none;}
-.input-group.file{
-
-}
 .form-box{ width: 300px; margin:0 auto;}
 /*인풋 박스*/
 .input-group{  position: relative; margin: 0 0 10px 0}
