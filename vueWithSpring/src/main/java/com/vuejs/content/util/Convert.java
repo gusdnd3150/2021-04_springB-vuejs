@@ -43,4 +43,30 @@ public class Convert {
 		
 		return newParam;
 	} 
+	
+	
+	static public Map<String,Object> convertMapParam(HttpServletRequest request){
+		Map<String,Object> newParam = new HashMap<String, Object>();
+		
+		Enumeration<?> enm = request.getParameterNames();
+		
+		
+		System.out.println("===============[request 파람]===============");
+		
+		while(enm.hasMoreElements()) {
+			String reKey = (String) enm.nextElement();
+			System.out.println("key:   "+ reKey);
+			
+			String val =   request.getParameter(reKey).toString();
+			if(val == null || val.length() == 0 || val.equals("")) {
+				val = null;
+			}
+			newParam.put(reKey, val);
+		}
+
+		System.out.println("[convert 후 파람]: "+ newParam.toString());
+		System.out.println("==============================");
+		
+		return newParam;
+	} 
 }

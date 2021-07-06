@@ -42,11 +42,4 @@ public class APIController {
 		return service.login(Convert.convertMapParam(user));
 	}
 
-	@CrossOrigin(origins= "http://localhost:8070")
-	@PostMapping("/admin")
-	public void adminTest(@RequestBody UserVo user) {
-		System.out.println("admin 토큰 검사 통과");
-	}
-
-
 }

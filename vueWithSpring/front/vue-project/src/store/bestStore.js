@@ -1,4 +1,4 @@
-import { bestAPIServcie } from '@/functionUtills/api-service.js'
+import { bestAPIServcie } from '@/apiUtil/bestAPI.js'
 
 const bestStore = {
   namespaced: true,

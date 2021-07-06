@@ -1,4 +1,4 @@
-import { userAPIServcie } from '@/functionUtills/api-service.js'
+import { userAPIServcie } from '@/apiUtil/userAPI.js'
 
 const userStore = {
   namespaced: true,

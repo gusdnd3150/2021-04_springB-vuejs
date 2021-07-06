@@ -1,0 +1,8 @@
+------- Begin of KMGJ3_ADM.TB_BI_CAR_WKSP-------
+
+insert into "KMGJ3_ADM"."TB_BI_CAR_WKSP" ("CAR_CD", "PROC_CD", "SEQ", "POS_X", "POS_Y", "WKSP_W", "WKSP_H", "REG_ID", "REG_DT", "UPD_ID", "UPD_DT", "TOOL_ID", "WKSP_NM", "WKSP_ID", "SUB_TOOL_ID" ) values ('HD1', 'C101', 1, -151, -129, 447, 258, 100100, TO_DATE('2021/06/24 09:56:08', 'YYYY/MM/DD HH24:MI:SS'), null, null, 'C-0005', '시트공정', '1', null);
+insert into "KMGJ3_ADM"."TB_BI_CAR_WKSP" ("CAR_CD", "PROC_CD", "SEQ", "POS_X", "POS_Y", "WKSP_W", "WKSP_H", "REG_ID", "REG_DT", "UPD_ID", "UPD_DT", "TOOL_ID", "WKSP_NM", "WKSP_ID", "SUB_TOOL_ID" ) values ('J2W', 'F305', 2, -147, -128, 415, 263, 100100, TO_DATE('2020/11/04 17:23:18', 'YYYY/MM/DD HH24:MI:SS'), 100001, TO_DATE('2021/03/11 10:52:15', 'YYYY/MM/DD HH24:MI:SS'), 'C-0005', '시트공정', '1', null);
+insert into "KMGJ3_ADM"."TB_BI_CAR_WKSP" ("CAR_CD", "PROC_CD", "SEQ", "POS_X", "POS_Y", "WKSP_W", "WKSP_H", "REG_ID", "REG_DT", "UPD_ID", "UPD_DT", "TOOL_ID", "WKSP_NM", "WKSP_ID", "SUB_TOOL_ID" ) values ('SKW', 'F305', 3, -152, -130, 414, 259, 100100, TO_DATE('2020/11/04 17:24:31', 'YYYY/MM/DD HH24:MI:SS'), 100001, TO_DATE('2021/03/11 10:52:01', 'YYYY/MM/DD HH24:MI:SS'), 'C-0005', '시트공정', '1', null);
+insert into "KMGJ3_ADM"."TB_BI_CAR_WKSP" ("CAR_CD", "PROC_CD", "SEQ", "POS_X", "POS_Y", "WKSP_W", "WKSP_H", "REG_ID", "REG_DT", "UPD_ID", "UPD_DT", "TOOL_ID", "WKSP_NM", "WKSP_ID", "SUB_TOOL_ID" ) values ('THW', 'F305', 1, -151, -129, 447, 258, 100100, TO_DATE('2020/10/15 15:36:27', 'YYYY/MM/DD HH24:MI:SS'), 100001, TO_DATE('2021/03/11 10:51:47', 'YYYY/MM/DD HH24:MI:SS'), 'C-0005', '시트공정', '1', null);
+
+------- End of KMGJ3_ADM.TB_BI_CAR_WKSP -------

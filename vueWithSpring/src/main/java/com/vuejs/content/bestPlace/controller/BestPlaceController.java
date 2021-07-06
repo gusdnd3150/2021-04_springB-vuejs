@@ -33,8 +33,8 @@ public class BestPlaceController {
 	
 	@CrossOrigin(origins= "http://localhost:8070")
     @RequestMapping(path="/api/insertBestPlace.json",method=RequestMethod.POST)
-	public int insertBestPlace(MultipartHttpServletRequest request) {
-		fileService.fileUpload(request,"bestPlace");
+	public int insertBestPlace(HttpServletRequest request) {
+		fileService.fileUpload(request,"bestPlace","image");
 		//service.mergeBestPlace(Convert.convertMapParam(plObejct))
 		return 1;
 	}

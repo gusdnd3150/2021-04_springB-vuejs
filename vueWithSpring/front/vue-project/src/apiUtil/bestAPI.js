@@ -1,4 +1,4 @@
-import { LOCAL_URL } from './config-variable.js'
+import { LOCAL_URL } from '@/jsUtil/config-variable.js'
 import axios from 'axios'
 
 const defaultSetting = {
@@ -6,7 +6,7 @@ const defaultSetting = {
   header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
   methodGet: 'get'
 }
-/* 베스트플레이스 서비스 */
+/* 베스트플레이스 */
 const bestApi = {
   getAxiosData (getUrl, paramObj) {
     return axios.post(LOCAL_URL + getUrl,
@@ -37,22 +37,5 @@ export const bestAPIServcie = {
   },
   getList (geturl, paramObj) {
     return bestApi.getAxiosData(geturl, paramObj)
-  }
-}
-
-/* 유저 서비스 */
-const userApi = {
-  login (getUrl, paramObj) {
-    return axios.post(LOCAL_URL + getUrl,
-      { params: paramObj,
-        headers: defaultSetting.header,
-        timeout: 2000
-      })
-  }
-}
-
-export const userAPIServcie = {
-  login (url, paramObj) {
-    return userApi.login(url, paramObj)
   }
 }
