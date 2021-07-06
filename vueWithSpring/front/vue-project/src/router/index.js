@@ -8,6 +8,7 @@ import best from '@/view/best.vue'
 import feed from '@/view/feed.vue'
 import story from '@/view/story.vue'
 import bestForm from '@/view/bestForm.vue'
+import joinPage from '@/view/joinPage.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       components: {default: login, navi: navibar, bottom: footer}
+    },
+    {
+      path: '/joinPage',
+      name: 'joinPage',
+      components: {default: joinPage, navi: navibar, bottom: footer}
     },
     {
       path: '/story',

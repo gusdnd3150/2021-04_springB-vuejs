@@ -39,7 +39,7 @@ const bestStore = {
   },
   actions: {
     AC_BEST_DATA: function ({ commit }, payload) {
-      bestAPIServcie.getList(payload.url, payload)
+      bestAPIServcie.getList(payload.get('url'), payload)
         .then(res => {
           console.log('액션')
           commit('MU_BEST_DATA', res.data.result)

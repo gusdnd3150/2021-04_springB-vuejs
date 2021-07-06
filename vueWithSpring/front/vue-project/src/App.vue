@@ -20,8 +20,26 @@ export default {
 
 html{  position: relative;    min-height: 100%;    margin: 0;}
 body{  min-height: 100%;}
-
 #app {  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  text-align: center;  color: #2c3e50;}
+
+/* 버튼 css */
+input[type='button']{
+  padding: 12px 25px 12px 25px;
+  border-radius: 20px;
+  margin: 8px;
+  outline: none;
+  font-size: 10px;
+  font-weight: bold;
+  border-width: 0;
+  color:blue;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  transition: all 0.2s;
+}
+input[type='button']:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
 
 .button{ width: 80px;    height: 40px;    border: 2px solid #34495e;    float: left;    text-align: center;    cursor: pointer;    position: relative;
     -webkit-box-sizing: border-box;    box-sizing: border-box;    overflow: hidden;}

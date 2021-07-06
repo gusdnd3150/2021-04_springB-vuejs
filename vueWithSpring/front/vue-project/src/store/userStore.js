@@ -34,7 +34,7 @@ const userStore = {
   },
   actions: {
     AC_USER_LOGIN: function ({ commit }, payload) {
-      userAPIServcie.login(payload.url, payload)
+      userAPIServcie.login(payload.get('url'), payload)
         .then(res => {
           if (res.data.user_id != null) {
             commit('MU_LOGIN_STATE', true)

@@ -9,8 +9,8 @@ const defaultSetting = {
 /* 베스트플레이스 */
 const bestApi = {
   getAxiosData (getUrl, paramObj) {
-    return axios.post(LOCAL_URL + getUrl,
-      { params: paramObj,
+    return axios.post(LOCAL_URL + getUrl, paramObj,
+      {
         headers: defaultSetting.header,
         timeout: 2000
       })

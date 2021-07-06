@@ -32,10 +32,10 @@ public class APIService implements UserDetailsService {
 	private final JwtTokenProvider jwtTokenProvider;
 
 	//회원가입
-	public int joinUser(UserVo user) {
+	public int joinUser(Map<String,Object> user) {
 		UserVo insertVo = new UserVo();
-		insertVo.setUser_id(user.getUser_id());
-		insertVo.setUser_pwd(encoder.encode(user.getUser_pwd()));
+		insertVo.setUser_id((String) user.get("user_id"));
+		insertVo.setUser_pwd(encoder.encode((String) user.get("user_pwd")));
 		insertVo.setUser_auth("ROLE_USER");
 		return repository.joinUser(insertVo);
 	}

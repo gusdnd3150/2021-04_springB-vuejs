@@ -15,12 +15,16 @@
             <div class="login-content">
              <form name="loginForm" action="/login" method="post">
                   <div class="input">
-                    <input type="text" name="user_id" id="user_id" v-model="loginObj.user_id" placeholder="아이디">
+                    <input type="text" data-y="dd" name="user_id" id="user_id" v-model="loginObj.user_id" placeholder="아이디">
                   </div>
                    <div class="input">
                     <input type="password" name="user_pwd" id="user_pwd" v-model="loginObj.user_pwd" placeholder="비밀번호">
                   </div>
-                  <button @click="userLogin">로그인</button>
+
+                  <div>
+                  <input @click="joinPage" type="button"  value="회원가입">
+                  <input @click="userLogin" type="button" value="로그인">
+                  </div>
              </form>
             </div>
          </div>
@@ -30,6 +34,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { commonUtil } from '@/jsUtil/commonUtil.js'
 
 const userStore = 'userStore'
 
@@ -50,14 +55,17 @@ export default {
   },
   methods: {
     ...mapActions(userStore, {login: 'AC_USER_LOGIN'}),
-
+    joinPage: function () {
+      this.$router.push({name: 'joinPage'})
+    },
     userLogin: function (event) {
       event.preventDefault()
       if (this.loginObj.user_id === '' || this.loginObj.user_pwd === '') {
         alert('아이디 패스워드는 필수입니다.')
         return
       }
-      this.login(this.loginObj)
+      let form = commonUtil.ConvertForm(this.loginObj)
+      this.login(form)
     }
   }
 }

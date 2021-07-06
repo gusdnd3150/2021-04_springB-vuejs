@@ -35,13 +35,14 @@ public class BestPlaceController {
     @RequestMapping(path="/api/insertBestPlace.json",method=RequestMethod.POST)
 	public int insertBestPlace(HttpServletRequest request) {
 		fileService.fileUpload(request,"bestPlace","image");
+		Convert.convertMapParam(request);
 		//service.mergeBestPlace(Convert.convertMapParam(plObejct))
 		return 1;
 	}
 	
 	@CrossOrigin(origins= "http://localhost:8070")
 	@RequestMapping("/api/selectBestPlace.json")
-	public Map<String,Object> selectBestPlace(@RequestBody Map<String,Object> paramInfo){
-		return service.selectBestPlace(Convert.convertMapParam(paramInfo)); 
+	public Map<String,Object> selectBestPlace(HttpServletRequest request){
+		return service.selectBestPlace(Convert.convertMapParam(request)); 
 	}
 }

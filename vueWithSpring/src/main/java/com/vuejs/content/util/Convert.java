@@ -58,7 +58,7 @@ public class Convert {
 			System.out.println("key:   "+ reKey);
 			
 			String val =   request.getParameter(reKey).toString();
-			if(val == null || val.length() == 0 || val.equals("")) {
+			if(val == null || val.length() == 0 || val.equals("") || val.equals("undefined")) {
 				val = null;
 			}
 			newParam.put(reKey, val);

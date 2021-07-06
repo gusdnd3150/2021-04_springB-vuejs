@@ -10,8 +10,8 @@ const defaultSetting = {
 /* 유저 서비스 */
 const userApi = {
   login (getUrl, paramObj) {
-    return axios.post(LOCAL_URL + getUrl,
-      { params: paramObj,
+    return axios.post(LOCAL_URL + getUrl, paramObj,
+      {
         headers: defaultSetting.header,
         timeout: 2000
       })
