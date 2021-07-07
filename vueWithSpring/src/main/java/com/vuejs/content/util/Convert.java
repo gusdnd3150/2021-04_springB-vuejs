@@ -13,38 +13,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Convert {
 	
-	static public Map<String,Object> convertMapParam(Map<String,Object> paramMap){
-		Map<String,Object> newParam = new HashMap<String, Object>();
-		
-		Map<String,Object> params = (Map<String, Object>) paramMap.get("params");
-		
-		Set<String> keySet = params.keySet();
-		Iterator<String> it = keySet.iterator();
-		
-
-		System.out.println("===============[paramMap 파람]===============");
-		
-		while(it.hasNext()) {
-			String MapKey = it.next();
-			System.out.println("key:   "+ MapKey);
-			
-			String val =   params.get(MapKey).toString();
-			if(val == null || val.length() == 0 || val.equals("")) {
-				val = null;
-			}
-			newParam.put(MapKey, val);
-		}
-		/*
-		if(!newParam.containsKey("cntPerPage")){  //페이지당 보여줄 개수 
-			newParam.put("cntPerPage", 7);
-		}*/
-		System.out.println("[convert 후 파람]: "+ newParam.toString());
-		System.out.println("==============================");
-		
-		return newParam;
-	} 
-	
-	
 	static public Map<String,Object> convertMapParam(HttpServletRequest request){
 		Map<String,Object> newParam = new HashMap<String, Object>();
 		
@@ -68,5 +36,34 @@ public class Convert {
 		System.out.println("==============================");
 		
 		return newParam;
+	}
+	
+	/*
+	static public Map<String,Object> convertMapParam(Map<String,Object> paramMap){
+		Map<String,Object> newParam = new HashMap<String, Object>();
+		
+		Map<String,Object> params = (Map<String, Object>) paramMap.get("params");
+		
+		Set<String> keySet = params.keySet();
+		Iterator<String> it = keySet.iterator();
+		
+
+		System.out.println("===============[paramMap 파람]===============");
+		
+		while(it.hasNext()) {
+			String MapKey = it.next();
+			System.out.println("key:   "+ MapKey);
+			
+			String val =   params.get(MapKey).toString();
+			if(val == null || val.length() == 0 || val.equals("")) {
+				val = null;
+			}
+			newParam.put(MapKey, val);
+		}
+		System.out.println("[convert 후 파람]: "+ newParam.toString());
+		System.out.println("==============================");
+		
+		return newParam;
 	} 
+	*/
 }

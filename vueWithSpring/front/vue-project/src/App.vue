@@ -40,6 +40,19 @@ input[type='button']:hover{
   opacity: 0.7;
   cursor: pointer;
 }
+/* 일반 텍스트 인풋 */
+.form-input{
+    border-radius: 5px;
+    border-color: grey;
+    outline: none;
+    border-width: 1px;
+    height: 25px;
+    margin: 2px 5px 2px 5px;
+    width: 80%;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 13px;
+}
 
 .button{ width: 80px;    height: 40px;    border: 2px solid #34495e;    float: left;    text-align: center;    cursor: pointer;    position: relative;
     -webkit-box-sizing: border-box;    box-sizing: border-box;    overflow: hidden;}

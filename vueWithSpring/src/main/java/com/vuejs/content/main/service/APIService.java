@@ -33,11 +33,9 @@ public class APIService implements UserDetailsService {
 
 	//회원가입
 	public int joinUser(Map<String,Object> user) {
-		UserVo insertVo = new UserVo();
-		insertVo.setUser_id((String) user.get("user_id"));
-		insertVo.setUser_pwd(encoder.encode((String) user.get("user_pwd")));
-		insertVo.setUser_auth("ROLE_USER");
-		return repository.joinUser(insertVo);
+		user.put("user_pwd", encoder.encode((String) user.get("user_pwd")));
+		user.put("auth", "ROLE_USER");
+		return repository.joinUser(user);
 	}
 	
 	
@@ -88,5 +86,11 @@ public class APIService implements UserDetailsService {
 		return loginUser;
 	}
 
+	//아이디 중복체크
+	public String dupCheck(Map<String,Object> param) {
+		boolean result = repository.dupCheck(param);
+		if(result) {return "false";}
+		return "true";
+	}
 
 }

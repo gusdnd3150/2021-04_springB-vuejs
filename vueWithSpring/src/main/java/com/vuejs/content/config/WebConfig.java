@@ -13,7 +13,8 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	@Value("${file.savePath}")
 	String uploadPath;
-	
+
+	//이미지 참조 경로 설정
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/"+path+"/**")

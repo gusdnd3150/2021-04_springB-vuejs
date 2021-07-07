@@ -73,7 +73,13 @@ export default {
   name: 'best',
   data: function () {
     return {
-      paramObj: {region: '', content: '', cost: '', selectPage: this.selectPage, total: this.total, url: 'api/selectBestPlace.json'}
+      paramObj: {
+        region: '',
+        content: '',
+        cost: '',
+        selectPage: this.selectPage,
+        total: this.total
+      }
     }
   },
   components: {

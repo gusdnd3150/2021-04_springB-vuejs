@@ -1,5 +1,7 @@
 package com.vuejs.content.main.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,14 +19,13 @@ public class APIRepository {
 		return sqlsession.selectOne("main.selectUserById",username);
 	}
 	
-	public int joinUser(UserVo user) {
-		int result =0;
-		try {
-			result =  sqlsession.insert("main.joinUser",user);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
+	public int joinUser(Map<String,Object> user) {
+		return sqlsession.insert("main.joinUser",user);
+	}
+	
+	public boolean dupCheck(Map<String,Object> param) {
+		int result = sqlsession.selectOne("main.dupCheck",param);
+		return result != 0;
 	}
 	
 }

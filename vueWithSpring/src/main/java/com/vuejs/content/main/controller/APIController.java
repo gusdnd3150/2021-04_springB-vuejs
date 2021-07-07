@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vuejs.content.main.service.APIService;
@@ -42,6 +43,12 @@ public class APIController {
 	@PostMapping("/api/login")
 	public Map<String,Object> login(HttpServletRequest request) {
 		return service.login(Convert.convertMapParam(request));
+	}
+	
+	@CrossOrigin(origins= "http://localhost:8070")
+	@RequestMapping("/api/dupCheck")
+	public String dupCheck(HttpServletRequest request){
+		return service.dupCheck(Convert.convertMapParam(request)); 
 	}
 
 }

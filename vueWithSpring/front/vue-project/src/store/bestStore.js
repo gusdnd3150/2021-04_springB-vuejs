@@ -1,4 +1,10 @@
-import { bestAPIServcie } from '@/apiUtil/bestAPI.js'
+import { webAPI } from '@/jsUtil/webAPI.js'
+
+/* api url  */
+const url = {
+  BEST: 'api/selectBestPlace.json',
+  INSERT: 'api/insertBestPlace.json'
+}
 
 const bestStore = {
   namespaced: true,
@@ -10,7 +16,6 @@ const bestStore = {
   },
   getters: {
     GET_BEST_DATA: function (state) {
-      console.log('개터')
       return state.bestData
     },
     GET_SELECT_PAGE: function (state) {
@@ -39,16 +44,15 @@ const bestStore = {
   },
   actions: {
     AC_BEST_DATA: function ({ commit }, payload) {
-      bestAPIServcie.getList(payload.get('url'), payload)
+      webAPI.post(url.BEST, payload)
         .then(res => {
-          console.log('액션')
           commit('MU_BEST_DATA', res.data.result)
           commit('MU_SELECT_PAGE', res.data.selectPage)
           commit('MU_TOTAL', res.data.total)
         })
     },
     AC_INSERT_BEST: function ({ commit }, payload) {
-      bestAPIServcie.insert(payload.get('url'), payload)
+      webAPI.filePost(url.INSERT, payload)
         .then(res => {
           commit('MU_IN_RESULT', res.data)
         })

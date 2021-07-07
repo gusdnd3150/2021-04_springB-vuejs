@@ -58,8 +58,6 @@ export default {
     insertBestPlace: function () {
       let formParam = document.getElementById('form1')
       const param = new FormData(formParam)
-
-      param.append('url', 'api/insertBestPlace.json')
       param.append('user_id', this.userInfo.user_id)
 
       for (let key of param.entries()) {

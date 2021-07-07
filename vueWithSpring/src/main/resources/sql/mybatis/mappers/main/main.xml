@@ -13,8 +13,14 @@
 		where USER_ID = #{username}
 	</select>
 	
-	<insert id="joinUser" parameterType="user">
+	<insert id="joinUser" parameterType="map">
 		insert into TB_USER (USER_ID,USER_PWD,USER_AUTH)
 		values(#{user_id},#{user_pwd},'USER')
 	</insert>
+	
+	<select id="dupCheck" parameterType="map" resultType="int">
+	   select COUNT(*)
+	   from TB_USER
+	   where user_id =  #{user_id}
+	</select>
 </mapper>

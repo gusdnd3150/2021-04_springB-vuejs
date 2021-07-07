@@ -44,8 +44,7 @@ export default {
     return {
       loginObj: {
         user_id: '',
-        user_pwd: '',
-        url: 'api/login'
+        user_pwd: ''
       },
       checklogin: this.checkLogin
     }
