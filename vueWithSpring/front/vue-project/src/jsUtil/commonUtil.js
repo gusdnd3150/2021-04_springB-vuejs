@@ -18,10 +18,11 @@ export const commonUtil = {
     inputs.forEach(function (tag, index, array) {
       form.append(tag.name, tag.value)
     })
+    /*
     for (var pair of form.entries()) {
       console.log(pair)
       console.log(form.get(pair))
-    }
+    }    */
     return form
   }
 }

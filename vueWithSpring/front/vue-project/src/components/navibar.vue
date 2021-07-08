@@ -14,7 +14,10 @@
            </ul>
        </div>
        <div>
-           <router-link v-if="!this.loginCheck" to="/login">Login</router-link>
+           <router-link v-if="!this.loginCheck" to="/login">
+            <f-icon :icon="['fas','sign-in-alt']" size="lg" :style="{ color: '#447eff' }"/>
+            로그인
+           </router-link>
            <p v-if="this.loginCheck" @click="logOut">LogOut</p>
        </div>
    </div>

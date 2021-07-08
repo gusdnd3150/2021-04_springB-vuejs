@@ -88,7 +88,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(userStore, {getduplicate: 'GET_DUP_CHECK'})
+    ...mapGetters(userStore, {getduplicate: 'GET_DUP_CHECK'}),
+    ...mapGetters(userStore, {getjoinState: 'GET_JOIN_STATE'}),
+    watchJoin () { return this.getjoinState }
   },
   methods: {
     ...mapActions(userStore, {fnJoinUser: 'AC_JOIN_USER'}),
@@ -108,6 +110,15 @@ export default {
         return
       }
       this.fnDupCheck(commonUtil.ConvertForm(this.joinObj))
+    },
+    getDup () { return this.getduplicate }
+  },
+  watch: {
+    watchJoin (newVal, oldVal) {
+      if (newVal === true) {
+        alert('회원가입이 완료 되었습니다.')
+        this.$router.push({name: 'main'})
+      }
     }
   }
 }

@@ -7,64 +7,12 @@
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }
 </script>
 
 <style>
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-*{
-  font-family: 'Noto Sans KR';
-}
-
-html{  position: relative;    min-height: 100%;    margin: 0;}
-body{  min-height: 100%;}
-#app {  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  text-align: center;  color: #2c3e50;}
-
-/* 버튼 css */
-input[type='button']{
-  padding: 12px 25px 12px 25px;
-  border-radius: 20px;
-  margin: 8px;
-  outline: none;
-  font-size: 10px;
-  font-weight: bold;
-  border-width: 0;
-  color:blue;
-  background-color: white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  transition: all 0.2s;
-}
-input[type='button']:hover{
-  opacity: 0.7;
-  cursor: pointer;
-}
-/* 일반 텍스트 인풋 */
-.form-input{
-    border-radius: 5px;
-    border-color: grey;
-    outline: none;
-    border-width: 1px;
-    height: 25px;
-    margin: 2px 5px 2px 5px;
-    width: 80%;
-    font-size: 11px;
-    font-weight: bold;
-    padding-left: 13px;
-}
-
-.button{ width: 80px;    height: 40px;    border: 2px solid #34495e;    float: left;    text-align: center;    cursor: pointer;    position: relative;
-    -webkit-box-sizing: border-box;    box-sizing: border-box;    overflow: hidden;}
-.button p{    font-size: 15px;    color: #34495e;    text-decoration: none;    line-height: 50px;    -webkit-transition: all .5s ease;
-transition: all .5s ease;    z-index: 2;    position: relative;    top: -7px;    margin: 0;}
-
-/*버튼 커스텀*/
-.cust_button{ padding: 7px 20px 8px 20px;    background-color: #007bff;    border: none;    border-radius: 4px;    color: white;    font-weight: bold;    font-size: 15px; transition: all 0.2s;}
-.cust_button:hover{cursor: pointer; opacity: 0.8;}
-
-.eff{  width:140px;  height:50px;  left:-140px;  background:#34495e;  position:absolute;  transition:all .5s ease;  z-index:1;}
-.button:hover .eff{  left:0;}
-.button:hover p{  color:#fff;}
-.content-area{  /*border:solid gray 1px;*/  padding-top: 20px;  padding-bottom:20px;  max-width: 900px;  text-align: center;  margin:0 auto;  position: relative;}
+@import './css/main.css';
 </style>

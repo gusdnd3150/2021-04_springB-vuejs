@@ -55,7 +55,6 @@
         :total="this.total"
         @propsFromPaging="propsFromPaging" />
       </div>
-
     </div>
   </div>
 </template>

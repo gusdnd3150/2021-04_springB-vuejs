@@ -45,12 +45,12 @@ export default {
       loginObj: {
         user_id: '',
         user_pwd: ''
-      },
-      checklogin: this.checkLogin
+      }
     }
   },
   computed: {
-    ...mapGetters(userStore, {checkLogin: 'GET_LOGIN_STATE'})
+    ...mapGetters(userStore, {checkLogin: 'GET_LOGIN_STATE'}),
+    watchLoginState () { return this.checkLogin }
   },
   methods: {
     ...mapActions(userStore, {login: 'AC_USER_LOGIN'}),
@@ -65,6 +65,14 @@ export default {
       }
       let form = commonUtil.ConvertForm(this.loginObj)
       this.login(form)
+    }
+  },
+  watch: {
+    watchLoginState (newVal, oldVal) {
+      if (newVal === 'true') {
+        alert('메인페이지로 이동합니다')
+        this.$router.push({name: 'main'})
+      }
     }
   }
 }
