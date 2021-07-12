@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SingleToneBean {
 	
-	private List<Map<String,Object>> data;
+	static private List<Map<String,Object>> data;
 	
 	@PostConstruct
 	public void init() {

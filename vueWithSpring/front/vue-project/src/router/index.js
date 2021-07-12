@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import navibar from '@/components/navibar.vue'
+/* 유저 페이지 */
 import main from '@/view/main.vue'
 import login from '@/view/login.vue'
 import footer from '@/view/footer.vue'
@@ -10,6 +11,9 @@ import story from '@/view/story.vue'
 /* import bestForm from '@/view/bestForm.vue' */
 import bestFormTest from '@/view/bestFormTest.vue'
 import joinPage from '@/view/joinPage.vue'
+
+/* 관리자 페이지 */
+import modBoard from '@/view/admin/modBoard.vue'
 
 Vue.use(Router)
 
@@ -50,6 +54,12 @@ export default new Router({
       path: '/bestForm',
       name: 'bestForm',
       components: {default: bestFormTest, navi: navibar, bottom: footer}
+    },
+    /* 관리자 페이지 */
+    {
+      path: '/modBoard',
+      name: 'modBoard',
+      components: {default: modBoard, navi: navibar, bottom: footer}
     }
   ]
 })

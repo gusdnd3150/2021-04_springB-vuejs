@@ -8,15 +8,27 @@ import { store } from './store/store.js'
 import VueGlide from 'vue-glide-js'
 import 'vue-glide-js/dist/vue-glide.css'
 import axios from 'axios'
-
-/* 폰트를 전역에서 사용할 수 있도록  */
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'tui-grid/dist/tui-grid.css'
+import 'tui-date-picker/dist/tui-date-picker.css'
+import 'tui-time-picker/dist/tui-time-picker.css'
+import 'tui-pagination/dist/tui-pagination.css'
+import { Grid } from '@toast-ui/vue-grid'
+/* Vue.component로 등록한 컴포넌트를 전역에서 사용할 수 있도록 main.js에 import */
 import '@/css/fontawesome.js'
-
-/* 전역 컴포넌트로서 사용 */
+/* 뷰설명서 노출 */
 Vue.config.productionTip = false
-Vue.use(VueGlide)
+Vue.component('grid', Grid)
 
-/* 전역 함수 사용 */
+/* 전역 js로서 사용 */
+Vue.use(VueGlide)
+Vue.use(BootstrapVue)
+
+/* 전역 함수 사용
+  this.$http.get 등으로 공통함수 사용가능
+ */
 Vue.prototype.$http = axios
 
 /* eslint-disable no-new */

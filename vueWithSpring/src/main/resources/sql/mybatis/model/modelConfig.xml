@@ -12,6 +12,7 @@
 	<!-- mapper .xmp 파일 정의 - 실제 SQL Query 가 선언되어 있는 부분 -->
 	    <mappers>
 		<mapper resource="sql/mybatis/mappers/main/main.xml"/>
+		<mapper resource="sql/mybatis/mappers/admin/adminBoard.xml"/>
 		<mapper resource="sql/mybatis/mappers/file/FileDao.xml"/>
 		<mapper resource="sql/mybatis/mappers/bestPlace/bestPlace.xml"/>
 		</mappers>        

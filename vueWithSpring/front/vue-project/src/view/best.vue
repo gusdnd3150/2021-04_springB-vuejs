@@ -61,7 +61,7 @@
 
 <script>
 import placeCard2 from '@/components/place-card2.vue'
-import paging from '@/components/paging3.vue'
+import paging from '@/components/paging.vue'
 import { mapGetters, mapActions } from 'vuex'
 import { commonUtil } from '@/jsUtil/commonUtil.js'
 
@@ -106,7 +106,7 @@ export default {
       this.fnBestData(form)
     }
   },
-  created: function () {
+  mounted: function () {
     this.getListData()
   }
 

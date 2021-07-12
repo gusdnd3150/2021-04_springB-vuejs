@@ -14,11 +14,10 @@
            </ul>
        </div>
        <div>
-           <router-link v-if="!this.loginCheck" to="/login">
-            <f-icon :icon="['fas','sign-in-alt']" size="lg" :style="{ color: '#447eff' }"/>
-            로그인
-           </router-link>
-           <p v-if="this.loginCheck" @click="logOut">LogOut</p>
+           <router-link v-if="this.userInfo.user_auth === 'USER'" to="/modBoard">공지수정</router-link>
+
+           <router-link v-if="!this.loginCheck" to="/login"><f-icon :icon="['fas','sign-in-alt']" size="lg" :style="{ color: '#447eff' }"/>로그인</router-link>
+           <p class="logout" v-if="this.loginCheck" @click="logOut"><f-icon :icon="['fas','sign-out-alt']" size="lg" :style="{ color: '#447eff' }"/>LogOut</p>
        </div>
    </div>
 </template>
@@ -35,7 +34,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(userStroe, {loginCheck: 'GET_LOGIN_STATE'})
+    ...mapGetters(userStroe, {loginCheck: 'GET_LOGIN_STATE'}),
+    ...mapGetters(userStroe, {userInfo: 'GET_USER_INFO'})
   },
   methods: {
     ...mapActions(userStroe, {setLogin: 'AC_LOGOUT'}),
@@ -132,5 +132,7 @@ a{
   }
 
 }
-
+.logout:hover{
+    cursor: pointer;
+}
 </style>
