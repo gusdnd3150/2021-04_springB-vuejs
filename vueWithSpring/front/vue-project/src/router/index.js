@@ -5,7 +5,6 @@ import Router from 'vue-router'
 import navibar from '@/components/navibar.vue'
 import main from '@/view/main.vue'
 import login from '@/view/login.vue'
-import footer from '@/view/footer.vue'
 import best from '@/view/best.vue'
 import feed from '@/view/feed.vue'
 import story from '@/view/story.vue'
@@ -24,43 +23,43 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      components: {default: main, navi: navibar, bottom: footer}
+      components: {default: main, navi: navibar}
     },
     {
       path: '/login',
       name: 'login',
-      components: {default: login, navi: navibar, bottom: footer}
+      components: {default: login, navi: navibar}
     },
     {
       path: '/joinPage',
       name: 'joinPage',
-      components: {default: joinPage, navi: navibar, bottom: footer}
+      components: {default: joinPage, navi: navibar}
     },
     {
       path: '/story',
       name: 'story',
-      components: {default: story, navi: navibar, bottom: footer}
+      components: {default: story, navi: navibar}
     },
     {
       path: '/feed',
       name: 'feed',
-      components: {default: feed, navi: navibar, bottom: footer}
+      components: {default: feed, navi: navibar}
     },
     {
       path: '/best',
       name: 'best',
-      components: {default: best, navi: navibar, bottom: footer}
+      components: {default: best, navi: navibar}
     },
     {
       path: '/bestForm',
       name: 'bestForm',
-      components: {default: bestFormTest, navi: navibar, bottom: footer}
+      components: {default: bestFormTest, navi: navibar}
     },
     /* 관리자 페이지 */
     {
       path: '/modBoard',
       name: 'modBoard',
-      components: {default: modBoard, navi: navibar, bottom: footer}
+      components: {default: modBoard, navi: navibar}
     }
   ]
 })

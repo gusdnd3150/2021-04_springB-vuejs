@@ -1,34 +1,44 @@
 <template>
-  <div class="content">
-        <div class="input-style">
-                <span><f-icon :icon="['fas', 'search']" /></span>
-                <input type="text" class="input-text" placeholder="전체 검색" name="searchContent">
-        </div>
+  <div>
+    <topBar />
+    <div class="row" style="height:100%">
+      <div class="col-lg-2" style="padding-right:0">    <!-- 사이드바 -->
+        <sideBar />
+      </div>
 
-        <div class="row">
-            <div class="col-sm-8">
-                <tableToast
-                :selectData="this.getStoreBoard.result"
-                :headerData="this.headers"
-                :selectPage="this.getStoreBoard.selectPage"
-                :total="this.getStoreBoard.total"
-                :cntPerPage="this.getStoreBoard.cntPerPage"
-                @onClickPage="onClickPage"
-                @onClickCell="onClickCell"
-                />
-            </div>
-            <div class="col-sm-4 col-lg-4">
-                <div class="right-area">
-                    weqwe
-                </div>
+      <div class="col-lg-10 content">   <!-- 컨텐츠 -->
+
+        <div class="container">
+
+          <h6>공지사항 관리</h6>
+          <div class="input-style">
+                  <span><f-icon :icon="['fas', 'search']" /></span>
+                  <input type="text" class="input-text" placeholder="전체 검색" name="searchContent">
+          </div>
+
+            <div class="input-style">
+                  <tableToast
+                  :selectData="this.getStoreBoard.result"
+                  :headerData="this.headers"
+                  :selectPage="this.getStoreBoard.selectPage"
+                  :total="this.getStoreBoard.total"
+                  :cntPerPage="this.getStoreBoard.cntPerPage"
+                  @onClickPage="onClickPage"
+                  @onClickCell="onClickCell"
+                  />
             </div>
         </div>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
 import tableToast from '@/components/tableToast.vue'
 import { mapGetters, mapActions } from 'vuex'
+import sideBar from '@/components/admin_sideBar.vue'
+import topBar from '@/components/admin_topNavi.vue'
 
 const adminStore = 'adminStore'
 
@@ -64,7 +74,9 @@ export default {
     }
   },
   components: {
-    tableToast
+    tableToast,
+    sideBar,
+    topBar
   },
   mounted () {
     this.getBoard()
@@ -73,13 +85,16 @@ export default {
 </script>
 <style scoped>
 
+h6{
+  text-align: left;
+}
 .input-style{
     position: relative;
     text-align: left;
     background-color: white;
     margin-bottom: 10px;
     padding: 4px 0px 4px 16px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .input-style .input-text {
@@ -119,7 +134,7 @@ export default {
 
 .content{
     padding: 10px;
-    background-color: #e9e9e9;
+    background-color: #f4f5f8;
     min-height: 80%;
 }
 </style>

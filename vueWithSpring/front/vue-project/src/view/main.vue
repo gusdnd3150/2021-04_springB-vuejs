@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="height:100%">
   <div class="banner-area">
       <div class="banner-left">
           <h2>MEET US</h2>

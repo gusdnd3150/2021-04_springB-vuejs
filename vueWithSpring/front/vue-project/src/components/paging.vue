@@ -102,8 +102,11 @@ export default {
 <style scoped>
 
 .pagination{ list-style: none; display: flex; flex-wrap: wrap; justify-content:center;}
-.pagination li{ font-size: 15px; margin:0 4px 0 2px ; padding: 5px 10px 5px 10px; transition: all 0.4s; }
-.pagination li:hover{cursor: pointer; opacity: 0.8; border-bottom: solid; border-width: 1px; border-radius: 5px;}
+.pagination li{ font-size: 6px; margin:0 4px 0 2px ; padding: 5px 10px 5px 10px; transition: all 0.4s; }
+.pagination li:hover{cursor: pointer;}
+.page-item{
+  padding: 0 !important;
+}
 /* .active{opacity: 0.9; color:white; background-color: navy; border-radius: 5px;} */
 .next-page, .prev-page{font-size: 7px !important; font-weight: bold;padding-top:8px !important; box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;}
 
