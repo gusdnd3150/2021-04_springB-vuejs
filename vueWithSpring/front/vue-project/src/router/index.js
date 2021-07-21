@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import navibar from '@/components/navibar.vue'
+
 /* 유저 페이지 */
+import navibar from '@/components/navibar.vue'
 import main from '@/view/main.vue'
 import login from '@/view/login.vue'
 import footer from '@/view/footer.vue'
