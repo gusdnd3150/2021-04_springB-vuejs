@@ -27,5 +27,11 @@ public class AdminBoardController {
 	public Map<String,Object> selectBoardList(HttpServletRequest request){
 		return service.selectBoardList(Convert.convertMapParam(request));
 	}
+	
+	@CrossOrigin(origins= "http://localhost:8070")
+	@PostMapping("/api/deleteBoard.json")
+	public int deleteBoard(HttpServletRequest request) {
+		return service.deleteBoard(Convert.convertMapParam(request));
+	}
 
 }

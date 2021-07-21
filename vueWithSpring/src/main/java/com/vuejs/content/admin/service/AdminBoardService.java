@@ -16,5 +16,9 @@ public class AdminBoardService {
 	public Map<String,Object> selectBoardList(Map<String,Object> param){
 		return dao.selectBoardList(param);
 	}
+	
+	public int deleteBoard(Map<String,Object> param) {
+		return dao.deleteBoard(param);
+	}
 
 }

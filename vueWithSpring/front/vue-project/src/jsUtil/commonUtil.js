@@ -24,5 +24,8 @@ export const commonUtil = {
       console.log(form.get(pair))
     }    */
     return form
+  },
+  fnTest () {
+    alert('공통함수')
   }
 }

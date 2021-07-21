@@ -65,7 +65,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { commonUtil } from '@/jsUtil/commonUtil.js'
 import { validation } from '@/jsUtil/validation.js'
 
 const userStore = 'userStore'
@@ -102,14 +101,14 @@ export default {
         alert('아이디 중복체크를 다시 진행해 주세요')
         return
       }
-      this.fnJoinUser(commonUtil.ConvertForm(this.joinObj))
+      this.fnJoinUser(this.$commonJs.ConvertForm(this.joinObj))
     },
     fnCheck () {
       if (this.joinObj.user_id.trim() === '') {
         alert('아이디를 입력해 주세요')
         return
       }
-      this.fnDupCheck(commonUtil.ConvertForm(this.joinObj))
+      this.fnDupCheck(this.$commonJs.ConvertForm(this.joinObj))
     },
     getDup () { return this.getduplicate }
   },
