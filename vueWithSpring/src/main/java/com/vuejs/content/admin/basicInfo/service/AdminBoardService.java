@@ -1,11 +1,11 @@
-package com.vuejs.content.admin.service;
+package com.vuejs.content.admin.basicInfo.service;
 
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vuejs.content.admin.dao.AdminBoardDao;
+import com.vuejs.content.admin.basicInfo.dao.AdminBoardDao;
 
 @Service
 public class AdminBoardService {

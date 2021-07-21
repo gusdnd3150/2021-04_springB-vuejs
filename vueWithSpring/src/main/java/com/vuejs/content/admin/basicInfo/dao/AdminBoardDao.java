@@ -1,4 +1,4 @@
-package com.vuejs.content.admin.dao;
+package com.vuejs.content.admin.basicInfo.dao;
 
 import java.util.Map;
 

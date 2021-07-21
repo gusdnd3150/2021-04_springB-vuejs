@@ -1,6 +1,7 @@
-package com.vuejs.content.admin.controller;
+package com.vuejs.content.admin.basicInfo.controller;
 
 import java.util.HashMap;
+
 
 import java.util.Map;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vuejs.content.admin.service.AdminBoardService;
+import com.vuejs.content.admin.basicInfo.service.AdminBoardService;
 import com.vuejs.content.util.Convert;
 
 @RestController
