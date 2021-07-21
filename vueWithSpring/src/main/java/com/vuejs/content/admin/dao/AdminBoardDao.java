@@ -20,4 +20,8 @@ public class AdminBoardDao {
 		System.out.println(pageData.getData());
 		return  pageData.getData();
 	}
+	
+	public int deleteBoard(Map<String,Object> param) {
+		return session.delete("adminBoard.deleteBoard",param);
+	}
 }

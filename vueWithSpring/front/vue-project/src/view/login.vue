@@ -34,7 +34,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { commonUtil } from '@/jsUtil/commonUtil.js'
 
 const userStore = 'userStore'
 
@@ -63,7 +62,7 @@ export default {
         alert('아이디 패스워드는 필수입니다.')
         return
       }
-      let form = commonUtil.ConvertForm(this.loginObj)
+      let form = this.$commonJs.ConvertForm(this.loginObj)
       this.login(form)
     }
   },

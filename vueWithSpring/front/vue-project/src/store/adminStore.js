@@ -1,9 +1,10 @@
 import { webAPI } from '@/jsUtil/webAPI.js'
 
 /* api url  */
-const url = {
-  adminBoard: 'api/selectBoardList.json'
-}
+
+const selectBoard = 'api/selectBoardList.json'
+const deleteBoard = 'api/deleteBoard.json'
+const updateBoard = 'api/updateBoard.json'
 
 const adminStore = {
   namespaced: true,
@@ -24,11 +25,23 @@ const adminStore = {
     }
   },
   actions: {
-    AC_SELECT_BOARD: function ({ commit }, payload) {
-      webAPI.post(url.adminBoard, payload)
+    AC_SELECT_BOARD ({ commit }, payload) {
+      webAPI.post(selectBoard, payload)
         .then(res => {
           console.log(res.data)
           commit('MU_SET_BOARD', res.data)
+        })
+    },
+    AC_DELETE_BOARD ({commit}, payload) {
+      webAPI.post(deleteBoard, payload)
+        .then(res => {
+
+        })
+    },
+    AC_UPDATE_BOARD ({commit}, payload) {
+      webAPI.post(updateBoard, payload)
+        .then(res => {
+
         })
     }
   }

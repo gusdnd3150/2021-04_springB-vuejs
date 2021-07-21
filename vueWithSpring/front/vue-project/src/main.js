@@ -16,19 +16,18 @@ import 'tui-date-picker/dist/tui-date-picker.css'
 import 'tui-time-picker/dist/tui-time-picker.css'
 import 'tui-pagination/dist/tui-pagination.css'
 import { Grid } from '@toast-ui/vue-grid'
+import { commonUtil } from '@/jsUtil/commonUtil.js'
 /* Vue.component로 등록한 컴포넌트를 전역에서 사용할 수 있도록 main.js에 import */
 import '@/css/fontawesome.js'
 /* 뷰설명서 노출 */
 Vue.config.productionTip = false
 Vue.component('grid', Grid)
 
-/* 전역 js로서 사용 */
+/* 전역 사용 */
 Vue.use(VueGlide)
 Vue.use(BootstrapVue)
 
-/* 전역 함수 사용
-  this.$http.get 등으로 공통함수 사용가능
- */
+Vue.prototype.$commonJs = commonUtil
 Vue.prototype.$http = axios
 
 /* eslint-disable no-new */

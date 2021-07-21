@@ -63,7 +63,6 @@
 import placeCard2 from '@/components/place-card2.vue'
 import paging from '@/components/paging.vue'
 import { mapGetters, mapActions } from 'vuex'
-import { commonUtil } from '@/jsUtil/commonUtil.js'
 
 const bestStore = 'bestStore'
 const userStore = 'userStore'
@@ -102,7 +101,7 @@ export default {
       this.getListData()
     },
     getListData () {
-      let form = commonUtil.ConvertForm(this.paramObj)
+      let form = this.$commonJs.ConvertForm(this.paramObj)
       this.fnBestData(form)
     }
   },
