@@ -2,8 +2,8 @@
   <div>
       <div class="top-navi">
           <div class=""><span>기준정보</span></div>
-          <div>현황조회</div>
-          <div>모니터링</div>
+          <div>시스템</div>
+          <div></div>
       </div>
   </div>
 </template>
@@ -21,9 +21,8 @@ export default {
 
 <style>
 .top-navi{
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
+    justify-content: flex-end;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -37,7 +36,7 @@ export default {
     display: inline;
     -webkit-transition: all 0.1s;
     transition: all 0.1s;
-    border-right: solid 1px;
+    border-left: solid 1px;
     border-color: #4b6fcf;
 }
 
