@@ -11,6 +11,10 @@
 		WHERE 1=1
 		<if test="region != null and region != ''">
 		  AND A.BOARD_CONTENT LIKE CONCAT('%',#{boardContent},'%')
+	
+		</if>
+		<if test="searchContent != null and searchContent != ''">
+		  AND A.BOARD_CONTENT LIKE CONCAT('%',#{searchContent},'%')
 		</if>
 		
 	</sql>

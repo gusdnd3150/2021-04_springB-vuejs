@@ -13,16 +13,17 @@
           <h6>공지사항 관리</h6>
           <div class="input-style">
                   <span><f-icon :icon="['fas', 'search']" /></span>
-                  <input type="text" class="input-text" placeholder="전체 검색" name="searchContent">
+                  <input type="text" class="input-text" placeholder="전체 검색" name="searchContent" v-model="searchContent">
+                  <button @click="searchPaging">검색 테스트</button>
           </div>
 
             <div class="input-style">
                   <tableToast
-                  :selectData="this.getStoreBoard.result"
-                  :headerData="this.headers"
-                  :selectPage="this.getStoreBoard.selectPage"
-                  :total="this.getStoreBoard.total"
-                  :cntPerPage="this.getStoreBoard.cntPerPage"
+                  ref="gridTable"
+                  :dataSource="dataSource"
+                  :headerData="headers"
+                  :pageOptionsProp="pageNations"
+                  @searchContent="searchContent"
                   @onClickPage="onClickPage"
                   @onClickCell="onClickCell"
                   />
@@ -36,41 +37,48 @@
 
 <script>
 import tableToast from '@/components/tableToast.vue'
-import { mapGetters, mapActions } from 'vuex'
 import sideBar from '@/components/admin_sideBar.vue'
 import topBar from '@/components/admin_topNavi.vue'
 
-const adminStore = 'adminStore'
-
 export default {
   name: 'modTable',
-  data () {
+  data () { /* 2021/07/23  리퀘스트 테스트 도중  */
     return {
       headers: [
-        {header: '번호', name: 'BOARD_NUM', sortingType: 'desc', sortable: true},
-        {header: '제목', name: 'BOARD_TITLE', sortingType: 'desc', sortable: true},
+        {header: '번호', name: 'BOARD_NUM', sortingType: 'desc', sortable: true, width: 20},
+        {header: '제목', name: 'BOARD_TITLE', sortingType: 'desc', sortable: true, editor: 'text'},
+        {header: '내용', name: 'BOARD_CONTENT', sortingType: 'desc', sortable: true, editor: 'text'},
         {header: '유저ID', name: 'USER_ID', sortingType: 'desc', sortable: true},
-        {header: '내용', name: 'BOARD_CONTENT', sortingType: 'desc', sortable: true},
         {header: '등록일', name: 'BOARD_REG', sortingType: 'desc', sortable: true}
-      ]
+      ],
+      dataSource: {
+        contentType: 'application/json',
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        initialRequest: true,
+        initParams: {params: 'test'},
+        api: {
+          readData: { url: 'http://localhost:8050/api/selectBoardList.json', method: 'GET' },
+          createData: { url: 'http://localhost:8050/api/create', method: 'POST' },
+          updateData: { url: 'http://localhost:8050/api/update', method: 'PUT' },
+          deleteData: { url: 'http://localhost:8050/api/deleteBoard.json', method: 'DELETE' },
+          modifyData: { url: 'http://localhost:8050/api/modify', method: 'POST' }
+        }
+      },
+      pageNations: {useClient: true, perPage: 10},
+      searchContent: ''
     }
   },
   computed: {
-    ...mapGetters(adminStore, {getStoreBoard: 'GET_BOARD'})
   },
   methods: {
-    ...mapActions(adminStore, {fnSelectBoardList: 'AC_SELECT_BOARD'}),
-
     onClickPage (page) {
       this.getBoard(page)
     },
     onClickCell (data) {
       console.log(data)
     },
-    getBoard (page) {
-      if (page === undefined || page === '' || page === null) { page = 1 }
-      let formData = this.$commonJs.ConvertForm({selectPage: page})
-      this.fnSelectBoardList(formData)
+    searchPaging () {
+      this.$refs.gridTable.searchPaging(this.searchContent)
     }
   },
   components: {
@@ -79,7 +87,6 @@ export default {
     topBar
   },
   mounted () {
-    this.getBoard()
   }
 }
 </script>

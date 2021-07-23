@@ -16,7 +16,7 @@ public class AdminBoardDao {
 
 	
 	public Map<String,Object> selectBoardList(Map<String,Object> paramInfo) {
-		PagingUtill pageData=  new PagingUtill(session,"adminBoard.selectBoardList",paramInfo);
+		PagingUtill pageData=  new PagingUtill(session,"adminBoard.selectBoardList",paramInfo,"grid");
 		System.out.println(pageData.getData());
 		return  pageData.getData();
 	}

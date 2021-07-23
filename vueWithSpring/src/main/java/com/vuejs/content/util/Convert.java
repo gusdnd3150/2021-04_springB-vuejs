@@ -3,6 +3,7 @@ package com.vuejs.content.util;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,32 +39,39 @@ public class Convert {
 		return newParam;
 	}
 	
-	/*
-	static public Map<String,Object> convertMapParam(Map<String,Object> paramMap){
+	
+	static public Map<String,Object> convertToastGridParam(HttpServletRequest request){
 		Map<String,Object> newParam = new HashMap<String, Object>();
 		
-		Map<String,Object> params = (Map<String, Object>) paramMap.get("params");
-		
-		Set<String> keySet = params.keySet();
-		Iterator<String> it = keySet.iterator();
-		
 
-		System.out.println("===============[paramMap 파람]===============");
 		
-		while(it.hasNext()) {
-			String MapKey = it.next();
-			System.out.println("key:   "+ MapKey);
+		Enumeration<?> enm = request.getParameterNames();
+		
+		
+		
+		System.out.println("===============[request 파람]===============");
+		
+		while(enm.hasMoreElements()) {
+			String reKey = (String) enm.nextElement();
+			System.out.println("key:   "+ reKey);
 			
-			String val =   params.get(MapKey).toString();
-			if(val == null || val.length() == 0 || val.equals("")) {
-				val = null;
+			if(reKey.contains("deletedRows")) {
+				String jsonList = request.getParameter("deletedRows");
+				System.out.println("여길타나"+ jsonList);
+			}else {
+				String val =   request.getParameter(reKey).toString();
+				if(val == null || val.length() == 0 || val.equals("") || val.equals("undefined")) {
+					val = null;
+				}
+				newParam.put(reKey, val);
+				
 			}
-			newParam.put(MapKey, val);
 		}
-		System.out.println("[convert 후 파람]: "+ newParam.toString());
+
+		System.out.println("[ grid convert 후 파람]: "+ newParam.toString());
 		System.out.println("==============================");
 		
 		return newParam;
 	} 
-	*/
+	
 }

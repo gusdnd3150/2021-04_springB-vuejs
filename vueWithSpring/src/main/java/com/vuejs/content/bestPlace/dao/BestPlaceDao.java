@@ -21,7 +21,7 @@ public class BestPlaceDao {
 	
 	
 	public Map<String,Object> selectBestPlace(Map<String,Object> paramInfo) {
-		PagingUtill pageData=  new PagingUtill(session,"bestPlace.selectBestPlace",paramInfo);
+		PagingUtill pageData=  new PagingUtill(session,"bestPlace.selectBestPlace",paramInfo, "");
 		System.out.println(pageData.getData());
 		return  pageData.getData();
 	}
