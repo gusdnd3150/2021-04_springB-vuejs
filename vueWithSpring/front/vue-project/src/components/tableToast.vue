@@ -11,6 +11,7 @@
             :pageOptions="pageOptionsProp"
             :bodyHeight="bodyHeight"
             @click="onClick"
+            @response="afterResponse"
         ></grid>
     </div>
     <div class="button-area">
@@ -41,7 +42,7 @@ export default {
     onClick (event) { /* 클릭 CELL */
       this.$emit('onClickCell', event.rowKey, event.value)
 
-      console.log(event.instance.getCheckedRows())
+      // console.log(event.instance.getCheckedRows())
       const { rowKey, columnName } = event.instance.getFocusedCell()
       event.instance.finishEditing(rowKey, columnName)
     },
@@ -51,7 +52,7 @@ export default {
     onDeleteRow (event) { /* 그리드에서만 삭제 */
       // this.$refs.tuiGrid.invoke('removeRow', event.rowKey)
       let checkrow = this.$refs.tuiGrid.gridInstance.getCheckedRows()
-      console.log(checkrow)
+      // console.log(checkrow)
       if (checkrow.length === 0) {
         alert('체크 후 삭제 가능')
         return
@@ -65,17 +66,23 @@ export default {
       // event.instance.request('deleteData', {checkedOnly: false})
     },
     onApiUpdateRow () { /* api 주소를 토대로 서버에 업데이트 데이터 전송 */
-      this.$refs.tuiGrid.gridInstance.request('updateData', {checkedOnly: false})
+      if (this.$refs.tuiGrid.gridInstance.getModifiedRows().updatedRows.length !== 0) {
+        this.$refs.tuiGrid.gridInstance.request('updateData', {modifiedOnly: true})
+      } else {
+        alert('데이터 변경이 없습니다.')
+      }
     },
     searchPaging (content) { /* 검색 함수 */
       this.$refs.tuiGrid.invoke('readData', 1, {searchContent: content})
     },
     onLoadFunction () {
-      // this.$refs.tuiGrid.gridInstance.on('click', this.select())
+      // this.$refs.tuiGrid.gridInstance.on('successResponse', this.select())
     },
-    select (event) {
-      alert('온로드 ')
-      console.log(event)
+    afterResponse (event) {
+      // console.log(event.xhr.responseURL)
+      if (event.xhr.responseURL.indexOf('update') > 0) {
+        event.instance.reloadData()
+      }
     }
   },
   props: {

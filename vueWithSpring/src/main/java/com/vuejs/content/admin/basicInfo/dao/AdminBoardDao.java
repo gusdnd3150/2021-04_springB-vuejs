@@ -1,5 +1,6 @@
 package com.vuejs.content.admin.basicInfo.dao;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,7 +22,29 @@ public class AdminBoardDao {
 		return  pageData.getData();
 	}
 	
-	public int deleteBoard(Map<String,Object> param) {
-		return session.delete("adminBoard.deleteBoard",param);
+	public Map<String,Object> deleteBoard(Map<String,Object> param) {
+		Map<String,Object> result = new HashMap<String, Object>();
+		
+		try {
+			session.delete("adminBoard.deleteBoard",param);
+			result.put("result", true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("result", false);
+		}
+		return result;
+	}
+	
+	public Map<String,Object> updateBoard(Map<String,Object> param) {
+		Map<String,Object> result = new HashMap<String, Object>();
+		
+		try {
+			session.update("adminBoard.mergeBoard",param);
+			result.put("result", true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("result", false);
+		}
+		return result;
 	}
 }
