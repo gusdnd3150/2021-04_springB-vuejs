@@ -23,6 +23,23 @@ input[type='button']:hover{
   opacity: 0.7;
   cursor: pointer;
 }
+
+button.main_button{
+  background-color: #4b96e6;
+  color: white;
+  outline: none;
+  font-size: 11px;
+  font-weight: 400;
+  border: 0;
+  padding: 8px 14px 8px 14px;
+  border-radius: 7px;
+  transition: all 0.2s;
+}
+button.main_button:hover{
+opacity: 0.8;
+}
+
+
 /* -----------------------------------일반 텍스트 인풋--------------------------------- */
 .form-input{
     border-radius: 5px;

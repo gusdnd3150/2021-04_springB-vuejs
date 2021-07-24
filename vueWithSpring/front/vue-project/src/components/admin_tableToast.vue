@@ -108,10 +108,6 @@ export default {
   width:100%
 }
 
-.hide{
-  display: none;
-}
-
 .button-area{
     text-align: right;
     padding: 0px 5% 2% 0px;

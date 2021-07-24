@@ -14,7 +14,7 @@
           <div class="input-style">
                   <span><f-icon :icon="['fas', 'search']" /></span>
                   <input type="text" class="input-text" placeholder="전체 검색" name="searchContent" v-model="searchContent">
-                  <button @click="searchPaging">검색 테스트</button>
+                  <button class="main_button" @click="searchPaging">검색</button>
           </div>
 
             <div class="input-style">
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import tableToast from '@/components/tableToast.vue'
+import tableToast from '@/components/admin_tableToast.vue'
 import sideBar from '@/components/admin_sideBar.vue'
 import topBar from '@/components/admin_topNavi.vue'
 
@@ -82,7 +82,6 @@ export default {
   },
   methods: {
     onClickPage (page) {
-      this.getBoard(page)
     },
     onClickCell (data) {
       console.log(data)
@@ -103,7 +102,7 @@ export default {
 h6{
   text-align: left;
 }
-.input-style{
+div.input-style{
     position: relative;
     text-align: left;
     background-color: white;
@@ -112,7 +111,7 @@ h6{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
-.input-style .input-text {
+div.input-style input.input-text {
     width: 50%;
     border-radius: 20px;
     border-width: 1px;
@@ -147,7 +146,7 @@ h6{
     margin-bottom: 10px;
 }
 
-.content{
+div.content{
     padding: 10px;
     background-color: #f4f5f8;
     min-height: 80%;
