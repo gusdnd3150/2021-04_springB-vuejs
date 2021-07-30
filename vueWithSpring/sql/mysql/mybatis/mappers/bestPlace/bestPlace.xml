@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="bestPlace">
+
+	
+	<sql id="whereInfo">
+		WHERE 1=1
+		<if test="region != null and region != ''">
+		  AND A.PL_REGION LIKE CONCAT('%',#{region},'%')
+		</if>
+		
+		<if test="cost != null and cost != '' ">
+		  AND A.PL_COST BETWEEN #{searchCost} AND #{cost + 100000}
+		</if>
+		
+		<if test="content != null and content != ''">
+		  AND A.PL_TITLE LIKE CONCAT('%',#{content},'%')
+		</if>
+	</sql>
+	
+	
+	
+	<insert id="mergeBestPlace" parameterType="map">
+		INSERT INTO TB_BEST_PLACE
+		 ( 
+		 	<if test="userNum != null and userNum != ''">
+			 USER_NUM,
+	  		 </if>
+			 <if test="plNum != null and plNum != ''">
+			 PL_NUM,
+	  		 </if>
+	  		 <if test="plTitle != null and plTitle != ''">
+			 PL_TITLE,
+	  		 </if>
+	  		 <if test="plContent != null and plContent != ''">
+			 PL_CONTENT,
+	  		 </if>
+	  		 <if test="plCost != null and plCost != ''">
+			  PL_COST,
+	  		 </if>
+	  		 <if test="plRegion != null and plRegion != ''">
+			 PL_REGION,
+	  		 </if>
+			 PL_REG_DATE
+		     )
+		VALUES(
+			<if test="userNum != null and userNum != ''">
+			  #{userNum},
+	  		 </if>
+			<if test="plNum != null and plNum != ''">
+			 #{plNum},
+	  		 </if>
+	  		 <if test="plTitle != null and plTitle != ''">
+			 #{plTitle},
+	  		 </if>
+	  		 <if test="plContent != null and plContent != ''">
+			 #{plContent},
+	  		 </if>
+	  		 <if test="plCost != null and plCost != ''">
+			  #{plCost},
+	  		 </if>
+	  		 <if test="plRegion != null and plRegion != ''">
+			 #{plRegion},
+	  		 </if>
+			 NOW()
+		    )
+		ON DUPLICATE KEY
+		UPDATE   PL_TITLE = #{plTitle},
+		 		 PL_CONTENT = #{plContent},
+		 		 PL_COST = #{plCost},
+		 		 PL_REGION = #{plRegion},
+		 		 PL_REG_DATE = NOW()
+	</insert>
+	
+	<select id="selectBestPlace" parameterType="map" resultType="map">
+	
+		SELECT R.*
+		FROM (SELECT 
+					A.PL_NUM,
+					A.USER_ID,
+					A.PL_TITLE,
+					A.PL_CONTENT,
+					A.PL_COST,
+					DATE_FORMAT(A.PL_REG_DATE,'%Y년 %m월') AS PL_REG_DATE,
+					CASE 
+					WHEN A.PL_REGION = 'SEOUL' THEN '서울'
+					WHEN A.PL_REGION = 'GYEONGI' THEN '경기'
+					WHEN A.PL_REGION = 'BUSAN' THEN '부산'
+					WHEN A.PL_REGION = 'JEJU' THEN '제주'
+					WHEN A.PL_REGION = 'GIMPO' THEN '김포'
+					ELSE '기타'
+					END AS PL_REGION
+				FROM TB_BEST_PLACE A				
+				 <include refid="whereInfo" />
+				ORDER BY A.PL_REG_DATE DESC
+				 
+				) R 
+		LIMIT #{cntPerPage} OFFSET #{startNum}
+	</select>
+	
+	<select id="selectBestPlaceCount" parameterType="map" resultType="int">
+				SELECT COUNT(*)
+				FROM TB_BEST_PLACE A
+				<include refid="whereInfo" />
+	</select>
+
+</mapper>

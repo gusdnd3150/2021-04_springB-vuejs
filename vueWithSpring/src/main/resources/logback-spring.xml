@@ -16,8 +16,8 @@
 
 	<!-- Logger -->
 	<logger name="com.board" level="DEBUG" appender-ref="console" />
-	<logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog" />
-	<logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog" />
+	<logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog" /> <!--  sql만 출력 -->
+	<logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog" /> <!--  결과 내용을 테이블형식으로 출력 -->
 
 	<!-- Root Logger -->
 	<root level="off">
