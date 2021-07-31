@@ -76,7 +76,9 @@ public class PagingUtill {
         param.put("selectPage", page);
         param.put("total", total);
         
-        System.out.println("페이징파람"+param.toString());
+        System.out.println("|==============페이징 파라미터=============|");
+        System.out.println("|"+param.toString() + "|");
+        System.out.println("===========================================");
         result = session.selectList(sqlQuery,param);
         
         param.clear();
@@ -87,7 +89,7 @@ public class PagingUtill {
         
         param.put("result", true);
         param.put("data", resultData);
-        System.out.println("페이징 처리 후 데이터:"+param.toString());
+        //System.out.println("페이징 처리 후 데이터:"+param.toString());
 	}
 	
 	public Map<String,Object> getData(){

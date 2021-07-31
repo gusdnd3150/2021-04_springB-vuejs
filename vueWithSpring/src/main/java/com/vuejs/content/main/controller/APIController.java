@@ -33,18 +33,33 @@ public class APIController {
 	@Autowired
 	private EntityUtil entityUtil;
 
+	/* 
+	 * 회원가입
+	 * 
+	 * 
+	 */
 	@CrossOrigin(origins= "http://localhost:8070")
 	@PostMapping("/api/join")
 	public int join(HttpServletRequest request) {
 		return service.joinUser(Convert.convertMapParam(request));
 	}
 
+	/* 
+	 * 로그인
+	 * 
+	 * 
+	 */
 	@CrossOrigin(origins= "http://localhost:8070")
 	@PostMapping("/api/login")
 	public Map<String,Object> login(HttpServletRequest request) {
 		return service.login(Convert.convertMapParam(request));
 	}
 	
+	/* 
+	 * 유저 중복체크
+	 * 
+	 * 
+	 */
 	@CrossOrigin(origins= "http://localhost:8070")
 	@RequestMapping("/api/dupCheck")
 	public String dupCheck(HttpServletRequest request){

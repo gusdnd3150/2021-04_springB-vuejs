@@ -9,18 +9,18 @@
 
 	<select id="selectUserById" parameterType="String" resultType="user">
 		SELECT *
-		FROM TB_USER
+		FROM TB_ST_USERS
 		where USER_ID = #{username}
 	</select>
 	
 	<insert id="joinUser" parameterType="map">
-		insert into TB_USER (USER_ID,USER_PWD,USER_AUTH)
-		values(#{user_id},#{user_pwd},'USER')
+		insert into TB_ST_USERS (USER_ID,USER_PW,AUTHO, USER_JOB,USER_NAME)
+		values(#{user_id},#{user_pwd},'USER','admin','관리자')
 	</insert>
 	
 	<select id="dupCheck" parameterType="map" resultType="int">
 	   select COUNT(*)
-	   from TB_USER
+	   from TB_ST_USERS
 	   where user_id =  #{user_id}
 	</select>
 </mapper>

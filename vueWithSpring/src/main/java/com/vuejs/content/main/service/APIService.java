@@ -34,7 +34,7 @@ public class APIService implements UserDetailsService {
 	//회원가입
 	public int joinUser(Map<String,Object> user) {
 		user.put("user_pwd", encoder.encode((String) user.get("user_pwd")));
-		user.put("auth", "ROLE_USER");
+		//user.put("auth", "ROLE_USER");
 		return repository.joinUser(user);
 	}
 	

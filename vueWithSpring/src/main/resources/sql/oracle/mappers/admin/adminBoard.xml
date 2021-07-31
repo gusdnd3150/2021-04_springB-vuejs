@@ -21,7 +21,7 @@
 	
 	<delete id="deleteBoard" parameterType="map">
 		
-		DELETE FROM TB_ADMIN_BOARD
+		DELETE FROM TB_ST_ADMIN_BOARD
 		WHERE BOARD_NUM IN 
 			<foreach collection="jsonList" item="item" open="(" close=")" separator=",">
 				#{item.BOARD_NUM}
@@ -32,7 +32,7 @@
 	<update id="mergeBoard" parameterType="map">
 	
 		<foreach collection="jsonList" item="item" open="" close="" separator=";" >
-		UPDATE TB_ADMIN_BOARD
+		UPDATE TB_ST_ADMIN_BOARD
 		SET BOARD_TITLE = #{item.BOARD_TITLE},
 			BOARD_CONTENT =#{item.BOARD_CONTENT},
 			BOARD_UPD = NOW()
@@ -43,25 +43,25 @@
 	
 	<select id="selectBoardList" parameterType="map" resultType="map">
 	
-		SELECT R.*
-		FROM (SELECT 
-					A.BOARD_NUM,
-					A.BOARD_TITLE,
-					A.USER_ID,
-					A.BOARD_CONTENT,
-					A.BOARD_UPD,
-					A.BOARD_REG
-				FROM TB_ADMIN_BOARD A
-				
-				<include refid="whereInfo" />
-								
-				) R 
-		LIMIT #{cntPerPage} OFFSET #{startNum}
+		SELECT *                
+		 FROM(SELECT P.*,ROWNUM
+		      FROM  (SELECT 
+							A.BOARD_NUM,
+							A.BOARD_TITLE,
+							A.USER_ID,
+							A.BOARD_CONTENT,
+							A.BOARD_UPD,
+							A.BOARD_REG
+		                    FROM TB_ST_ADMIN_BOARD A
+		                    <include refid="whereInfo" />
+		                    ) P
+		        WHERE ROWNUM <![CDATA[<]]>  #{cntPerPage})
+		WHERE ROWNUM <![CDATA[>]]> #{startNum}
 	</select>
 	
 	<select id="selectBoardListCount" parameterType="map" resultType="int">
 				SELECT COUNT(*)
-				FROM TB_ADMIN_BOARD A
+				FROM TB_ST_ADMIN_BOARD A
 			 <include refid="whereInfo" />
 	</select>
 
