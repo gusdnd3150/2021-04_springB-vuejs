@@ -16,6 +16,8 @@ configurations {
 
 repositories {
 	mavenCentral()
+	//maven { url 'https://code.lds.org/nexus/content/groups/main-repo'}
+	mavenLocal()
 }
 
 dependencies {
@@ -23,17 +25,18 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
 	implementation 'commons-io:commons-io:2.6'
 	implementation 'org.springframework.boot:spring-boot-starter-security' 
-	implementation 'io.jsonwebtoken:jjwt:0.9.1'       /* JWT token */
 	implementation group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
-	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'    /* lo4j */
 	compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 	compile 'org.springframework.boot:spring-boot-starter-aop'
 	compileOnly 'org.projectlombok:lombok'
 	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'       /* JWT token */
+	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'    /* lo4j */
+	runtimeOnly 'mysql:mysql-connector-java'  /* mysql */
+	compile fileTree(dir: 'src/main/webapp/WEB-INF/lib', include: '*.jar')
 }
 
 test {
