@@ -57,7 +57,7 @@ export default new Router({
     },
     /* 관리자 페이지 */
     {
-      path: '/modBoard',
+      path: '/admin/modBoard',
       name: 'modBoard',
       components: {default: modBoard, navi: navibar}
     }

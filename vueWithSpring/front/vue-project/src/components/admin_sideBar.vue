@@ -2,8 +2,9 @@
 <template>
   <div class="left-sideBar">
       <ul class="list">
-          <li>게시판 관리</li>
-          <li>유저 관리</li>
+          <li><router-link to="/admin/modBoard">공지사항 관리 </router-link></li>
+          <li><router-link to="/admin/menu">메뉴 관리 </router-link></li>
+          <li><router-link to="/admin/users">유저 관리 </router-link></li>
       </ul>
   </div>
 </template>

@@ -12,8 +12,11 @@
 	<!-- mapper .xmp 파일 정의 - 실제 SQL Query 가 선언되어 있는 부분 -->
 	    <mappers>
 			<mapper resource="sql/oracle/mappers/main/main.xml"/>
-			<mapper resource="sql/oracle/mappers/admin/adminBoard.xml"/>
 			<mapper resource="sql/oracle/mappers/file/FileDao.xml"/>
 			<mapper resource="sql/oracle/mappers/bestPlace/bestPlace.xml"/>
+			
+			<!-- 관리자 -->
+			<mapper resource="sql/oracle/mappers/admin/system/adminBoard.xml"/>
+			<mapper resource="sql/oracle/mappers/admin/system/menu.xml"/>
 		</mappers>        
 </configuration> 
