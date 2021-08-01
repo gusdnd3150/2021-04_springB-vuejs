@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Component
@@ -37,10 +38,17 @@ public class JwtTokenProvider {
 	}
 
 	// [토큰발급]
-	public String createToken(String userPk, List<String> roles) {
-		Claims claims = Jwts.claims().setSubject(userPk).setAudience("ROLE_USER");
+	public String createToken(Map<String,Object> userInfo, List<String> roles) {
+		
+		Claims claims = Jwts.claims()
+				.setSubject(userInfo.get("USER_ID").toString())
+				.setAudience("ROLE_USER");
+		
 		claims.put("roles", roles);
-
+		claims.put("userName", userInfo.get("USER_NAME").toString());
+		//claims.put("lang", userInfo.get("LANG_CD").toString());
+		//System.out.println("토큰 저장내역"+claims.toString());
+		
 		Date now = new Date();
 		return Jwts.builder().setClaims(claims).setIssuedAt(now).setExpiration(new Date(now.getTime() + tokenValidTime))
 				.signWith(SignatureAlgorithm.HS256, secretKey).compact();

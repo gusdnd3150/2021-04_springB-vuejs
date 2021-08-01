@@ -7,7 +7,7 @@
 <mapper namespace="main">
 
 
-	<select id="selectUserById" parameterType="String" resultType="user">
+	<select id="selectUserById" parameterType="String" resultType="map">
 		SELECT *
 		FROM TB_ST_USERS
 		where USER_ID = #{username}

@@ -44,10 +44,11 @@ public class APIService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetailsVO user = new UserDetailsVO();
 		List<String> authoList = new ArrayList<String>();
-		UserVo dbUser = repository.selectUserById(username);
-		authoList.add(dbUser.getUser_auth());
+		Map<String,Object> dbUser = repository.selectUserById(username);
+		
+		authoList.add(dbUser.get("AUTHO").toString());
 		user.setAuthorities(authoList);
-		user.setUsername(dbUser.getUser_id());
+		user.setUsername(dbUser.get("USER_ID").toString());
 		System.out.println("검사한다~");
 		return user;
 	}
@@ -58,27 +59,26 @@ public class APIService implements UserDetailsService {
 		Map<String,Object> loginUser =  new HashMap<String, Object>();
 		
 		String userId = user.get("user_id").toString();
-		String userPwd = user.get("user_pwd").toString();
+		String userPwd = user.get("user_pw").toString();
 		
-		UserVo dbUser = repository.selectUserById(userId);
-		UserVo login = new UserVo();
+		Map<String,Object> dbUser = repository.selectUserById(userId);
 		List<String> autho = new ArrayList<String>();
 
 		try {
-			//if (!encoder.matches(user.getUser_pwd(), dbUser.getUser_pwd()) || dbUser == null) {
-			if (!userPwd.equals(dbUser.getUser_pwd()) || dbUser == null) {
+			if (!encoder.matches(userPwd, dbUser.get("USER_PW").toString()) || dbUser == null) {
+			//if (!userPwd.equals(dbUser.get("USER_PW").toString()) || dbUser == null) {
 				System.out.println("로그인 실패");
 				return loginUser;
 			}else {
 				System.out.println("로그인 성공");
 				
-				autho.add(dbUser.getUser_auth());
+				autho.add(dbUser.get("AUTHO").toString());
 				//권한
-				loginUser.put("user_auth", dbUser.getUser_auth());
+				loginUser.put("user_auth", dbUser.get("AUTHO").toString());
 				//토큰
-				loginUser.put("user_token", jwtTokenProvider.createToken(dbUser.getUser_id(), autho));
+				loginUser.put("user_token", jwtTokenProvider.createToken(dbUser, autho));
 				//아이디
-				loginUser.put("user_id", dbUser.getUser_id());
+				loginUser.put("user_id", dbUser.get("USER_ID").toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

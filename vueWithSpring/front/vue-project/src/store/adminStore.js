@@ -30,6 +30,8 @@ const adminStore = {
         .then(res => {
           console.log(res.data)
           commit('MU_SET_BOARD', res.data)
+        }).catch(res => {
+          console.log(res)
         })
     },
     AC_DELETE_BOARD ({commit}, payload) {

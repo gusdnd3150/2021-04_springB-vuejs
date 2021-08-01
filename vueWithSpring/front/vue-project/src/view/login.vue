@@ -18,7 +18,7 @@
                     <input type="text" data-y="dd" name="user_id" id="user_id" v-model="loginObj.user_id" placeholder="아이디">
                   </div>
                    <div class="input">
-                    <input type="password" name="user_pwd" id="user_pwd" v-model="loginObj.user_pwd" placeholder="비밀번호">
+                    <input type="password" name="user_pw" id="user_pw" v-model="loginObj.user_pw" placeholder="비밀번호">
                   </div>
 
                   <div>
@@ -43,7 +43,7 @@ export default {
     return {
       loginObj: {
         user_id: '',
-        user_pwd: ''
+        user_pw: ''
       }
     }
   },

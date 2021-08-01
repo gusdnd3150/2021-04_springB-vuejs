@@ -27,9 +27,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
+	public AccessDeniedFilter accessDeniedFilter() {
+		return new AccessDeniedFilter();
+	}
+	
+	@Bean
+	public AuthenticationEntryPoint authenticationEntryPoint() {
+		return new AuthenticationEntryPoint();
+	}
+	
+	
+	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 
 	@Bean
 	@Override
@@ -45,10 +57,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().
 				authorizeRequests().
 				antMatchers("/admin/**").hasRole("ADMIN").
-				antMatchers("/user/**").hasRole("USER").
+				antMatchers("/api/**").hasRole("USER").
 				anyRequest().
 				permitAll().
 				and().
-				addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+				addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class).
+				exceptionHandling().accessDeniedHandler(accessDeniedFilter()).authenticationEntryPoint(authenticationEntryPoint())   // 권한이 낮거나 접근이 제한될 경우
+				;
+		
 	}
 }

@@ -55,6 +55,16 @@ public class APIController {
 		return service.login(Convert.convertMapParam(request));
 	}
 	
+	/*
+	 * 로그아웃  구현해야함 
+	 */
+	
+	@CrossOrigin(origins= "http://localhost:8070")
+	@PostMapping("/api/logout")
+	public Map<String,Object> logout(HttpServletRequest request) {
+		return service.login(Convert.convertMapParam(request));
+	}
+	
 	/* 
 	 * 유저 중복체크
 	 * 

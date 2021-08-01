@@ -15,7 +15,7 @@ public class APIRepository {
 	private SqlSession sqlsession;
 
 	
-	public UserVo selectUserById(String username) {
+	public Map<String,Object> selectUserById(String username) {
 		return sqlsession.selectOne("main.selectUserById",username);
 	}
 	
