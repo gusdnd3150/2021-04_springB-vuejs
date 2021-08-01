@@ -26,12 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		this.jwtTokenProvider = jwtTokenProvider;
 	}
 
-	@Bean
+	@Bean  // 권한이 있는 유저가 권한이 미치지 않는 페이지를 이동할 경우
 	public AccessDeniedFilter accessDeniedFilter() {
 		return new AccessDeniedFilter();
 	}
 	
-	@Bean
+	@Bean  // 권한도 없이 페이지에서 접근하려고 했을 경우
 	public AuthenticationEntryPoint authenticationEntryPoint() {
 		return new AuthenticationEntryPoint();
 	}
@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().
 				authorizeRequests().
 				antMatchers("/admin/**").hasRole("ADMIN").
-				antMatchers("/api/**").hasRole("USER").
+				antMatchers("/user/**").hasRole("USER").
 				anyRequest().
 				permitAll().
 				and().
