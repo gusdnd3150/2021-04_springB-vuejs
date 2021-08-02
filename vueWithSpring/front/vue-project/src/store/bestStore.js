@@ -46,7 +46,6 @@ const bestStore = {
     AC_BEST_DATA: function ({ commit }, payload) {
       webAPI.post(url.BEST, payload)
         .then(res => {
-          console.log(res.state)
           commit('MU_BEST_DATA', res.data.result)
           commit('MU_SELECT_PAGE', res.data.selectPage)
           commit('MU_TOTAL', res.data.total)

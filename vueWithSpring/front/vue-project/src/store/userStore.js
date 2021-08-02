@@ -11,9 +11,9 @@ const userStore = {
   namespaced: true,
   state: {
     userInfo: {
-      user_id: 'test',
-      user_token: 'qqq',
-      user_auth: 'USER'
+      user_id: '',
+      user_token: '',
+      user_auth: ''
     },
     login: false,
     dupCheck: false,
@@ -60,9 +60,6 @@ const userStore = {
           if (res.data.user_id != null) {
             commit('MU_LOGIN_STATE', true)
             commit('MU_USER_INFO', res.data)
-            localStorage.setItem('userInfo', res.data)
-            // console.log('유저 디테일' + res.data)
-            localStorage.setItem('login', true)
           } else {
             alert('로그인 실패')
           }

@@ -14,6 +14,8 @@ import joinPage from '@/view/joinPage.vue'
 
 /* 관리자 페이지 */
 import modBoard from '@/view/admin/modBoard.vue'
+import sideBar from '@/components/admin_sideBar.vue'
+import topBar from '@/components/admin_topNavi.vue'
 
 Vue.use(Router)
 
@@ -23,43 +25,43 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      components: {default: main, navi: navibar}
+      components: {middle: main, navi: navibar}
     },
     {
       path: '/login',
       name: 'login',
-      components: {default: login, navi: navibar}
+      components: {middle: login, navi: navibar}
     },
     {
       path: '/joinPage',
       name: 'joinPage',
-      components: {default: joinPage, navi: navibar}
+      components: {middle: joinPage, navi: navibar}
     },
     {
       path: '/story',
       name: 'story',
-      components: {default: story, navi: navibar}
+      components: {middle: story, navi: navibar}
     },
     {
       path: '/feed',
       name: 'feed',
-      components: {default: feed, navi: navibar}
+      components: {middle: feed, navi: navibar}
     },
     {
       path: '/best',
       name: 'best',
-      components: {default: best, navi: navibar}
+      components: {middle: best, navi: navibar}
     },
     {
       path: '/bestForm',
       name: 'bestForm',
-      components: {default: bestFormTest, navi: navibar}
+      components: {middle: bestFormTest, navi: navibar}
     },
-    /* 관리자 페이지 */
+    /* -----------------------------관리자 페이지 ----------------------------- */
     {
       path: '/admin/modBoard',
       name: 'modBoard',
-      components: {default: modBoard, navi: navibar}
+      components: {admin_middle: modBoard, sidebar: sideBar, topbar: topBar, navi: navibar}
     }
   ]
 })

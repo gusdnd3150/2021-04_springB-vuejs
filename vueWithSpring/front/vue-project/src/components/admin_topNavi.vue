@@ -1,19 +1,34 @@
 <template>
   <div>
       <div class="top-navi">
-          <div class=""><span>기준정보</span></div>
-          <div>시스템</div>
-          <div></div>
+          <div v-for="MenuList in sortLevel1Menu" :key="MenuList.MENU_CD" class="">
+            <router-link v-if="MenuList.LEVEL === 1" :to="MenuList.MENU_URL">{{MenuList.MENU_NM}}</router-link>
+           </div>
       </div>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
+const menuStore = 'menuStore'
 export default {
   name: 'topNavi',
   data () {
     return {
       style: 'active'
+    }
+  },
+  computed: {
+    ...mapGetters(menuStore, {getMenuList: 'GET_MENU_LIST'}),
+    sortLevel1Menu () {
+      let Menu1 = this.getMenuList
+      let newList = Menu1.filter((i) => {
+        if (i.LEVEL === 1) {
+          return i
+        }
+      })
+      return newList
     }
   }
 }

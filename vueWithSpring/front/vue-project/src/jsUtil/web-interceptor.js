@@ -11,12 +11,10 @@ const interceptor = axios.create({
 */
 interceptor.interceptors.request.use(
   function (config) {
-    /*
-    let token = localStorage.getItem('token')
-    config.headers = { 'MY-TOKEN': token, 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'}
-    console.log('요청 전 인터셉터 원하는 로직을 넣으면 된다. return 값은 설정값일 뿐 별도의 서버를 거치지않고 프론트에서 해결함')
-    axios.post(LOCAL_URL + 'api/interceptor')
-    */
+    let user = JSON.parse(localStorage.getItem('vuex'))
+    if (user !== null) {
+      config.headers['X-AUTH-TOKEN'] = user.userStore.userInfo.user_token
+    }
     return config
   },
   function (error) {
@@ -27,13 +25,11 @@ interceptor.interceptors.request.use(
 /* 서버로 다녀온 후 거치는 함수
 */
 interceptor.interceptors.response.use((response) => {
-  console.log(response)
   if (response.status === 401) {
     alert('You are not authorized')
   }
   return response
 }, (error) => {
-  console.log(error)
   if (error.response && error.response.data) {
     return Promise.reject(error.response.data)
   }

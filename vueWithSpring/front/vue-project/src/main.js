@@ -20,6 +20,7 @@ import TuiGrid from 'tui-grid'
 import { commonUtil } from '@/jsUtil/commonUtil.js'
 /* Vue.component로 등록한 컴포넌트를 전역에서 사용할 수 있도록 main.js에 import */
 import '@/css/fontawesome.js'
+
 /* 뷰설명서 노출 */
 Vue.config.productionTip = false
 
@@ -41,4 +42,17 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
+})
+
+router.beforeEach((to, from, next) => {
+  let user = JSON.parse(localStorage.getItem('vuex'))
+  if (to.path.indexOf('admin') > 0) {
+    if (user.userStore.userInfo.user_auth === 'USER') {
+      next()
+    } else {
+      alert('권한이 없습니다.')
+    }
+  } else {
+    next()
+  }
 })

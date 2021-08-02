@@ -1,15 +1,5 @@
 <template>
-  <div>
-    <topBar />
-    <div class="row" style="height:100%">
-      <div class="col-lg-2" style="padding-right:0">    <!-- 사이드바 -->
-        <sideBar />
-      </div>
-
-      <div class="col-lg-10 content">   <!-- 컨텐츠 -->
-
-        <div class="container">
-
+  <div class="">
           <h6>공지사항 관리</h6>
           <div class="input-style">
                   <span><f-icon :icon="['fas', 'search']" /></span>
@@ -17,7 +7,7 @@
                   <button class="main_button" @click="searchPaging">검색</button>
           </div>
 
-            <div class="input-style">
+          <div class="input-style">
                   <tableToast
                   ref="gridTable"
                   :dataSource="dataSource"
@@ -27,18 +17,12 @@
                   @onClickPage="onClickPage"
                   @onClickCell="onClickCell"
                   />
-            </div>
-        </div>
-      </div>
-
-    </div>
+          </div>
   </div>
 </template>
 
 <script>
 import tableToast from '@/components/admin_tableToast.vue'
-import sideBar from '@/components/admin_sideBar.vue'
-import topBar from '@/components/admin_topNavi.vue'
 
 export default {
   name: 'modTable',
@@ -91,9 +75,7 @@ export default {
     }
   },
   components: {
-    tableToast,
-    sideBar,
-    topBar
+    tableToast
   }
 }
 </script>
@@ -151,4 +133,5 @@ div.content{
     background-color: #f4f5f8;
     min-height: 80%;
 }
+
 </style>

@@ -16,6 +16,13 @@ export const webAPI = {
         timeout: 2000
       })
   },
+  postNoParam (url, ObjectPram) {
+    return axiosInterceptor.post(LOCAL_URL + url, ObjectPram,
+      {
+        headers: defualtHeader,
+        timeout: 2000
+      })
+  },
   /* get 요청 */
   get (url, formData) {
     return axiosInterceptor.get(LOCAL_URL + url, formData,
