@@ -20,8 +20,9 @@
 
         <div class="col-lg-10 admin-content-area" >
           <div class="container">
-            <modBoard />
-              <div v-html="showComponent"></div>
+                <component :is="showComponent">
+                  <!-- MENU_CD 와 컴포넌트 이름을 동일하게 적용 -->
+                </component>
           </div>
         </div>
       </div>
@@ -30,12 +31,14 @@
 
 <script>
 /* 공통 컴포넌트 영역 */
+
+import {mapGetters} from 'vuex'
 import topBar from '@/components/admin_topNavi.vue'
 import sideBar from '@/components/admin_sideBar.vue'
 
-/* 컨텐츠 컴포넌트 영역 */
-import modBoard from '@/view/admin/pages/modBoard.vue'
-import {mapGetters} from 'vuex'
+/* 컨텐츠 컴포넌트 영역 DB MENU_CD 값과 일치 시킬 것 */
+import modBoard from '@/view/admin/pages/modBoard.vue' /* 공지사항 관리 */
+import modMenu from '@/view/admin/pages/modMenu.vue' /* 메뉴 관리 */
 
 const menuStore = 'menuStore'
 
@@ -44,19 +47,8 @@ export default {
   data () {
     return {
       childMenu: [],
-      showComponent: '<template> <modBoard /> </template>'
+      showComponent: ''
     }
-  },
-  props: {
-    name: {
-      type: String,
-      default: ''
-    },
-    age: {
-      type: Number,
-      default: 0
-    }
-
   },
   computed: {
     ...mapGetters(menuStore, {getMenuList: 'GET_MENU_LIST'}),
@@ -74,7 +66,8 @@ export default {
   components: {
     topBar,
     sideBar,
-    modBoard
+    modBoard,
+    modMenu
   },
   methods: {
     changeMenu (path) {
@@ -88,20 +81,23 @@ export default {
     },
     changeChildComponent (menuCd) {
       console.log(menuCd)
+      this.showComponent = menuCd
     }
   },
   mounted () {
     let MenuList = this.getMenuList
     let firstTopMenu
     let firstChilcMenu
-    MenuList.forEach((el, index) => {
-      if (el.LEVEL === 1 && index === 0) {
+    MenuList.some((el) => {
+      if (el.LEVEL === 1) {
         firstTopMenu = el.MENU_CD
+        return (el.LEVEL === 1)
       }
     })
-    MenuList.forEach((el, index) => {
+    MenuList.some((el) => {
       if (el.MENU_PARENT === firstTopMenu) {
         firstChilcMenu = el.MENU_CD
+        return (el.MENU_PARENT === firstTopMenu)
       }
     })
     this.changeMenu(firstTopMenu)
