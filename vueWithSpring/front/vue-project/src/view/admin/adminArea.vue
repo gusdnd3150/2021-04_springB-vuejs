@@ -1,6 +1,6 @@
 <template>
   <div class="admin-area">
-        <div class="top-navi">
+        <div class="top-navi"> <!-- 상단 메뉴 -->
             <div v-for="MenuList in sortLevel1Menu" :key="MenuList.MENU_CD" class="" @click="changeMenu(MenuList.MENU_CD)">
               <span>{{MenuList.MENU_NM}}</span>
             </div>
@@ -8,17 +8,32 @@
 
       <div class="row admin-area">
 
-        <div class="col-lg-2">
-            <div class="left-sideBar">
-                <ul class="list" >
-                    <li v-for="menuList in childMenu" :key="menuList.MENU_CD">
-                        <span @click="changeChildComponent(menuList.MENU_CD)">{{menuList.MENU_NM}}</span>
-                    </li>
-                </ul>
+        <div class="col-lg-2">   <!-- 사이드바 메뉴 -->
+            <div class="row left-sideBar">
+
+              <div class="col-lg-5 L-inner-div">
+                  <ul class="inner_side_list" >
+                      <li v-for="menuList in sortLevel1Menu" :key="menuList.MENU_CD" :id="menuList.MENU_CD">
+                          <span @click="changeMenu(menuList.MENU_CD)">{{menuList.MENU_NM}}</span>
+                          <f-icon v-if="menuList.MENU_ICON !== 'undefined'" :icon="['fas', menuList.MENU_ICON]" />
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="col-lg-7 R-inner-div" >
+                      <ul class="side_list" >
+                          <li v-for="menuList in childMenu" :key="menuList.MENU_CD">
+                              <f-icon v-if="menuList.MENU_ICON !== 'undefined'" :icon="['fas', menuList.MENU_ICON]" />
+                              <span @click="changeChildComponent(menuList.MENU_CD)">{{menuList.MENU_NM}}</span>
+                              <f-icon :icon="['fas', 'angle-right']" :id="menuList.MENU_CD" />
+                          </li>
+                      </ul>
+              </div>
             </div>
         </div>
 
-        <div class="col-lg-10 admin-content-area" >
+                    <!-- 메인 컴포넌트 -->
+        <div class="col-lg-10 admin-content-area" style="background:#f0f2f6" >
           <div class="container">
                 <component :is="showComponent">
                   <!-- MENU_CD 와 컴포넌트 이름을 동일하게 적용 -->
@@ -70,10 +85,17 @@ export default {
     modMenu
   },
   methods: {
-    changeMenu (path) {
+    changeMenu (menuCd) {
+      let menuList = document.querySelectorAll('.inner_side_list > li')
+      menuList.forEach((el) => {
+        el.removeAttribute('class')
+      })
+      let selectTag = document.getElementById(menuCd)
+      selectTag.setAttribute('class', 'active')
+
       let Menu2 = this.getMenuList
       let newChild = Menu2.filter((i) => {
-        if (i.MENU_PARENT === path) {
+        if (i.MENU_PARENT === menuCd) {
           return i
         }
       })
@@ -117,26 +139,78 @@ export default {
   padding-top: 71px;
   background-color: #F9F9F9;
 }
-.list{
+
+/*사이드바 css*/
+.L-inner-div{
+  background-color: #2D3776;
+  height: 100%;
+  padding: 20px 0 20px 0;
+}
+
+.R-inner-div{
+  background-color: #2f3652;
+  height: 100%;
+  padding: 20px 0 20px 0;
+}
+.inner_side_list{
     color: white;
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 96%;
+    padding-left: 1vw;
+    text-align: center;
 }
-.list > li {
+.inner_side_list > li {
+    text-align: center;
+    width: 110%;
+    /* margin-top: 17%; */
+    margin-right: 0px;
+    font-weight: 200;
+    font-size: 0.8vw;
+    border-bottom: solid;
+    min-height: 55px;
+    border-width: 1px;
+}
+.inner_side_list > li:hover{
+  cursor: pointer;
+}
+.inner_side_list > li.active{
+  background-color: #2D37A3;
+}
+.side_list{
+    color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 96%;
+    overflow: hidden;
+    padding-left: 1vw;
+}
+.side_list > li {
     text-align: left;
-    padding-left: 10px;
+    margin: 2vh 100% 1vh 1vh;
+    width: 93%;
+    font-weight: 200;
+    font-size: 0.8vw;
 }
-.list > li:hover{
+.side_list > li > svg.active {
+    display: none;
+}
+.side_list > li:hover{
     cursor: pointer;
+    font-weight: bold;
 }
 .left-sideBar{
     background-color: #2d3753;
     height: 100%;
-    padding-top: 20px;
-    padding-bottom: 16px;
 }
 
+li > svg{
+      margin-right: 14px;
+}
+
+/*탑바 css*/
 .top-navi{
     display: flex;
     justify-content: flex-end;
