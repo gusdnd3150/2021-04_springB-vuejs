@@ -2,7 +2,8 @@
   <div>
       <div class="top-navi">
           <div v-for="MenuList in sortLevel1Menu" :key="MenuList.MENU_CD" class="">
-            <router-link v-if="MenuList.LEVEL === 1" :to="MenuList.MENU_URL">{{MenuList.MENU_NM}}</router-link>
+            <!-- <router-link v-if="MenuList.LEVEL === 1" :to="MenuList.MENU_URL">{{MenuList.MENU_NM}}</router-link> -->
+            <router-link :to="'MenuList.MENU_URL'">{{MenuList.MENU_NM}}</router-link>
            </div>
       </div>
   </div>
@@ -23,8 +24,10 @@ export default {
     ...mapGetters(menuStore, {getMenuList: 'GET_MENU_LIST'}),
     sortLevel1Menu () {
       let Menu1 = this.getMenuList
+
       let newList = Menu1.filter((i) => {
         if (i.LEVEL === 1) {
+          // let Query = {name: i.MENU_URL, params: { }}
           return i
         }
       })

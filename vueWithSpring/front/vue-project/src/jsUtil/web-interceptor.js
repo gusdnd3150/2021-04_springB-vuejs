@@ -27,9 +27,12 @@ interceptor.interceptors.request.use(
 interceptor.interceptors.response.use((response) => {
   if (response.status === 401) {
     alert('You are not authorized')
+  } else if (response.status === 403) {
+    alert('접근 권한이 없습니다.')
   }
   return response
 }, (error) => {
+  console.log('request 후 ' + error)
   if (error.response && error.response.data) {
     return Promise.reject(error.response.data)
   }

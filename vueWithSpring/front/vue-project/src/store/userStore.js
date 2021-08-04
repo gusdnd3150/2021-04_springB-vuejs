@@ -63,8 +63,8 @@ const userStore = {
           } else {
             alert('로그인 실패')
           }
-        }).catch(res => {
-          alert('error' + res.state)
+        }).catch(error => {
+          console.log(error)
         })
     },
     AC_LOGOUT: function ({ commit }) {

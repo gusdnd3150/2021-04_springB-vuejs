@@ -15,8 +15,6 @@ public class AuthenticationEntryPoint implements org.springframework.security.we
 			AuthenticationException authException) throws IOException, ServletException {
 		
 		System.out.println("시큐리티 앤드포인트 접근");
-		request.setAttribute("test", "");
-		response.sendRedirect("/error");
 	}
 
 }
