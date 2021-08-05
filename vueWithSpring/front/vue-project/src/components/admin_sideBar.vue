@@ -1,14 +1,6 @@
 
 <template>
   <div class="left-sideBar">
-      <!--
-      <ul class="list">
-          <li><router-link to="/admin/modBoard">공지사항 관리 </router-link></li>
-          <li><router-link to="/admin/menu">메뉴 관리 </router-link></li>
-          <li><router-link to="/admin/users">유저 관리 </router-link></li>
-      </ul>
-      -->
-
       <ul class="list" >
           <li v-for="MenuList in sortLevel2Menu" :key="MenuList.MENU_CD">
               <router-link :to="MenuList.MENU_URL">{{MenuList.MENU_NM}}</router-link>
@@ -30,12 +22,11 @@ export default {
     ...mapGetters(menuStore, {getMenuList: 'GET_MENU_LIST'}),
     sortLevel2Menu () {
       let Menu2 = this.getMenuList
-      let newList = Menu2.filter((i) => {
+      return Menu2.filter((i) => {
         if (i.LEVEL === 2) {
           return i
         }
       })
-      return newList
     }
   }
 }
