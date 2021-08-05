@@ -10,8 +10,8 @@
       -->
 
       <ul class="list" >
-          <li v-for="MenuList in this.getMenuList" :key="MenuList.MENU_CD">
-              <router-link v-if="MenuList.LEVEL === 2" :to="MenuList.MENU_URL">{{MenuList.MENU_NM}}</router-link>
+          <li v-for="MenuList in sortLevel2Menu" :key="MenuList.MENU_CD">
+              <router-link :to="MenuList.MENU_URL">{{MenuList.MENU_NM}}</router-link>
           </li>
       </ul>
   </div>
@@ -27,7 +27,16 @@ export default {
   date () {
   },
   computed: {
-    ...mapGetters(menuStore, {getMenuList: 'GET_MENU_LIST'})
+    ...mapGetters(menuStore, {getMenuList: 'GET_MENU_LIST'}),
+    sortLevel2Menu () {
+      let Menu2 = this.getMenuList
+      let newList = Menu2.filter((i) => {
+        if (i.LEVEL === 2) {
+          return i
+        }
+      })
+      return newList
+    }
   }
 }
 </script>

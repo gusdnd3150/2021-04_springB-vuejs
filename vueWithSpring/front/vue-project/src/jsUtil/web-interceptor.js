@@ -25,11 +25,13 @@ interceptor.interceptors.request.use(
 /* 서버로 다녀온 후 거치는 함수
 */
 interceptor.interceptors.response.use((response) => {
+  console.log(response)
   if (response.status === 401) {
     alert('You are not authorized')
   }
   return response
 }, (error) => {
+  console.log(error)
   if (error.response && error.response.data) {
     return Promise.reject(error.response.data)
   }

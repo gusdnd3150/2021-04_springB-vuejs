@@ -4,20 +4,23 @@
     <router-view name="navi" />
     <router-view name="middle" />
 
-    <!-- 관리자 영역 -->
+    <router-view name="adminArea" />
+
+    <!-- 관리자 영역
       <router-view name="topbar" />
       <div class="row admin-area">
+
         <div class="col-lg-2">
           <router-view name="sidebar"/>
         </div>
+
         <div class="col-lg-10 admin-content-area" >
           <div class="container">
             <router-view name="admin_middle" id="main-content"/>
           </div>
         </div>
       </div>
-
-    <!-- <router-view name="bottom" /> -->
+    <router-view name="bottom" /> -->
   </div>
 </template>
 
@@ -56,13 +59,4 @@ html, body{
 #main-content{
   height: 100%;
 }
-.admin-area{
-  height: 100%;
-}
-
-.admin-content-area{
-  padding-top: 71px;
-  background-color: #F9F9F9;
-}
-
 </style>

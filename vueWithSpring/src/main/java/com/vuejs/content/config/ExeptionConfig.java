@@ -18,9 +18,8 @@ public class ExeptionConfig {
 	
 	@ExceptionHandler(Exception.class)
     public ResponseEntity<?> error400(Exception e) {
-		e.printStackTrace();
-        System.out.println("공통예외처리 테스트"+ e.getMessage());
-        return new ResponseEntity<String>("d",HttpStatus.BAD_REQUEST);
+		return null;
+		
     }
 	
 	/*

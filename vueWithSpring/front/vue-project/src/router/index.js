@@ -13,11 +13,14 @@ import bestFormTest from '@/view/bestFormTest.vue'
 import joinPage from '@/view/joinPage.vue'
 
 /* 관리자 페이지 */
-import modBoard from '@/view/admin/modBoard.vue'
+import adminArea from '@/view/admin/adminArea.vue'
+import modBoard from '@/view/admin/pages/modBoard.vue'
 import sideBar from '@/components/admin_sideBar.vue'
 import topBar from '@/components/admin_topNavi.vue'
-
+import {menu} from '@/jsUtil/menuList.js'
 Vue.use(Router)
+
+console.log(menu.getMenu())
 
 export default new Router({
   mode: 'history',
@@ -62,6 +65,12 @@ export default new Router({
       path: '/admin/modBoard',
       name: 'modBoard',
       components: {admin_middle: modBoard, sidebar: sideBar, topbar: topBar, navi: navibar}
+    },
+    {
+      path: '/admin/test',
+      name: 'admin',
+      components: {adminArea: adminArea},
+      props: true
     }
   ]
 })
