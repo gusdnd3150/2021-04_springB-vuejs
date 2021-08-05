@@ -15,7 +15,7 @@
        </div>
        <div>
            <!-- <router-link v-if="this.userInfo.user_auth === 'USER'" to="/admin/test">공지수정</router-link> -->
-           <h6 v-if="this.userInfo.user_auth === 'USER'" @click="moveAdminPage">공지수정</h6>
+           <span class="mvAdmin" v-if="this.userInfo.user_auth === 'USER'" @click="moveAdminPage">관리자 페이지이동</span>
 
            <router-link v-if="!this.loginCheck" to="/login"><f-icon :icon="['fas','sign-in-alt']" size="lg" :style="{ color: '#447eff' }"/>로그인</router-link>
            <p class="logout" v-if="this.loginCheck" @click="logOut"><f-icon :icon="['fas','sign-out-alt']" size="lg" :style="{ color: '#447eff' }"/>LogOut</p>
@@ -52,6 +52,9 @@ export default {
 
 <style scoped>
 
+.mvAdmin{
+    cursor: pointer;
+}
 a{
     color:black !important;
     text-decoration: none;

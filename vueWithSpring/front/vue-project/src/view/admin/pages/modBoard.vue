@@ -18,6 +18,7 @@
                   @onClickCell="onClickCell"
                   />
           </div>
+
   </div>
 </template>
 
@@ -80,7 +81,6 @@ export default {
 }
 </script>
 <style scoped>
-
 h6{
   text-align: left;
 }

@@ -64,6 +64,7 @@ public class PagingUtill {
 		Map<String,Object> resultData = new HashMap<String,Object>();
 		Map<String,Object> resultPaging = new HashMap<String,Object>();
 		
+		System.out.println("sqlQuery::::"+sqlQuery);
 		total =  session.selectOne(sqlQuery+"Count", param);
 		 
         page = Integer.parseInt((String) (param.get("selectPage") == null ? "1" : param.get("selectPage")));

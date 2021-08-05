@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="userMod">
+
+	<sql id="whereInfo">
+		WHERE 1=1
+		<if test="searchContent != null and searchContent != ''">
+		  AND A.USER_NAME LIKE CONCAT('%',#{searchContent},'%')
+		  
+		</if>
+	
+	</sql>
+	
+<!-- 	<delete id="deleteBoard" parameterType="map">
+		
+		DELETE FROM TB_ST_ADMIN_BOARD
+		WHERE BOARD_NUM IN 
+			<foreach collection="jsonList" item="item" open="(" close=")" separator=",">
+				#{item.BOARD_NUM}
+			</foreach>
+	</delete>
+	
+	
+	-->
+
+	<update id="updateUser" parameterType="map">
+	
+		<foreach collection="jsonList" item="item" open="" close="" separator=";" >
+		UPDATE TB_ST_USERS
+		SET 
+		
+			<if test="item.USER_NAME != null and item.USER_NAME != ''">
+			USER_NAME = #{item.USER_NAME},
+    		</if>
+    		<if test="item.USER_EN_NM != null and item.USER_EN_NM != ''">
+			USER_EN_NM = #{item.USER_EN_NM},
+    		</if>
+    		<if test="item.DEL_YN != null and item.DEL_YN != ''">
+			DEL_YN = #{item.DEL_YN},
+    		</if>
+    		<if test="item.USER_MAIL != null and item.USER_MAIL != ''">
+			USER_MAIL = #{item.USER_MAIL},
+    		</if>
+    		<if test="item.USER_LEVEL != null and item.USER_LEVEL != ''">
+			USER_LEVEL = #{item.USER_LEVEL},
+    		</if>
+    		<if test="item.USER_JOB != null and item.USER_JOB != ''">
+			USER_JOB = #{item.USER_JOB},
+    		</if>
+			AUTHO = #{item.AUTHO}
+		WHERE USER_ID =  #{item.USER_ID}
+	    </foreach>
+	
+	</update> 
+	
+	<select id="userList" parameterType="map" resultType="map">
+	
+		SELECT *                
+		 FROM(SELECT P.*,ROWNUM
+		      FROM  (		
+						SELECT 
+						    A.USER_NAME,
+						    A.USER_ID,
+						    A.USER_EN_NM,
+						    A.DEL_YN,
+						    A.USER_MAIL,
+						    A.USER_LEVEL,
+						    A.USER_JOB,
+						    A.AUTHO
+						FROM TB_ST_USERS A
+		                    <include refid="whereInfo" />
+		                    ) P
+		        WHERE ROWNUM <![CDATA[<]]>  #{cntPerPage})
+		WHERE ROWNUM <![CDATA[>]]> #{startNum}
+	</select>
+	
+	<select id="userListCount" parameterType="map" resultType="int">
+				SELECT COUNT(*)
+				FROM TB_ST_USERS A
+			 <include refid="whereInfo" />
+	</select>
+
+</mapper>

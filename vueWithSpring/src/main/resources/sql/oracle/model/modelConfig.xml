@@ -19,5 +19,6 @@
 			<mapper resource="sql/oracle/mappers/admin/system/adminBoard.xml"/>
 			<mapper resource="sql/oracle/mappers/admin/system/menu.xml"/>
 			<mapper resource="sql/oracle/mappers/admin/system/code.xml"/>
+			<mapper resource="sql/oracle/mappers/admin/system/userMod.xml"/>
 		</mappers>        
 </configuration> 

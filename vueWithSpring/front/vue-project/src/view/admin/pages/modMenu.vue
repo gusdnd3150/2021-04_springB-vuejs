@@ -18,6 +18,7 @@
                   @onClickCell="onClickCell"
                   />
           </div>
+          <Tree />
   </div>
 </template>
 
@@ -25,7 +26,7 @@
 import tableToast from '@/components/admin_tableToast.vue'
 
 export default {
-  name: 'modTable',
+  name: 'modMenu',
   data () { /* 2021/07/23  리퀘스트 테스트 도중  */
     return {
       headers: [

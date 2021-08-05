@@ -13,18 +13,20 @@
 
               <div class="col-lg-5 L-inner-div">
                   <ul class="inner_side_list" >
-                      <li v-for="menuList in sortLevel1Menu" :key="menuList.MENU_CD" :id="menuList.MENU_CD">
-                          <span @click="changeMenu(menuList.MENU_CD)">{{menuList.MENU_NM}}</span>
-                          <f-icon v-if="menuList.MENU_ICON !== 'undefined'" :icon="['fas', menuList.MENU_ICON]" />
+                      <li v-for="menuList in sortLevel1Menu" :key="menuList.MENU_CD" :id="menuList.MENU_CD" @click="changeMenu(menuList.MENU_CD)">
+                        <div class="innerL_li">
+                          <f-icon class="inner_side_list_icon" v-if="menuList.MENU_ICON !== 'undefined'" :icon="['fas', menuList.MENU_ICON]" />
+                          <span style="display: block" >{{menuList.MENU_NM}}</span>
+                        </div>
                       </li>
                   </ul>
               </div>
 
               <div class="col-lg-7 R-inner-div" >
                       <ul class="side_list" >
-                          <li v-for="menuList in childMenu" :key="menuList.MENU_CD">
+                          <li v-for="menuList in childMenu" :key="menuList.MENU_CD" @click="changeChildComponent(menuList.MENU_CD)">
                               <f-icon v-if="menuList.MENU_ICON !== 'undefined'" :icon="['fas', menuList.MENU_ICON]" />
-                              <span @click="changeChildComponent(menuList.MENU_CD)">{{menuList.MENU_NM}}</span>
+                              <span >{{menuList.MENU_NM}}</span>
                               <f-icon :icon="['fas', 'angle-right']" :id="menuList.MENU_CD" />
                           </li>
                       </ul>
@@ -54,6 +56,7 @@ import sideBar from '@/components/admin_sideBar.vue'
 /* 컨텐츠 컴포넌트 영역 DB MENU_CD 값과 일치 시킬 것 */
 import modBoard from '@/view/admin/pages/modBoard.vue' /* 공지사항 관리 */
 import modMenu from '@/view/admin/pages/modMenu.vue' /* 메뉴 관리 */
+import user from '@/view/admin/pages/modUser.vue' /* 유저 관리 */
 
 const menuStore = 'menuStore'
 
@@ -82,7 +85,8 @@ export default {
     topBar,
     sideBar,
     modBoard,
-    modMenu
+    modMenu,
+    user
   },
   methods: {
     changeMenu (menuCd) {
@@ -140,23 +144,43 @@ export default {
   background-color: #F9F9F9;
 }
 
-/*사이드바 css*/
+/* ----------------------------------사이드바 css*/
 .L-inner-div{
-  background-color: #2D3776;
+  background-color: #335cc8;
   height: 100%;
-  padding: 20px 0 20px 0;
+  padding: 0px 0 20px 0;
+}
+.inner_side_list_icon{
+    font-size: 2vw;
+    margin: 0;
 }
 
 .R-inner-div{
-  background-color: #2f3652;
+  background-color: #384059;
   height: 100%;
-  padding: 20px 0 20px 0;
+  padding: 0px 0 20px 0;
+}
+.innerL_li{
+    display: inline;
+    line-height: 75px;
+}
+.innerL_li > *{
+  vertical-align: middle;
+  display: inline !important;
+}
+.innerR_li{
+    display: inline;
+    line-height: 30px;
+}
+.innerR_li > *{
+  vertical-align: middle;
+  display: inline !important;
 }
 .inner_side_list{
     color: white;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 0px !important;
+    margin: 0px !important;
     width: 96%;
     padding-left: 1vw;
     text-align: center;
@@ -168,28 +192,27 @@ export default {
     margin-right: 0px;
     font-weight: 200;
     font-size: 0.8vw;
-    border-bottom: solid;
-    min-height: 55px;
-    border-width: 1px;
+    min-height: 82px;
 }
 .inner_side_list > li:hover{
   cursor: pointer;
 }
 .inner_side_list > li.active{
-  background-color: #2D37A3;
+  background-color: #384059;
 }
 .side_list{
     color: white;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 0px !important;
+    margin: 0px !important;
     width: 96%;
     overflow: hidden;
     padding-left: 1vw;
 }
 .side_list > li {
     text-align: left;
-    margin: 2vh 100% 1vh 1vh;
+    margin: 0px 0px 0px 0px !important;
+    padding: 5px 0px 2vh 15px;
     width: 93%;
     font-weight: 200;
     font-size: 0.8vw;
@@ -210,7 +233,7 @@ li > svg{
       margin-right: 14px;
 }
 
-/*탑바 css*/
+/*-------------------------------------------탑바 css*/
 .top-navi{
     display: flex;
     justify-content: flex-end;
