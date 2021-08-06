@@ -1,3 +1,4 @@
+/* eslint-disable standard/object-curly-even-spacing */
 <template>
   <div class="">
           <h6>유저 관리</h6>
@@ -32,11 +33,11 @@ export default {
         {header: '아이디', name: 'USER_ID', sortingType: 'desc', sortable: true},
         {header: '이름', name: 'USER_NAME', sortingType: 'desc', sortable: true, editor: 'text'},
         {header: 'EN 이름', name: 'USER_EN_NM', sortingType: 'desc', sortable: true, editor: 'text'},
-        {header: '삭제여부', name: 'DEL_YN', sortingType: 'desc', sortable: true, editor: 'text'},
         {header: '이메일', name: 'USER_MAIL', sortingType: 'desc', sortable: true, editor: 'text'},
         {header: '레벨', name: 'USER_LEVEL', sortingType: 'desc', sortable: true, editor: 'text'},
         {header: '부서', name: 'USER_JOB', sortingType: 'desc', sortable: true, editor: 'text'},
-        {header: '권한', name: 'AUTHO', sortingType: 'desc', sortable: true, editor: 'text'}
+        {header: '권한', name: 'AUTHO', formatter: 'listItemText', editor: {type: 'select', options: {listItems: [ { text: '유저', value: 'USER' }, { text: '관리자', value: 'ADMIN' } ]}}},
+        {header: '삭제여부', name: 'DEL_YN', formatter: 'listItemText', editor: {type: 'select', options: {listItems: [ { text: 'N', value: 'n' }, { text: 'Y', value: 'y' } ]}}}
       ],
       dataSource: {
         contentType: 'application/json',

@@ -13,7 +13,8 @@ import bestFormTest from '@/view/bestFormTest.vue'
 import joinPage from '@/view/joinPage.vue'
 
 /* 관리자 페이지 */
-import adminArea from '@/view/admin/adminArea.vue'
+// import adminArea from '@/view/admin/adminArea.vue'
+import adminAreaTest from '@/view/admin/adminAreaTest.vue'
 import modBoard from '@/view/admin/pages/modBoard.vue'
 import sideBar from '@/components/admin_sideBar.vue'
 import topBar from '@/components/admin_topNavi.vue'
@@ -69,7 +70,7 @@ export default new Router({
     {
       path: '/admin/test',
       name: 'admin',
-      components: {adminArea: adminArea},
+      components: {adminArea: adminAreaTest},
       props: true
     }
   ]

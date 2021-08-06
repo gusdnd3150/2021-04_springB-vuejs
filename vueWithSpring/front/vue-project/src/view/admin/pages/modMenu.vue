@@ -3,7 +3,7 @@
           <h6>메뉴 관리</h6>
           <div class="input-style">
                   <span><f-icon :icon="['fas', 'search']" /></span>
-                  <input type="text" class="input-text" placeholder="전체 검색" name="searchContent" v-model="searchContent">
+                  <input type="text" class="input-text" placeholder="전체 검색" name="searchContent" >
                   <button class="main_button" @click="searchPaging">검색</button>
           </div>
 
@@ -13,12 +13,14 @@
                   :dataSource="dataSource"
                   :headerData="headers"
                   :pageOptionsProp="pageNations"
+                  :bodyHeight="600"
                   @searchContent="searchContent"
                   @onClickPage="onClickPage"
                   @onClickCell="onClickCell"
                   />
+
           </div>
-          <Tree />
+
   </div>
 </template>
 
@@ -26,26 +28,30 @@
 import tableToast from '@/components/admin_tableToast.vue'
 
 export default {
-  name: 'modMenu',
+  name: 'modTable',
   data () { /* 2021/07/23  리퀘스트 테스트 도중  */
     return {
       headers: [
-        {header: '번호', name: 'BOARD_NUM', sortingType: 'desc', sortable: true, width: 20, hidden: true},
-        {header: '제목', name: 'BOARD_TITLE', sortingType: 'desc', sortable: true, editor: 'text'},
-        {header: '내용', name: 'BOARD_CONTENT', sortingType: 'desc', sortable: true, editor: 'text'},
-        {header: '유저ID', name: 'USER_ID', sortingType: 'desc', sortable: true},
-        {header: '등록일', name: 'BOARD_REG', sortingType: 'desc', sortable: true},
-        {header: '수정일',
-          name: 'BOARD_UPD',
-          sortingType: 'desc',
-          sortable: true,
-          editor: {
-            type: 'datePicker',
-            options: {
-              format: 'yyyy-MM-dd HH:mm',
-              timepicker: true
+        {header: 'depth1',
+          name: 'LEVEL1',
+          editor: 'text',
+          _attributes: {
+            className: {
+            // Add class name on each columns
+              column: {
+                type: ['blue'],
+                genre: ['blue']
+              }
             }
-          }}
+          }},
+        {header: 'depth2', name: 'LEVEL2', editor: 'text'},
+        {header: 'depth3', name: 'LEVEL3', editor: 'text', hidden: true},
+        {header: '사용여부', name: 'USE_YN', editor: {type: 'select', options: {listItems: [ { text: '사용', value: 'Y' }, { text: '비활성화', value: 'N' } ]}}},
+        {header: '아이콘', name: 'MENU_ICON', editor: 'text'},
+        {header: '컴포넌트', name: 'COMPONENT_CD', editor: 'text'},
+        {header: '메뉴권한', name: 'MENU_AUHTO', editor: 'text'},
+        {header: '메뉴코드', name: 'MENU_CD'},
+        {header: 'url', name: 'MENU_URL'}
       ],
       dataSource: {
         contentType: 'application/json',
@@ -53,13 +59,12 @@ export default {
         initialRequest: true,
         initParams: {params: 'test'},
         api: {
-          readData: { url: 'http://localhost:8050/api/selectBoardList.json', method: 'GET' },
+          readData: { url: 'http://localhost:8050/api/getAppMenuList.json', method: 'GET' },
           deleteData: { url: 'http://localhost:8050/api/deleteBoard.json', method: 'POST' },
           updateData: { url: 'http://localhost:8050/api/updateBoard.json', method: 'PUT' }
+          // createData: { url: 'http://localhost:8050/api/create', method: 'POST' }
         }
-      },
-      pageNations: {useClient: true, perPage: 10},
-      searchContent: ''
+      }
     }
   },
   computed: {
@@ -80,7 +85,6 @@ export default {
 }
 </script>
 <style scoped>
-
 h6{
   text-align: left;
 }

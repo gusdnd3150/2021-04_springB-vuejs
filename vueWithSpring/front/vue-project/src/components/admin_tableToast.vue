@@ -46,7 +46,7 @@ export default {
       const { rowKey, columnName } = event.instance.getFocusedCell()
       event.instance.finishEditing(rowKey, columnName)
     },
-    onCheckAll () {
+    onCheckAll (test) {
       this.$refs.tuiGrid.invoke('destroy')
     },
     onDeleteRow (event) { /* 그리드에서만 삭제 */
@@ -95,7 +95,8 @@ export default {
     width: {type: String, default: 'width:auto'},
     bodyHeight: {type: Number, default: 300},
     useDeleteButton: {type: Boolean, default: true},
-    useUpdateButton: {type: Boolean, default: true}
+    useUpdateButton: {type: Boolean, default: true},
+    refId: {type: String, default: 'tuiGrid'}
   }
 }
 </script>

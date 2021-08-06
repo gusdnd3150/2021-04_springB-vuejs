@@ -1,11 +1,21 @@
 
 <template>
   <div class="left-sideBar">
-      <ul class="list" >
-          <li v-for="MenuList in sortLevel2Menu" :key="MenuList.MENU_CD">
-              <router-link :to="MenuList.MENU_URL">{{MenuList.MENU_NM}}</router-link>
-          </li>
-      </ul>
+      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+        <el-radio-button @open="handleOpen" :label="false">expand</el-radio-button>
+        <el-radio-button @open="handleClose" :label="true">collapse</el-radio-button>
+      </el-radio-group>
+
+      <el-menu  class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <el-submenu v-for="(list,index1) in this.getMenuList" :key="index1" :index="1" >
+          <template v-if="list.LEVEL === 1" slot="title">
+            <i class="el-icon-location"></i>
+            <span slot="title">{{list.MENU_NM}}</span>
+          </template>
+            <el-menu-item v-else-if="list.LEVEL === 2" :index="list.MENU_INDEX">{{list.MENU_NM}}</el-menu-item>
+            <el-menu-item v-else-if="list.LEVEL === 3" :index="list.MENU_INDEX">{{list.MENU_NM}}</el-menu-item>
+        </el-submenu>
+      </el-menu>
   </div>
 </template>
 
@@ -17,40 +27,43 @@ const menuStore = 'menuStore'
 export default {
   name: 'sideBar',
   date () {
+    return {
+      isCollapse: true
+    }
+  },
+  methods: {
+    handleOpen (key, keyPath) {
+      this.isCollapse = !this.isCollapse
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
+      this.isCollapse = !this.isCollapse
+    }
   },
   computed: {
     ...mapGetters(menuStore, {getMenuList: 'GET_MENU_LIST'}),
-    sortLevel2Menu () {
-      let Menu2 = this.getMenuList
-      return Menu2.filter((i) => {
-        if (i.LEVEL === 2) {
-          return i
+    convertMenu () {
+      let menu = this.getMenuList
+      menu.forEach(el => {
+        let menuObj = {}
+        if (el.LEVEL === 1) {
+          console.log(el)
         }
       })
+
+      return ''
     }
   }
 }
 </script>
 
 <style scoped>
-
-.list{
-    color: white;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.list > li {
-    text-align: left;
-    padding-left: 10px;
-}
-.list > li:hover{
-    cursor: pointer;
-}
 .left-sideBar{
-    background-color: #2d3753;
+  height: 70%;
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
     height: 100%;
-    padding-top: 20px;
-    padding-bottom: 16px;
 }
 </style>

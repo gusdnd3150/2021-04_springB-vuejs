@@ -18,6 +18,8 @@ import 'tui-pagination/dist/tui-pagination.css'
 import { Grid } from '@toast-ui/vue-grid'
 import TuiGrid from 'tui-grid'
 import { commonUtil } from '@/jsUtil/commonUtil.js'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 /* Vue.component로 등록한 컴포넌트를 전역에서 사용할 수 있도록 main.js에 import */
 import '@/css/fontawesome.js'
 
@@ -29,6 +31,7 @@ TuiGrid.applyTheme('clean')
 Vue.component('grid', Grid)
 
 /* 전역 사용 */
+Vue.use(ElementUI)
 Vue.use(VueGlide)
 Vue.use(BootstrapVue)
 

@@ -26,5 +26,11 @@ public class MenuController {
 	public Map<String,Object> menuList(HttpServletRequest request){
 		return service.menuList(Convert.convertMapParam(request));
 	}
+	
+	@CrossOrigin(origins= "http://localhost:8070")
+	@RequestMapping("/api/getAppMenuList.json")
+	public Map<String,Object> menuList2(HttpServletRequest request){
+		return service.menuList2(Convert.convertMapParam(request));
+	}
 
 }

@@ -3,24 +3,7 @@
     <!-- 일반 영역 -->
     <router-view name="navi" />
     <router-view name="middle" />
-
     <router-view name="adminArea" />
-
-    <!-- 관리자 영역
-      <router-view name="topbar" />
-      <div class="row admin-area">
-
-        <div class="col-lg-2">
-          <router-view name="sidebar"/>
-        </div>
-
-        <div class="col-lg-10 admin-content-area" >
-          <div class="container">
-            <router-view name="admin_middle" id="main-content"/>
-          </div>
-        </div>
-      </div>
-    <router-view name="bottom" /> -->
   </div>
 </template>
 

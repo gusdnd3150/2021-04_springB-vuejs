@@ -1,9 +1,7 @@
 <template>
   <div class="admin-area">
         <div class="top-navi"> <!-- 상단 메뉴 -->
-            <div v-for="MenuList in sortLevel1Menu" :key="MenuList.MENU_CD" class="" @click="changeMenu(MenuList.MENU_CD)">
-              <span>{{MenuList.MENU_NM}}</span>
-            </div>
+              상단 메뉴
         </div>
 
       <div class="row admin-area">
@@ -22,7 +20,7 @@
                   </ul>
               </div>
 
-              <div class="col-lg-7 R-inner-div" >
+              <div class="col-lg-7 R-inner-div">
                       <ul class="side_list" >
                           <li v-for="menuList in childMenu" :key="menuList.MENU_CD" @click="changeChildComponent(menuList.MENU_CD)">
                               <f-icon v-if="menuList.MENU_ICON !== 'undefined'" :icon="['fas', menuList.MENU_ICON]" />
@@ -50,9 +48,6 @@
 /* 공통 컴포넌트 영역 */
 
 import {mapGetters} from 'vuex'
-import topBar from '@/components/admin_topNavi.vue'
-import sideBar from '@/components/admin_sideBar.vue'
-
 /* 컨텐츠 컴포넌트 영역 DB MENU_CD 값과 일치 시킬 것 */
 import modBoard from '@/view/admin/pages/modBoard.vue' /* 공지사항 관리 */
 import modMenu from '@/view/admin/pages/modMenu.vue' /* 메뉴 관리 */
@@ -65,7 +60,8 @@ export default {
   data () {
     return {
       childMenu: [],
-      showComponent: ''
+      showComponent: '',
+      showMenu: false
     }
   },
   computed: {
@@ -82,8 +78,6 @@ export default {
     }
   },
   components: {
-    topBar,
-    sideBar,
     modBoard,
     modMenu,
     user
@@ -158,7 +152,7 @@ export default {
 .R-inner-div{
   background-color: #384059;
   height: 100%;
-  padding: 0px 0 20px 0;
+  padding: 30px 0 20px 0;
 }
 .innerL_li{
     display: inline;

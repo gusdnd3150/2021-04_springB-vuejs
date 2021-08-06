@@ -19,4 +19,8 @@ public class MenuServiceImpl implements MenuService {
 		return dao.menuList(param);
 	}
 
+	@Override
+	public Map<String, Object> menuList2(Map<String, Object> param) {
+		return dao.menuList2(param);
+	}
 }

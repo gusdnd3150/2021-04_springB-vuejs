@@ -15,12 +15,48 @@
 	
 	<select id="menuList" resultType="map" parameterType="map">
 		SELECT LEVEL, A.MENU_CD ,A.MENU_NM , A.MENU_URL, A.MENU_SUMMARY ,A.MENU_SORT ,A.MENU_PARENT ,A.MENU_HTTP_URL,A.MENU_AUTHO,
-				A.MENU_ICON, A.COMPONENT_CD
+				A.MENU_ICON, A.COMPONENT_CD, A.MENU_INDEX
 		FROM TB_ST_MENU A
 		WHERE 1=1
+		AND A.USE_YN = 'Y'
 		<include refid="whereInfo" />
 		START WITH A.MENU_PARENT IS NULL
 		CONNECT BY PRIOR A.MENU_CD = A.MENU_PARENT
 	</select>
+	
+	<select id="menuList2" resultType="map" parameterType="map">
+		
+		SELECT CASE WHEN LEVEL = 1 THEN A.MENU_NM
+		       ELSE '' END AS LEVEL1,
+		       CASE WHEN LEVEL = 2 THEN A.MENU_NM
+		       ELSE '' END AS LEVEL2,
+		       CASE WHEN LEVEL = 3 THEN A.MENU_NM
+		       ELSE '' END AS LEVEL3,
+		       LEVEL,
+		       A.USE_YN,
+		       A.MENU_INDEX,
+		       A.MENU_ICON,
+		       A.COMPONENT_CD,
+		       A.MENU_AUTHO,
+		       A.MENU_CD,
+		       A.MENU_URL
+		FROM TB_ST_MENU A
+		
+		
+		START WITH A.MENU_PARENT IS NULL
+		CONNECT BY PRIOR A.MENU_CD = A.MENU_PARENT
+		ORDER BY A.MENU_INDEX
+	</select>
+	
+	<select id="menuList2Count" resultType="int" parameterType="map">
+		SELECT count(*)
+		FROM TB_ST_MENU A
+		START WITH A.MENU_PARENT IS NULL
+		CONNECT BY PRIOR A.MENU_CD = A.MENU_PARENT
+	</select>
+	
+	
+	
+	
 	
 </mapper>
